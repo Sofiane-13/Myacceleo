@@ -1,0 +1,10 @@
+application 'applicationPfe' =>  "ApplicationPfe.univTlemcen" {
+	
+	    version: 1 => "VersionPourPfe" 
+	    sdk: { max: 23 ; min: 19 ; target: 23 ; }     
+	    
+     	La vue : { Button Bouton1 : icon : octicon ; use : RemplirTable1 ; text : "text" ; } 
+     	La vue : { FormLabel LabelTable STRING }
+	    Le controleur : { RemplirTable "RemplirTable1" : use : LabelTable ; End. }
+	    
+	    }

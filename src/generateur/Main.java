@@ -12,7 +12,7 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 
 public class Main {
-	static String nombouton,iconbouton,utilise,ajouter,Modelfile="",Jsfile="";
+	static String nombouton,nomfunction,iconbouton,utilise,ajouter,Modelfile="",Jsfile="";
 	
 	public static void main(String[] args) {
 		int i,j,k,l,m,n;	
@@ -73,17 +73,29 @@ public class Main {
 		    if(ListdeslignesModel.get(i).equalsIgnoreCase("Button")){
 		    	//on recupére les informations du boton
 		    	nombouton=ListdeslignesModel.get(i+1);
+		    	utilise=ListdeslignesModel.get(i+5);
+		    	//parcourire le nodejs
 		    	 for(j=0;j<ListdeslignesJs.size();j++){
 			        //on recupére la position du <View>
 			 	    if(ListdeslignesJs.get(j).equalsIgnoreCase("<View>")){
 				 	    //on prépare le code a injecter 	
-				 	    ajouter= "<Button title="+nombouton+" />";
+				 	    ajouter= "<Button title="+nombouton+" onpress={this."+utilise+"}/>";
 				 	    //on injecte le code
 				 	    ListdeslignesJs.add(j+1, ajouter);
 		 	                                                             }
 		 	                                           }	
 		    	
-		                                                            }
+		    	 for(j=0;j<ListdeslignesJs.size();j++){
+				        //on recupére la position du <View>
+				 	    if(ListdeslignesJs.get(j).equalsIgnoreCase("//function")){
+				 	    	
+					 	    //on prépare le code a injecter 	
+					 	    ajouter= utilise+" { if (this.state.newTodo !== '') {  this.itemsRef.push({    todo: this.state.newTodo    });  this.setState({ newTodo : ''     }) } }";
+					 	    //on injecte le code
+					 	    ListdeslignesJs.add(j+1, ajouter);
+			 	                                                             }
+			 	                                           }                                                   }
+		    
 	    	
 	                                             }
 	    
