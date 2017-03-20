@@ -5,6 +5,6 @@ application 'applicationPfe' =>  "ApplicationPfe.univTlemcen" {
 	    
      	La vue : { Button Bouton1 : icon : octicon ; use : RemplirTable1 ; text : "text" ; } 
      	La vue : { FormLabel LabelTable STRING }
-	    Le controleur : { RemplirTable "RemplirTable1" : use : LabelTable ; End. }
+	    Le controleur : { RemplirTable RemplirTable1 : use : LabelTable ; End. }
 	    
 	    }

@@ -12,99 +12,18 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 
 public class Main {
-	static String nombouton,nomfunction,iconbouton,utilise,ajouter,Modelfile="",Jsfile="";
+	static String nombouton,nomfunction,iconbouton,utilise,ajouter;
 	
 	public static void main(String[] args) {
-		int i,j,k,l,m,n;	
-		int o=0;
+		//on lit les fichiers
+		TraiteurFichier.LectureFichier();
 		
-		List<String> ListdeslignesModel = new ArrayList<String>();
-		List<String> ListdeslignesJs = new ArrayList<String>();
-	   
-		File fileModel = new File("./Model.txt");
-		File fileJs = new File("./index.android.js");
-
-
-		String [] resModel = null;  
-		Scanner scannerModel = null;
-		String [] resJs = null;  
-		Scanner scannerJs = null;
-		//lecture model et js
-		try {
-			scannerModel = new Scanner(fileModel);
-			scannerJs = new Scanner(fileJs);
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		while (scannerModel.hasNextLine()) {
-		  String line = scannerModel.nextLine();
-		  Modelfile=Modelfile+" "+line;
-		   
-		}
-		
-		while (scannerJs.hasNextLine()) {
-			  String line2 = scannerJs.nextLine();
-			  Jsfile=Jsfile+" "+line2;
-			   
-			}
-		//on decompose notre fichier
-		 resModel = Modelfile.split(" ");
-		 resJs = Jsfile.split(" ");
-		
-		 System.out.println("****************Afficher Model*********************"); 
-	//on met le Model et Js dans une list 
-	    for(i=0;i<resModel.length;i++){
-	    	ListdeslignesModel.add(resModel[i]);
-	    }
-	    //on supprime du ficher ce dont on a pas besoin
-	    ListdeslignesModel.removeAll(Arrays.asList("", ",",";","	","\"ApplicationPfe.univTlemcen\"","\"VersionPourPfe\"","	La","application","'applicationPfe'","{","}","version:",":","La","sdk:","max:","min:","target:","vue","controleur","End.",".","Le","=>",""));
-	    for(i=0;i<resJs.length;i++){
-	    	ListdeslignesJs.add(resJs[i]);
-	    }
-	    
-	   
-	//on parcourt le model 
-	    for(i=0;i<ListdeslignesModel.size();i++){
-
-		    System.out.println(ListdeslignesModel.get(i));
-		    //on test si il y'a un bouton
-		    if(ListdeslignesModel.get(i).equalsIgnoreCase("Button")){
-		    	//on recupére les informations du boton
-		    	nombouton=ListdeslignesModel.get(i+1);
-		    	utilise=ListdeslignesModel.get(i+5);
-		    	//parcourire le nodejs
-		    	 for(j=0;j<ListdeslignesJs.size();j++){
-			        //on recupére la position du <View>
-			 	    if(ListdeslignesJs.get(j).equalsIgnoreCase("<View>")){
-				 	    //on prépare le code a injecter 	
-				 	    ajouter= "<Button title="+nombouton+" onpress={this."+utilise+"}/>";
-				 	    //on injecte le code
-				 	    ListdeslignesJs.add(j+1, ajouter);
-		 	                                                             }
-		 	                                           }	
-		    	
-		    	 for(j=0;j<ListdeslignesJs.size();j++){
-				        //on recupére la position du <View>
-				 	    if(ListdeslignesJs.get(j).equalsIgnoreCase("//function")){
-				 	    	
-					 	    //on prépare le code a injecter 	
-					 	    ajouter= utilise+" { if (this.state.newTodo !== '') {  this.itemsRef.push({    todo: this.state.newTodo    });  this.setState({ newTodo : ''     }) } }";
-					 	    //on injecte le code
-					 	    ListdeslignesJs.add(j+1, ajouter);
-			 	                                                             }
-			 	                                           }                                                   }
-		    
-	    	
-	                                             }
-	    
-	    
-	    
-	    System.out.println("****************Afficher Js**************************");
-    //on affiche le Js
-	    for(i=0;i<ListdeslignesJs.size();i++){
-	    	System.out.println(ListdeslignesJs.get(i));
-	    }
+		TraiteurFichier.AfficherListJs();
+		System.out.println("************************************************************");
+		TraiteurFichier.AfficherListModel();
+		//on lance l'execution
+		Controleur.Execution();
+		//on lance l'ecriture du fichier
+		TraiteurFichier.EcritureFicher();
 }
 }
