@@ -56,4 +56,40 @@ public static void InjecterLabel(String nomlabel){
 		
 	
 }
+public static void InjecterInputStyle(String nomInputStyle,String heigh,String padding,String marginRight,String flex,String fontSize,String borderWidth,String borderColor,String borderRadius){
+	for(j=0;j<TraiteurFichier.ListdeslignesJs.size();j++){
+		 //on recupére la position du //S
+ 	    if(TraiteurFichier.ListdeslignesJs.get(j).equalsIgnoreCase("//StyleSheet")){
+ 	    	//on prépare le code a injecter
+ 	    	CodeAajouter=nomInputStyle+": {";
+ 	    	if (!heigh.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" height:"+heigh+",";}
+ 	        if (!padding.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" padding:"+padding+",";}
+ 	        if (!marginRight.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" marginRight:"+marginRight+",";}
+ 	        if (!flex.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" flex:"+flex+",";}
+	        if (!fontSize.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" fontSize:"+fontSize+",";}
+	        if (!borderWidth.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderWidth:"+borderWidth+",";}
+	    	if (!borderColor.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderColor: '"+borderColor+"' ,";}
+	    	if (!borderRadius.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderRadius:"+borderRadius+",";}
+ 	    	//On fermme notre StyleSheet
+ 	    	CodeAajouter=CodeAajouter+" },";
+ 	    	//on injecte le code
+ 	    	TraiteurFichier.ListdeslignesJs.add(j+1, CodeAajouter);
+
+ 	    }
+	}
+	
 }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

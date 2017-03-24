@@ -59,7 +59,6 @@ this.state
 =
 {
 //Debutdustate
-LabelTable: '',
 todoSource:
 new
 ListView.DataSource({rowHasChanged:
@@ -96,16 +95,21 @@ this.state.todoSource.cloneWithRows(this.items)});
 });
 }
 //function
-RemplirTable1() { if (this.state.LabelTable !== '') {  this.itemsRef.push({    LabelTable: this.state.LabelTable    });  this.setState({ LabelTable : ''     }) } }
 render()
 {
 return(
 <View>
-<TextInput onChangeText={(text) => this.setState({LabelTable: text})} value={this.state.LabelTable}/>
-<Button title='Bouton1' onPress={() => this.RemplirTable1()}/>
 </View>
 );
 }
 }
+
+var
+styles
+=
+StyleSheet.create({
+//StyleSheet
+StyleInput1: { height:12, padding:17, marginRight:12, flex:12, fontSize:12, borderWidth:12, borderColor:#dc143c, borderRadius:12, },
+});
 AppRegistry.registerComponent('pfe',
 ()=>pfe);

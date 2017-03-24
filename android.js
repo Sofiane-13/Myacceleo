@@ -37,4 +37,7 @@ return(
 );
 }
 }
+ var styles = StyleSheet.create({
+//StyleSheet
+});
 AppRegistry.registerComponent('pfe', ()=>pfe);
