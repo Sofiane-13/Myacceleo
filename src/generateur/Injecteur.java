@@ -9,7 +9,7 @@ public static void InjecterBouton(String nombouton,String utilise){
        //on recupére la position du <View>
 	        if(TraiteurFichier.ListdeslignesJs.get(j).equalsIgnoreCase("<View>")){
 		 	    //on prépare le code a injecter 	
-		    	CodeAajouter= "<Button title='"+nombouton+"' onPress={this."+utilise+"}/>";
+		    	CodeAajouter= "<Button title='"+nombouton+"' onPress={() => this."+utilise+"()}/>";
 		 	    //on injecte le code
 		 	    TraiteurFichier.ListdeslignesJs.add(j+1, CodeAajouter); 
 	                                                             }
