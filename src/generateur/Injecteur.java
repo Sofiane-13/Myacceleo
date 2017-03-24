@@ -61,7 +61,7 @@ public static void InjecterInputStyle(String nomInputStyle,String heigh,String p
 		 //on recupére la position du //S
  	    if(TraiteurFichier.ListdeslignesJs.get(j).equalsIgnoreCase("//StyleSheet")){
  	    	//on prépare le code a injecter
- 	    	CodeAajouter=nomInputStyle+": {";
+ 	    	CodeAajouter=nomInputStyle+": {";  
  	    	if (!heigh.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" height:"+heigh+",";}
  	        if (!padding.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" padding:"+padding+",";}
  	        if (!marginRight.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" marginRight:"+marginRight+",";}
