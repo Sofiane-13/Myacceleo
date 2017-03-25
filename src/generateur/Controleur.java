@@ -2,8 +2,8 @@ package generateur;
 
 public class Controleur {
 	static int i,j;
-	static String nombouton,nomfunction,iconbouton,utilise,nomlabel;
-    static String nomInputStyle,heigh,padding,marginRight,flex,fontSize,borderWidth,borderColor,borderRadius;
+	static String nombouton,iconright,raisedlarge,Style,onclique,nomfunction,onlongclique,icon,iconbouton,utilise,nomlabel,MessageAlert;
+    static String nomInputStyle,heigh,padding,marginRight,nominput,flex,fontSize,borderWidth,borderColor,borderRadius,FlexDirection,BackGroundColor,JustifyContent,borderRadium;
     
     
     
@@ -17,28 +17,46 @@ public class Controleur {
 	    if(TraiteurFichier.ListdeslignesModel.get(i).equalsIgnoreCase("Button")){
 	    	//on recupére les informations du bouton
 	    	nombouton=TraiteurFichier.ListdeslignesModel.get(i+1);
-	    	utilise=TraiteurFichier.ListdeslignesModel.get(i+5);
+	    	onclique=TraiteurFichier.ListdeslignesModel.get(i+5);
+	    	onlongclique=TraiteurFichier.ListdeslignesModel.get(i+7);
+	    	icon=TraiteurFichier.ListdeslignesModel.get(i+3);
+	    	Style=TraiteurFichier.ListdeslignesModel.get(i+9);
+	    	raisedlarge=TraiteurFichier.ListdeslignesModel.get(i+11);
+	    	iconright=TraiteurFichier.ListdeslignesModel.get(i+13);
 	    	//appeller injecteur	
-	    	Injecteur.InjecterBouton(nombouton, utilise);
+	    	Injecteur.InjecterBouton(nombouton,onclique,onlongclique,icon,Style,raisedlarge,iconright);
 	                                                     }
 	    	 //on test si il y'a un label
-	         else if (TraiteurFichier.ListdeslignesModel.get(i).equalsIgnoreCase("FormLabel")) {
+	         else if (TraiteurFichier.ListdeslignesModel.get(i).equalsIgnoreCase("Input")) {
 	        	//on recupére les informations de la function
+	 	    	nominput=TraiteurFichier.ListdeslignesModel.get(i+1);
+	 	    	Style=TraiteurFichier.ListdeslignesModel.get(i+4);
+	 	    	//on appelle l'injecteur 
+	 	    	Injecteur.InjecterInput(nominput,Style);
+	         }
+	  //on test si il y'a une listeView
+	         else if (TraiteurFichier.ListdeslignesModel.get(i).equalsIgnoreCase("ListView")) {
+	        	//on recupére les informations de la List
 	 	    	nomlabel=TraiteurFichier.ListdeslignesModel.get(i+1);
 	 	    	//on appelle l'injecteur 
-	 	    	Injecteur.InjecterLabel(nomlabel);
+	 	    	Injecteur.InjecterListView();
 	         }
-	         else if (TraiteurFichier.ListdeslignesModel.get(i).equalsIgnoreCase("InputStyle")) {
+	  //on test si il y'a un Stylesheet
+	         else if (TraiteurFichier.ListdeslignesModel.get(i).equalsIgnoreCase("StyleSheet")) {
 	        	 nomInputStyle=TraiteurFichier.ListdeslignesModel.get(i+1);
 	        	 heigh=TraiteurFichier.ListdeslignesModel.get(i+3);
-	        	 padding=TraiteurFichier.ListdeslignesModel.get(i+5);
-	        	 marginRight=TraiteurFichier.ListdeslignesModel.get(i+7);
-	        	 flex=TraiteurFichier.ListdeslignesModel.get(i+9);
-	             fontSize=TraiteurFichier.ListdeslignesModel.get(i+11);
-	        	 borderWidth=TraiteurFichier.ListdeslignesModel.get(i+13);
-	        	 borderColor=TraiteurFichier.ListdeslignesModel.get(i+16);
-	        	 borderRadius=TraiteurFichier.ListdeslignesModel.get(i+18);
-	        	 Injecteur.InjecterInputStyle(nomInputStyle,heigh, padding, marginRight, flex, fontSize, borderWidth, borderColor, borderRadius);
+	        	 flex=TraiteurFichier.ListdeslignesModel.get(i+5);
+	        	 FlexDirection=TraiteurFichier.ListdeslignesModel.get(i+7);
+	        	 BackGroundColor=TraiteurFichier.ListdeslignesModel.get(i+9);
+	        	 JustifyContent=TraiteurFichier.ListdeslignesModel.get(i+11);
+	        	 borderRadium=TraiteurFichier.ListdeslignesModel.get(i+13);
+	        	 padding=TraiteurFichier.ListdeslignesModel.get(i+15);
+	        	 marginRight=TraiteurFichier.ListdeslignesModel.get(i+17);
+	             fontSize=TraiteurFichier.ListdeslignesModel.get(i+19);
+	        	 borderWidth=TraiteurFichier.ListdeslignesModel.get(i+21);
+	        	 borderColor=TraiteurFichier.ListdeslignesModel.get(i+23);
+	        	 borderRadius=TraiteurFichier.ListdeslignesModel.get(i+25);
+	        	 Injecteur.InjecterStyleSheet(nomInputStyle,heigh,flex,FlexDirection,BackGroundColor,JustifyContent,borderRadium, padding, marginRight,fontSize, borderWidth, borderColor, borderRadius);
 	         }
 	    //controleur
 	  //on test si il y'a un Remplir table
@@ -50,7 +68,14 @@ public class Controleur {
 	 	    	//on appelle l'injecteur
 	 	    	Injecteur.InjecterFunRemplirTab(nomfunction,utilise);
 	 	    	
-	 	    }   
+	 	    }
+	 	   else if(TraiteurFichier.ListdeslignesModel.get(i).equalsIgnoreCase("AlertFunction")){
+	 		//on recupére les informations de la function
+	 	    	nomfunction=TraiteurFichier.ListdeslignesModel.get(i+1);
+	 	    	MessageAlert=TraiteurFichier.ListdeslignesModel.get(i+3);
+	 	    	Injecteur.InjecterAlertFunction(nomfunction,MessageAlert);
+	 	   }
+	    
     	
                                              }
 }

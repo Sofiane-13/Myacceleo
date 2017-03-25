@@ -59,6 +59,7 @@ this.state
 =
 {
 //Debutdustate
+Input1: '',
 todoSource:
 new
 ListView.DataSource({rowHasChanged:
@@ -95,10 +96,17 @@ this.state.todoSource.cloneWithRows(this.items)});
 });
 }
 //function
+RemplirTable1() { if (this.state.Input1 !== '') {  this.itemsRef.push({    Input1: this.state.Input1    });  this.setState({ Input1 : ''     }) } }
+renderRow(rowData) { return ( <TouchableHighlight onPress={() => this.removeTodo(rowData)}> <View> <View style={styles.row}> <Text style={styles.todoText}>{rowData.text.todo}</Text> </View> <View style={styles.separator} /> </View> </TouchableHighlight> ); }
+renderRow(rowData) { return ( <TouchableHighlight onPress={() => this.removeTodo(rowData)}> <View> <View style={styles.row}> <Text style={styles.todoText}>{rowData.text.todo}</Text> </View> <View style={styles.separator} /> </View> </TouchableHighlight> ); }
 render()
 {
 return(
 <View>
+<ScrollView> <ListView dataSource={this.state.todoSource} renderRow={this.renderRow.bind(this)} enableEmptySections={true} /> </ScrollView>
+<TextInput style={styles.style1} onChangeText={(text) => this.setState({Input1: text})} value={this.state.Input1}/>
+<Button raised title='AddTache' onPress={() => this.RemplirTable1()} onLongPress={() => this.RemplirTable1()} style={ styles.style1 } icon={{name: 'squirrel', type: 'octicon', buttonStyle: styles.style1 }}  />
+<ScrollView> <ListView dataSource={this.state.todoSource} renderRow={this.renderRow.bind(this)} enableEmptySections={true} /> </ScrollView>
 </View>
 );
 }
@@ -109,7 +117,9 @@ styles
 =
 StyleSheet.create({
 //StyleSheet
-StyleInput1: { height:12, padding:17, marginRight:12, flex:12, fontSize:12, borderWidth:12, borderColor:#dc143c, borderRadius:12, },
+ row: { flexDirection: 'row', padding: 12, height: 44 }, separator: { height: 1, backgroundColor: '#CCCCCC', },
+ row: { flexDirection: 'row', padding: 12, height: 44 }, separator: { height: 1, backgroundColor: '#CCCCCC', },
+style1: { FlexDirection: 'center' , JustifyContent: center, },
 });
 AppRegistry.registerComponent('pfe',
 ()=>pfe);

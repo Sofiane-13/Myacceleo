@@ -1,0 +1,17 @@
+application 'applicationPfe' =>  "ApplicationPfe.univTlemcen" {
+	
+	   version: 1 => "VersionPourPfe" 
+	   sdk: { max: 23 ; min: 19  ;  target: 1 ; }  	
+	    //styles 
+	    La vue : { InputStyle StyleInput1 
+	      height 12 ; 
+	      padding : 17 ; 
+	      marginRight : 12 ;
+	      flex : 12 ; 
+	      fontSize : 12 ;
+	      borderWidth : 12 ;
+	      borderColor : crimson #dc143c ;
+	      borderRadius : 12 ; 
+	      End. }
+      
+	
