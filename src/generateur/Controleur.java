@@ -35,7 +35,7 @@ public class Controleur {
 	 	    	Injecteur.InjecterInput(nominput,Style);
 	         }
 	  //on test si il y'a une listeView
-	         else if (TraiteurFichier.ListdeslignesModel.get(i).equalsIgnoreCase("ListView")) {
+	         else if (TraiteurFichier.ListdeslignesModel.get(i).equalsIgnoreCase("list")) {
 	        	//on recupére les informations de la List
 	 	    	nomlabel=TraiteurFichier.ListdeslignesModel.get(i+1);
 	 	    	//on appelle l'injecteur 
@@ -45,18 +45,16 @@ public class Controleur {
 	         else if (TraiteurFichier.ListdeslignesModel.get(i).equalsIgnoreCase("StyleSheet")) {
 	        	 nomInputStyle=TraiteurFichier.ListdeslignesModel.get(i+1);
 	        	 heigh=TraiteurFichier.ListdeslignesModel.get(i+3);
-	        	 flex=TraiteurFichier.ListdeslignesModel.get(i+5);
-	        	 FlexDirection=TraiteurFichier.ListdeslignesModel.get(i+7);
-	        	 BackGroundColor=TraiteurFichier.ListdeslignesModel.get(i+9);
-	        	 JustifyContent=TraiteurFichier.ListdeslignesModel.get(i+11);
-	        	 borderRadium=TraiteurFichier.ListdeslignesModel.get(i+13);
-	        	 padding=TraiteurFichier.ListdeslignesModel.get(i+15);
-	        	 marginRight=TraiteurFichier.ListdeslignesModel.get(i+17);
-	             fontSize=TraiteurFichier.ListdeslignesModel.get(i+19);
-	        	 borderWidth=TraiteurFichier.ListdeslignesModel.get(i+21);
-	        	 borderColor=TraiteurFichier.ListdeslignesModel.get(i+23);
-	        	 borderRadius=TraiteurFichier.ListdeslignesModel.get(i+25);
-	        	 Injecteur.InjecterStyleSheet(nomInputStyle,heigh,flex,FlexDirection,BackGroundColor,JustifyContent,borderRadium, padding, marginRight,fontSize, borderWidth, borderColor, borderRadius);
+	        	 flex=TraiteurFichier.ListdeslignesModel.get(i+5); 
+	        	 BackGroundColor=TraiteurFichier.ListdeslignesModel.get(i+7);
+	        	 borderRadium=TraiteurFichier.ListdeslignesModel.get(i+9);
+	        	 padding=TraiteurFichier.ListdeslignesModel.get(i+11);
+	        	 marginRight=TraiteurFichier.ListdeslignesModel.get(i+13);
+	             fontSize=TraiteurFichier.ListdeslignesModel.get(i+15);
+	        	 borderWidth=TraiteurFichier.ListdeslignesModel.get(i+17);
+	        	 borderColor=TraiteurFichier.ListdeslignesModel.get(i+19);
+	        	 borderRadius=TraiteurFichier.ListdeslignesModel.get(i+21);
+	        	 Injecteur.InjecterStyleSheet(nomInputStyle,heigh,flex,BackGroundColor,borderRadium, padding, marginRight,fontSize, borderWidth, borderColor, borderRadius);
 	         }
 	    //controleur
 	  //on test si il y'a un Remplir table

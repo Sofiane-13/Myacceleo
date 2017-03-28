@@ -4,11 +4,11 @@ application 'applicationPfe' =>  "ApplicationPfe.univTlemcen" {
 	   sdk: { }  	
 	  	 La vue : { StyleSheet style1 
 	  	  	
-	  	  	height : none ; 
-	  	  	Flex : none ;
-	  	  	FlexDirection : center ;
-	  	  	BackGroundColor : none ; 
-	  	  	JustifyContent : center ; 
+	  	  	height : 1 ; 
+	  	  	Flex : 1 ;
+	  	  	
+	  	  	BackGroundColor : #CCCCCC ; 
+	  	  	
 	  	  	BorderRadium : none ;
 	  	  	padding : none ;
 	  	  	marginRight : none ;
@@ -31,7 +31,7 @@ application 'applicationPfe' =>  "ApplicationPfe.univTlemcen" {
          	End. }
          La vue : { Icone Icone1 Type : octicon ; Style : style1 ; End. }
          La vue : { Input Input1 TextType ; Style : style1 ; End. }
-         La vue : {list ListView Style : style1 ; End. } 
+         La vue : { list ListView Style : style1 ; variable : Input1 End. } 
          Le controleur : { RemplirTable RemplirTable1 : use : Input1 ; End. }
 	   //Elements
 	   }

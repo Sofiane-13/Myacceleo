@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import {AppRegistry,ScrollView,StyleSheet,Text,Alert,View,TouchableHighlight,TextInput,ListView,Button} from 'react-native';
+import {AppRegistry,ScrollView,StyleSheet,Text,Alert,View,TouchableHighlight,TextInput,ListView} from 'react-native';
+import { Button } from 'react-native-elements'
 var Firebase = require('firebase');
 var config = {
   apiKey: "AIzaSyDysc3BPHCAGkHJ4K61zwXhZb07M5rnCQE",
@@ -31,8 +32,10 @@ todoSource: this.state.todoSource.cloneWithRows(this.items)});
 }
 //function
 render() {
+//Vue
 return(
 <View>
+
 </View>
 );
 }

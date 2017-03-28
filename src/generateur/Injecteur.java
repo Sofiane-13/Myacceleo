@@ -8,7 +8,7 @@ public static void InjecterBouton(String nombouton,String onclique,String onlong
 	//parcourire le nodejs
 	 for(j=0;j<TraiteurFichier.ListdeslignesJs.size();j++){
        //on recupére la position du <View>
-	        if(TraiteurFichier.ListdeslignesJs.get(j).equalsIgnoreCase("<View>")){
+	        if(TraiteurFichier.ListdeslignesJs.get(j).equalsIgnoreCase("//Vue")){
 		 	    //on prépare le code a injecter 	
 	        	CodeAajouter="<Button";
 	        	if(raisedlarge.equalsIgnoreCase("raised"))CodeAajouter=CodeAajouter+" raised";
@@ -18,9 +18,9 @@ public static void InjecterBouton(String nombouton,String onclique,String onlong
 	        		 if(TraiteurFichier.ListdeslignesModel.get(i).equalsIgnoreCase(icon)){typeicon=TraiteurFichier.ListdeslignesModel.get(i+2);Styleicon=TraiteurFichier.ListdeslignesModel.get(i+4);}
 	        	 }
 
-	        	CodeAajouter=CodeAajouter+ " title='"+nombouton+"' onPress={() => this."+onclique+"()} onLongPress={() => this."+onlongclique+"()} style={ styles."+Style+" } icon={{name: 'squirrel', type: '"+typeicon+"', buttonStyle: styles."+Styleicon+" }}  />";
+	        	CodeAajouter=CodeAajouter+ " title='"+nombouton+"' onPress={() => this."+onclique+"()} onLongPress={() => this."+onlongclique+"()} buttonStyle={ styles."+Style+" } icon={{name: 'squirrel', type: '"+typeicon+"', buttonStyle: styles."+Styleicon+" }}  />";
 		 	    //on injecte le code
-		 	    TraiteurFichier.ListdeslignesJs.add(j+1, CodeAajouter); 
+		 	    TraiteurFichier.ListdeslignesJs.add(j+3, CodeAajouter); 
 	                                                             }
 	                                           }
 	}
@@ -42,12 +42,12 @@ public static void InjecterInput(String nominput,String Style){
 		
 	    	//on inject dans la vue
 		    //on recupére la position du <View>
-	 	    if(TraiteurFichier.ListdeslignesJs.get(j).equalsIgnoreCase("<View>")){
+	 	    if(TraiteurFichier.ListdeslignesJs.get(j).equalsIgnoreCase("//Vue")){
 	 	    	
 		 	    //on prépare le code a injecter 	
 	 	    	CodeAajouter="<TextInput style={styles."+Style+"} onChangeText={(text) => this.setState({"+nominput+": text})} value={this.state."+nominput+"}/>";
-		 	    //on injecte le code
-		 	    TraiteurFichier.ListdeslignesJs.add(j+1, CodeAajouter);
+		 	    //on injecte le code		 	    
+	 	    	TraiteurFichier.ListdeslignesJs.add(j+3, CodeAajouter);
 	                                                             }
 	                                           }  
 		
@@ -56,15 +56,15 @@ public static void InjecterInput(String nominput,String Style){
 public static void	InjecterListView(){
 	for(j=0;j<TraiteurFichier.ListdeslignesJs.size();j++){
 		//on inject la ListView dans la vue
-		 if(TraiteurFichier.ListdeslignesJs.get(j).equalsIgnoreCase("<View>")){
+		 if(TraiteurFichier.ListdeslignesJs.get(j).equalsIgnoreCase("//Vue")){
 			 
-			 CodeAajouter="<ScrollView> <ListView dataSource={this.state.todoSource} renderRow={this.renderRow.bind(this)} enableEmptySections={true} /> </ScrollView>";			 
+			 CodeAajouter="<ListView dataSource={this.state.todoSource} renderRow={this.renderRow.bind(this)} enableEmptySections={true} />";			 
 			//on injecte le code
-		 	    TraiteurFichier.ListdeslignesJs.add(j+1, CodeAajouter);
+		 	    TraiteurFichier.ListdeslignesJs.add(j+3, CodeAajouter);
 		    }
 			//on inject la function renderRow
 		 if(TraiteurFichier.ListdeslignesJs.get(j).equalsIgnoreCase("//function")){
-			 CodeAajouter="renderRow(rowData) { return ( <TouchableHighlight onPress={() => this.removeTodo(rowData)}> <View> <View style={styles.row}> <Text style={styles.todoText}>{rowData.text.todo}</Text> </View> <View style={styles.separator} /> </View> </TouchableHighlight> ); }";
+			 CodeAajouter="renderRow(rowData) { return ( <TouchableHighlight onPress={() => this.removeTodo(rowData)}><View ><Text >{rowData.text.Input1}</Text></View></TouchableHighlight>  ); }";
 			 TraiteurFichier.ListdeslignesJs.add(j+1, CodeAajouter);
 		 }
 		 //A revoire on laisse juste celui du separateur et celui du row doit etre donné par l'utilisateur
@@ -77,7 +77,7 @@ public static void	InjecterListView(){
 
 }
 //coté StyleSheet
-public static void InjecterStyleSheet(String nomInputStyle,String heigh,String flex,String FlexDirection,String BackGroundColor,String JustifyContent,String borderRadium,String padding,String marginRight,String fontSize,String borderWidth,String borderColor,String borderRadius){
+public static void InjecterStyleSheet(String nomInputStyle,String heigh,String flex,String BackGroundColor,String borderRadium,String padding,String marginRight,String fontSize,String borderWidth,String borderColor,String borderRadius){
 	for(j=0;j<TraiteurFichier.ListdeslignesJs.size();j++){
 		 //on recupére la position du //Stylesheet
  	    if(TraiteurFichier.ListdeslignesJs.get(j).equalsIgnoreCase("//StyleSheet")){
@@ -85,9 +85,7 @@ public static void InjecterStyleSheet(String nomInputStyle,String heigh,String f
  	    	CodeAajouter=nomInputStyle+": {";  
  	       	if (!heigh.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" height: "+heigh+",";}
  	    	 if (!flex.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" flex: "+flex+",";}
- 	    	 if (!FlexDirection.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" FlexDirection: '"+FlexDirection+"' ,";}
- 	    	 if (!BackGroundColor.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" BackGroundColor: "+BackGroundColor+",";}
- 	    	 if (!JustifyContent.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" JustifyContent: "+JustifyContent+",";}
+ 	    	 if (!BackGroundColor.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" backgroundColor: '"+BackGroundColor+"' ,";}
  	    	 if (!borderRadium.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderRadium: "+borderRadium+",";}
  	    	 if (!padding.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" padding: "+padding+",";}
  	 	     if (!marginRight.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" marginRight: "+marginRight+",";}

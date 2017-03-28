@@ -7,9 +7,15 @@ Component
 from
 'react'
 import
-{AppRegistry,ScrollView,StyleSheet,Text,Alert,View,TouchableHighlight,TextInput,ListView,Button}
+{AppRegistry,ScrollView,StyleSheet,Text,Alert,View,TouchableHighlight,TextInput,ListView}
 from
 'react-native';
+import
+{
+Button
+}
+from
+'react-native-elements'
 var
 Firebase
 =
@@ -97,16 +103,16 @@ this.state.todoSource.cloneWithRows(this.items)});
 }
 //function
 RemplirTable1() { if (this.state.Input1 !== '') {  this.itemsRef.push({    Input1: this.state.Input1    });  this.setState({ Input1 : ''     }) } }
-renderRow(rowData) { return ( <TouchableHighlight onPress={() => this.removeTodo(rowData)}> <View> <View style={styles.row}> <Text style={styles.todoText}>{rowData.text.todo}</Text> </View> <View style={styles.separator} /> </View> </TouchableHighlight> ); }
-renderRow(rowData) { return ( <TouchableHighlight onPress={() => this.removeTodo(rowData)}> <View> <View style={styles.row}> <Text style={styles.todoText}>{rowData.text.todo}</Text> </View> <View style={styles.separator} /> </View> </TouchableHighlight> ); }
+renderRow(rowData) { return ( <TouchableHighlight onPress={() => this.removeTodo(rowData)}><View ><Text >{rowData.text.Input1}</Text></View></TouchableHighlight>  ); }
 render()
 {
+//Vue
 return(
 <View>
-<ScrollView> <ListView dataSource={this.state.todoSource} renderRow={this.renderRow.bind(this)} enableEmptySections={true} /> </ScrollView>
+<ListView dataSource={this.state.todoSource} renderRow={this.renderRow.bind(this)} enableEmptySections={true} />
 <TextInput style={styles.style1} onChangeText={(text) => this.setState({Input1: text})} value={this.state.Input1}/>
-<Button raised title='AddTache' onPress={() => this.RemplirTable1()} onLongPress={() => this.RemplirTable1()} style={ styles.style1 } icon={{name: 'squirrel', type: 'octicon', buttonStyle: styles.style1 }}  />
-<ScrollView> <ListView dataSource={this.state.todoSource} renderRow={this.renderRow.bind(this)} enableEmptySections={true} /> </ScrollView>
+<Button raised title='AddTache' onPress={() => this.RemplirTable1()} onLongPress={() => this.RemplirTable1()} buttonStyle={ styles.style1 } icon={{name: 'squirrel', type: 'octicon', buttonStyle: styles.style1 }}  />
+
 </View>
 );
 }
@@ -118,8 +124,7 @@ styles
 StyleSheet.create({
 //StyleSheet
  row: { flexDirection: 'row', padding: 12, height: 44 }, separator: { height: 1, backgroundColor: '#CCCCCC', },
- row: { flexDirection: 'row', padding: 12, height: 44 }, separator: { height: 1, backgroundColor: '#CCCCCC', },
-style1: { FlexDirection: 'center' , JustifyContent: center, },
+style1: { height: 1, flex: 1, backgroundColor: '#CCCCCC' , },
 });
 AppRegistry.registerComponent('pfe',
 ()=>pfe);
