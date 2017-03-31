@@ -27,7 +27,7 @@ static File Newfilejs=new File("./index.android.js");
 			public static void LectureFichier(){
 	
 
-	int i,j,k,l,m,o;
+	int i;
 	  
 	Scanner scannerModel = null;
 	
@@ -61,7 +61,7 @@ static File Newfilejs=new File("./index.android.js");
 	    	ListdeslignesModel.add(resModel[i]);
 	    }
 	    //on supprime du ficher ce dont on a pas besoin
-	    ListdeslignesModel.removeAll(Arrays.asList("", ",",";","	","\"ApplicationPfe.univTlemcen\"","\"VersionPourPfe\"","	La","application","'applicationPfe'","{","}","version:",":","La","sdk:","max:","min:","target:","vue","controleur","End.",".","Le","=>",""));
+	    ListdeslignesModel.removeAll(Arrays.asList("", ",",";","	","\"ApplicationPfe.univTlemcen\"","\"VersionPourPfe\"","	La","application","'applicationPfe'","{","}","version:",":","La","sdk:","max:","min:","target:","vue","controleur",".","Le","=>",""));
 	    
 	    for(i=0;i<resJs.length;i++){
 	    	ListdeslignesJs.add(resJs[i]);

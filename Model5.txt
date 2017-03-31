@@ -1,0 +1,37 @@
+application 'applicationPfe' =>  "ApplicationPfe.univTlemcen" {
+	
+	   version: 1 => "VersionPourPfe" 
+	   sdk: { }  	
+	  	 La vue : { StyleSheet style1 
+	  	  	
+	  	  	height : 1 ; 
+	  	  	Flex : 1 ;
+	  	  	
+	  	  	BackGroundColor : #CCCCCC ; 
+	  	  	
+	  	  	BorderRadium : none ;
+	  	  	padding : none ;
+	  	  	marginRight : none ;
+	  	  	fontSize : none ; 
+	  	  	borderWidth : none ;
+            borderColor : none ;
+            borderRadius : none ;
+             End. }
+	  	 La vue : { Layout TODOApplication : 
+	  	 	contient : AddTache , Input1 , ListView ; 
+	  	 	Style : style1 ;
+             End. }
+         La vue : { Button AddTache : 
+         	icon : Icone1 ;
+         	onclique : RemplirTable1 ;
+         	onlongclique : RemplirTable1 ; 
+         	Style : style1 ; 
+         	Raised/Large : raised ; 
+         	IconRight :true ;
+         	End. }
+         La vue : { Icone Icone1 Type : octicon ; Style : style1 ; End. }
+         La vue : { Input Input1 TextType ; Style : style1 ; End. }
+         La vue : { list ListView Style : style1 ; variable : Input1 End. } 
+         Le controleur : { RemplirTable RemplirTable1 : use : Input1 ; End. }
+	   //Elements
+	   }
