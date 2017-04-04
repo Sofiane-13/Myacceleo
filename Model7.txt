@@ -1,10 +1,7 @@
 application 'applicationPfe' =>  "ApplicationPfe.univTlemcen" {
 	
 	   version:1  => "VersionPourPfe" 
-	   sdk: { max:23 ; min:19 ;  }  
-	   Le model : {  Table  table1 champ :  Input1 , Input2 ; End. }
-	
-	   Le model : { DataBase base1	:   apiKey :  apiKey1 ; authDomain :   authDomain1 ; databaseURL :   databaseURL1 ; contient :  table1 ; End. }
+	   sdk: { max:23 ; min:19 ;  }  	
 	  	
 	  	 	 La vue : { Icone icone1 Type : evilicon ; Style :
 Style1 ; End. } 
@@ -21,7 +18,7 @@ marginLeft :   none ; marginTop :   16 ; marginVertical :   none ; marginRight
 :   14 ; fontSize :   12 ; fontStyle :   italic ; fontWeight :   bold ;
 borderStyle :   dashed ; borderBottomLeftRadius :   8 ;
 borderBottomRightRadius :   4 ; borderBottomWidth :   9 ; borderWidth :   12 ;
-borderColor :   white #ffffff ; borderLeftColor :   green #008000 ;
+borderColor :   white #ffffff ; borderLeftColor :   green "#008000 ;
 borderLeftWidth :   21 ; borderRadius :   9 ; borderRightColor :  
 darkorange #ff8c00 ; borderRightWidth :   19 ; borderTopColor :  
 lightgray #d3d3d3 ; borderTopLeftRadius :   25 ; borderTopRightRadius :   13 ;
@@ -31,21 +28,19 @@ textDecorationLine :   line-through ; textShadowColor :   gold  #ffd700 ;
 textAlignVertical :   bottom ; textShadowRadius :   15 ; fontVariant :  
 oldstyle-nums ; letterSpacing :   6 ; textDecorationColor :  
 floralwhite #fffaf0 ; textDecorationStyle :   dashed ; writingDirection :  
-rtl ; End. }  
+rtl ; End. } 
         
 	  	
        La vue : { Layout ApplicationTODO :   contient :  List1 , Label1 , Input1
-, Label2 , Input2 , Ajouter ; Style :  Style1 ; End. } La vue : {  listView List1  Style :  Style1 ; use :  table1 ; End. }
- La vue : { Text Label1 Contenu "Contenu" ; Style Style1 ; End. } La vue : { Text Label2 Contenu "Contenu" ;
+, Label2 , Input2 , Ajouter ; Style :  Style1 ; End. } La vue : {  listView List1 use :   Input1 , Input2 ; Style :  Style1 ; End. } La vue : { FormLabel
+Label1 TypeText ; Style Style1 ; End. } La vue : { FormLabel Label2 TypeText ;
 Style Style1 ; End. } La vue : { Input Input1 TextType ; Style :  Style1 ;
 End. } La vue : { Input Input2 TextType ; Style :  Style1 ; End. } La vue : {
-Bouton Ajouter :  icon :   icone1 ; onclique :  ReplirTable ; onlongclique : 
-alrte2 ; Style :  Style1 ; Raised/Large :  none ; IconRight :  true ; End. }
-La vue : { Layout fonctions :   contient :   fonctions ; Style :   Style1 ; End.
-} 
+Bouton Ajouter :  icon :   icone1 ; onclique :  RmplirTab ; onlongclique : 
+Alert ; Style :  Style1 ; Raised/Large :  none ; IconRight :  true ; End. } 
         
 	  	
-       Le controleur : {   AlertFunction alrte2 :  Message :  alerte2 ; End. } 
+       Le controleur : {  AlertFunction Alert : Message : Alerte ; End. } 
        
 	   
-	   Le controleur : {   RemplirTable ReplirTable :  use :  table1 ; End. } }
+	   Le controleur : {  RemplirTable RmplirTab : use : Input1 , Input2 ; End. } }

@@ -8,6 +8,10 @@ public class Controleur {
 	static String nombouton,iconright,raisedlarge,Style,onclique,nomfunction,onlongclique,icon,iconbouton,utilise,nomlabel,MessageAlert;
     static String nomInputStyle,heigh,padding,marginRight,nominput,flex,fontSize,borderWidth,borderColor,borderRadius,FlexDirection,JustifyContent,borderRadium;
     static String lineHeight,textAlign,textDecorationLine,right,width,maxheigh,maxWidth,BorderRadium,position,minHeight,minWidth,left,Flex,flexWrap,fontStyle,paddingBottom,paddingHorizontal,paddingLeft,paddingRight,paddingTop,paddingVertical,opacity,bottom,margin,marginBottom,marginHorizontal,marginLeft,marginTop,marginVertical,fontWeight,borderStyle,borderBottomLeftRadius,borderBottomRightRadius,textShadowColor,borderRightColor,borderLeftColor,borderBottomWidth,borderLeftWidth,textAlignVertical,borderRightWidth,tborderRightColor,textShadowRadius,extShadowRadius,fontVariant,letterSpacing,textDecorationColor,textDecorationStyle,writingDirection,borderRightColorborderRightWidth,borderTopColor,borderTopLeftRadius,borderTopRightRadius,borderTopWidth,backfaceVisibility,BackGroundColor;
+    static String NomDataBase,apikye,authDomain,databaseURL;
+    static String NomLabel,stylelabel,contenu;
+    static String Stylelistview,table;
+    static String nomList,Table;
     static List<String> ListViewinputList = new ArrayList<String>();
     static List<String> TableinputList = new ArrayList<String>();
     
@@ -15,11 +19,29 @@ public class Controleur {
     	
 	public static void Execution(){
 	//on parcourt le model 
-	//la vue
+	
+		
+	
     for(i=0;i<TraiteurFichier.ListdeslignesModel.size();i++){
-
-	    
-	    //on test si il y'a un bouton
+    	//Le model
+    	 if(TraiteurFichier.ListdeslignesModel.get(i).equalsIgnoreCase("DataBase")){
+   	/* | */	 NomDataBase=TraiteurFichier.ListdeslignesModel.get(i+1);
+    		 apikye=TraiteurFichier.ListdeslignesModel.get(i+3);
+    		 authDomain=TraiteurFichier.ListdeslignesModel.get(i+5);
+    		 databaseURL=TraiteurFichier.ListdeslignesModel.get(i+7);
+    			Injecteur.InjecterDataBase(NomDataBase,apikye,authDomain,databaseURL);
+    	 }
+    	
+    	//la vue    
+	   //on test si il y'a un label
+    	 if(TraiteurFichier.ListdeslignesModel.get(i).equalsIgnoreCase("Text")){
+    		   		 NomLabel=TraiteurFichier.ListdeslignesModel.get(i+1);
+    		    		 stylelabel=TraiteurFichier.ListdeslignesModel.get(i+5);
+    		    		 contenu=TraiteurFichier.ListdeslignesModel.get(i+3);
+    		    		
+    		    			Injecteur.InjecterLabel(NomLabel,stylelabel,contenu);
+    		    	 }
+    	 //on test si il y'a un bouton
 	    if(TraiteurFichier.ListdeslignesModel.get(i).equalsIgnoreCase("Bouton")){
 	    	//on recupére les informations du bouton
 	    	nombouton=TraiteurFichier.ListdeslignesModel.get(i+1);
@@ -43,14 +65,12 @@ public class Controleur {
 	  //on test si il y'a une listeView
 	         else if (TraiteurFichier.ListdeslignesModel.get(i).equalsIgnoreCase("listView")) {
 	        	//on recupére les informations de la List
-	 	    	nomlabel=TraiteurFichier.ListdeslignesModel.get(i+1);
-	 	    	int f=i+3;
-	 	    	
-	 	    	while((!TraiteurFichier.ListdeslignesModel.get(f).equalsIgnoreCase("End.")) && (!TraiteurFichier.ListdeslignesModel.get(f).equalsIgnoreCase("Style")))
-	 	    	{ListViewinputList.add(TraiteurFichier.ListdeslignesModel.get(f));f++;}
-	 	    	
+	 	    	nomList=TraiteurFichier.ListdeslignesModel.get(i+1);
+	 	    	Stylelistview=TraiteurFichier.ListdeslignesModel.get(i+3);
+	 	    	Table=TraiteurFichier.ListdeslignesModel.get(i+5);
+	    	
 	 	    	//on appelle l'injecteur 
-	 	    	Injecteur.InjecterListView(ListViewinputList);
+	 	    	Injecteur.InjecterListView(Stylelistview,Table);
 	         }
 	  //on test si il y'a un Stylesheet
 	         else if (TraiteurFichier.ListdeslignesModel.get(i).equalsIgnoreCase("StyleSheet")) {

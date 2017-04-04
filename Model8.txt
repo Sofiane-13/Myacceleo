@@ -2,9 +2,8 @@ application 'applicationPfe' =>  "ApplicationPfe.univTlemcen" {
 	
 	   version:1  => "VersionPourPfe" 
 	   sdk: { max:23 ; min:19 ;  }  
-	   Le model : {  Table  table1 champ :  Input1 , Input2 ; End. }
 	
-	   Le model : { DataBase base1	:   apiKey :  apiKey1 ; authDomain :   authDomain1 ; databaseURL :   databaseURL1 ; contient :  table1 ; End. }
+	   Le model : { DataBase base1	:   apiKey :  apiKey1 ; authDomain :   authDomain1 ; databaseURL :   databaseURL1 ;  End. }
 	  	
 	  	 	 La vue : { Icone icone1 Type : evilicon ; Style :
 Style1 ; End. } 
@@ -35,8 +34,8 @@ rtl ; End. }
         
 	  	
        La vue : { Layout ApplicationTODO :   contient :  List1 , Label1 , Input1
-, Label2 , Input2 , Ajouter ; Style :  Style1 ; End. } La vue : {  listView List1  Style :  Style1 ; use :  table1 ; End. }
- La vue : { Text Label1 Contenu "Contenu" ; Style Style1 ; End. } La vue : { Text Label2 Contenu "Contenu" ;
+, Label2 , Input2 , Ajouter ; Style :  Style1 ; End. } La vue : {  listView List1  Style :  Style1 ; use :   Input1 , Input2 ; End. } La vue : { FormLabel
+Label1 TypeText ; Style Style1 ; End. } La vue : { FormLabel Label2 TypeText ;
 Style Style1 ; End. } La vue : { Input Input1 TextType ; Style :  Style1 ;
 End. } La vue : { Input Input2 TextType ; Style :  Style1 ; End. } La vue : {
 Bouton Ajouter :  icon :   icone1 ; onclique :  ReplirTable ; onlongclique : 
@@ -48,4 +47,4 @@ La vue : { Layout fonctions :   contient :   fonctions ; Style :   Style1 ; End.
        Le controleur : {   AlertFunction alrte2 :  Message :  alerte2 ; End. } 
        
 	   
-	   Le controleur : {   RemplirTable ReplirTable :  use :  table1 ; End. } }
+	   Le controleur : {   RemplirTable ReplirTable :  use :  Input1 , Input2 ; End. } }

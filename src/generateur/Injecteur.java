@@ -4,10 +4,33 @@ import java.util.List;
 
 public class Injecteur {
 	static String CodeAajouter="",typeicon,Styleicon;
-	static int i,j;
+	static int i,j,f;
+//Coté Model
+public static void	InjecterDataBase( String NomDataBase, String apikye, String authDomain, String databaseURL){
+	for(j=0;j<TraiteurFichier.ListdeslignesJs.size();j++){
+		//on recupére la position du //ConfigurationDATABASE
+		 if(TraiteurFichier.ListdeslignesJs.get(j).equalsIgnoreCase("//ConfigurationDATABASE")){
+			 CodeAajouter="apiKey: \""+apikye+"\" , authDomain:  \""+authDomain+"\" , databaseURL: \""+databaseURL+"\" ,";
+			  TraiteurFichier.ListdeslignesJs.add(j+1, CodeAajouter); 
+		 }
+	                                                         }
+		                                           }
+	
 //Coté vue
+public static void InjecterLabel( String NomLabel, String stylelabel, String contenu){
+	 for(j=0;j<TraiteurFichier.ListdeslignesJs.size();j++){
+		  //on recupére la position du <View>
+	        if(TraiteurFichier.ListdeslignesJs.get(j).equalsIgnoreCase("//Vue")){
+	        	CodeAajouter="<Text";
+	        	if(!stylelabel.equalsIgnoreCase("none"))CodeAajouter=CodeAajouter+" style={ styles."+stylelabel+" } ";
+	        	CodeAajouter=CodeAajouter+" > "+contenu+"</Text>";
+	        	
+	        }
+	 }
+}
 public static void InjecterBouton(String nombouton,String onclique,String onlongclique,String icon,String Style,String raisedlarge,String iconright){
 	//parcourire le nodejs
+	
 	 for(j=0;j<TraiteurFichier.ListdeslignesJs.size();j++){
        //on recupére la position du <View>
 	        if(TraiteurFichier.ListdeslignesJs.get(j).equalsIgnoreCase("//Vue")){
@@ -17,7 +40,7 @@ public static void InjecterBouton(String nombouton,String onclique,String onlong
 	        	else if(raisedlarge.equalsIgnoreCase("large"))CodeAajouter=CodeAajouter+" large";
 	        	//on parcours le model pour recuperer les propriété du icon
 	        	 for(i=0;i<TraiteurFichier.ListdeslignesModel.size();i++){
-	        		 if(TraiteurFichier.ListdeslignesModel.get(i).equalsIgnoreCase(icon)){typeicon=TraiteurFichier.ListdeslignesModel.get(i+2);Styleicon=TraiteurFichier.ListdeslignesModel.get(i+4);}
+	        		 if(TraiteurFichier.ListdeslignesModel.get(i).equalsIgnoreCase(icon) && TraiteurFichier.ListdeslignesModel.get(i-1).equalsIgnoreCase("Icone")){typeicon=TraiteurFichier.ListdeslignesModel.get(i+2);Styleicon=TraiteurFichier.ListdeslignesModel.get(i+4);}
 	        	 }
 
 	        	CodeAajouter=CodeAajouter+ " title='"+nombouton+"' onPress={() => this."+onclique+"()} onLongPress={() => this."+onlongclique+"()} buttonStyle={ styles."+Style+" } icon={{name: 'squirrel', type: '"+typeicon+"', buttonStyle: styles."+Styleicon+" }}  />";
@@ -55,34 +78,40 @@ public static void InjecterInput(String nominput,String Style){
 		
 	
 }
-public static void	InjecterListView(List<String> ListViewinputList){
+public static void	InjecterListView(String Stylelistview,String table){
 	for(j=0;j<TraiteurFichier.ListdeslignesJs.size();j++){
 		//on inject la ListView dans la vue
 		 if(TraiteurFichier.ListdeslignesJs.get(j).equalsIgnoreCase("//Vue")){
 			 
-			 CodeAajouter="<ListView dataSource={this.state.todoSource} renderRow={this.renderRow.bind(this)} enableEmptySections={true} />";			 
+			 CodeAajouter="<ListView dataSource={this.state."+table+"Source} renderRow={this.renderRow"+table+".bind(this)} enableEmptySections={true} />";			 
 			//on injecte le code
 		 	    TraiteurFichier.ListdeslignesJs.add(j+3, CodeAajouter);
 		    }
 			//on inject la function removeRow
+		 
 		 if(TraiteurFichier.ListdeslignesJs.get(j).equalsIgnoreCase("//function")){
-			 CodeAajouter="removeTodo(rowData) {  Alert.alert( ' Bravo ligne supprimée !');   this.itemsRef.child(rowData.id).remove();   }";
+			 CodeAajouter="remove"+table+"(rowData) {  Alert.alert( ' Bravo ligne supprimée !');   this."+table+"itemsRef.child(rowData.id).remove();   }";
 			 	TraiteurFichier.ListdeslignesJs.add(j+1, CodeAajouter);
 		 }
 			//on inject la function renderRow
 		 if(TraiteurFichier.ListdeslignesJs.get(j).equalsIgnoreCase("//function")){
 			 //on ouvre le renderRow
 			 
-			 CodeAajouter="renderRow(rowData) { return ( <TouchableHighlight onPress={() => this.removeTodo(rowData)}><View >";
-			 	for(int f=0;f<ListViewinputList.size();f++){
-			 //a chaque input trouvé on lui injecte son affichage
-			 		CodeAajouter=CodeAajouter+"<Text >"+ListViewinputList.get(f)+" : {rowData.text."+ListViewinputList.get(f)+"}</Text>";
+			 CodeAajouter="renderRow"+table+"(rowData) { return ( <TouchableHighlight onPress={() => this.remove"+table+"(rowData)}><View >";
+			
+			 //a chaque input trouvé on lui injecte son affichage on part les chercher de la table 
+			 		for(int i=0;i<TraiteurFichier.ListdeslignesModel.size();i++){	
+			 			 if(TraiteurFichier.ListdeslignesModel.get(i).equalsIgnoreCase("Table")){
+					f=i+3;
+			 while((!TraiteurFichier.ListdeslignesModel.get(f).equalsIgnoreCase("End.")))
+		 	    	{CodeAajouter=CodeAajouter+"<Text >"+TraiteurFichier.ListdeslignesModel.get(f)+" : {rowData.text."+TraiteurFichier.ListdeslignesModel.get(f)+"}</Text>";  f++;}
+			 			 }
 			 	}
 			//on referme le renderRow
 			 CodeAajouter=CodeAajouter+"</View></TouchableHighlight>  ); }";
 			 TraiteurFichier.ListdeslignesJs.add(j+1, CodeAajouter);
 		 }
-		 //A revoire on laisse juste celui du separateur et celui du row doit etre donné par l'utilisateur
+		 //les styles du listview
 
 		if(TraiteurFichier.ListdeslignesJs.get(j).equalsIgnoreCase("//StyleSheet")){
 			 CodeAajouter=" row: { flexDirection: 'row', padding: 12, height: 44 }, separator: { height: 1, backgroundColor: '#CCCCCC', },";

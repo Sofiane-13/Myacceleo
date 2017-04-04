@@ -3,9 +3,7 @@ import {AppRegistry,ScrollView,StyleSheet,Text,Alert,View,TouchableHighlight,Tex
 import { Button } from 'react-native-elements'
 var Firebase = require('firebase');
 var config = {
-  apiKey: "AIzaSyDysc3BPHCAGkHJ4K61zwXhZb07M5rnCQE",
-  authDomain: "pfedsl-68809.firebaseapp.com",
-  databaseURL: "https://pfedsl-68809.firebaseio.com/",
+//ConfigurationDATABASE
 };
 const myFirebaseRefapp =  firebase.initializeApp(config);
 import * as firebase from "firebase";
