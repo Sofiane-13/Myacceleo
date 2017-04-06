@@ -31,7 +31,10 @@ public class Controleur {
     		 databaseURL=TraiteurFichier.ListdeslignesModel.get(i+7);
     			Injecteur.InjecterDataBase(NomDataBase,apikye,authDomain,databaseURL);
     	 }
-    	
+    	 if(TraiteurFichier.ListdeslignesModel.get(i).equalsIgnoreCase("Table")){
+    		 Table=TraiteurFichier.ListdeslignesModel.get(i+1);
+    		 Injecteur.InjecterTable(Table);
+    	 }
     	//la vue    
 	   //on test si il y'a un label
     	 if(TraiteurFichier.ListdeslignesModel.get(i).equalsIgnoreCase("Text")){
@@ -143,14 +146,11 @@ public class Controleur {
 	 	    else if(TraiteurFichier.ListdeslignesModel.get(i).equalsIgnoreCase("RemplirTable")){
 	 	    	//on recupére les informations de la function
 	 	    	nomfunction=TraiteurFichier.ListdeslignesModel.get(i+1);
-	 	        int f=i+3;
-	 	    
-	 	        //on recupére les variable a inserer dans la table
-	 	    	while((!TraiteurFichier.ListdeslignesModel.get(f).equalsIgnoreCase("End.")))
-	 	    	{TableinputList.add(TraiteurFichier.ListdeslignesModel.get(f));f++;}
-	 	    	
+	 	        
+	 	    	Table=TraiteurFichier.ListdeslignesModel.get(i+3);
+	 	        	
 	 	    	//on appelle l'injecteur
-	 	    	Injecteur.InjecterFunRemplirTab(nomfunction,TableinputList);
+	 	    	Injecteur.InjecterFunRemplirTab(nomfunction,Table);
 	 	    	
 	 	    }
 	 	   else if(TraiteurFichier.ListdeslignesModel.get(i).equalsIgnoreCase("AlertFunction")){

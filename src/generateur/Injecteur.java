@@ -1,10 +1,12 @@
 package generateur;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Injecteur {
 	static String CodeAajouter="",typeicon,Styleicon;
 	static int i,j,f;
+	public static  List<String>	TableinputList=new ArrayList<String>();
 //Coté Model
 public static void	InjecterDataBase( String NomDataBase, String apikye, String authDomain, String databaseURL){
 	for(j=0;j<TraiteurFichier.ListdeslignesJs.size();j++){
@@ -15,6 +17,24 @@ public static void	InjecterDataBase( String NomDataBase, String apikye, String a
 		 }
 	                                                         }
 		                                           }
+public static void InjecterTable(String Table){
+	for(j=0;j<TraiteurFichier.ListdeslignesJs.size();j++){
+		 if(TraiteurFichier.ListdeslignesJs.get(j).equalsIgnoreCase("//Constructeur")){
+			CodeAajouter= "this."+Table+"itemsRef = myFirebaseRefapp.database().ref('"+Table+"'); this."+Table+"items=[];";
+			TraiteurFichier.ListdeslignesJs.add(j+1, CodeAajouter);
+		}
+		 if(TraiteurFichier.ListdeslignesJs.get(j).equalsIgnoreCase("//Debutdustate")){
+				CodeAajouter= Table+"Source: new ListView.DataSource({rowHasChanged: (row1, row2)=>row1 !== row2}),";
+				TraiteurFichier.ListdeslignesJs.add(j+1, CodeAajouter);
+			}
+		 if(TraiteurFichier.ListdeslignesJs.get(j).equalsIgnoreCase("//DidMount")){
+				CodeAajouter= " this."+Table+"itemsRef.on('child_added',	(dataSnapshot)=>{ this."+Table+"items.push({id: dataSnapshot.key,   text: dataSnapshot.val()}); this.setState({"+Table+"Source:	this.state."+Table+"Source.cloneWithRows(this."+Table+"items)}); });";
+				CodeAajouter=CodeAajouter+" this."+Table+"itemsRef.on('child_removed', (dataSnapshot)=>{ this."+Table+"items = this."+Table+"items.filter((x)=>x.id !== dataSnapshot.key); this.setState({ "+Table+"Source: this.state."+Table+"Source.cloneWithRows(this."+Table+"items)});});";
+				TraiteurFichier.ListdeslignesJs.add(j+1, CodeAajouter);
+			}
+		
+	}
+}
 	
 //Coté vue
 public static void InjecterLabel( String NomLabel, String stylelabel, String contenu){
@@ -101,7 +121,7 @@ public static void	InjecterListView(String Stylelistview,String table){
 			
 			 //a chaque input trouvé on lui injecte son affichage on part les chercher de la table 
 			 		for(int i=0;i<TraiteurFichier.ListdeslignesModel.size();i++){	
-			 			 if(TraiteurFichier.ListdeslignesModel.get(i).equalsIgnoreCase("Table")){
+			 			 if((TraiteurFichier.ListdeslignesModel.get(i).equalsIgnoreCase("Table"))&&(TraiteurFichier.ListdeslignesModel.get(i+1).equalsIgnoreCase(table))){
 					f=i+3;
 			 while((!TraiteurFichier.ListdeslignesModel.get(f).equalsIgnoreCase("End.")))
 		 	    	{CodeAajouter=CodeAajouter+"<Text >"+TraiteurFichier.ListdeslignesModel.get(f)+" : {rowData.text."+TraiteurFichier.ListdeslignesModel.get(f)+"}</Text>";  f++;}
@@ -197,11 +217,20 @@ public static void InjecterStyleSheet(String nomInputStyle,String right,String w
 	}
 }
 //function
-public static void InjecterFunRemplirTab(String nomfunction,List<String> TableinputList){
+public static void InjecterFunRemplirTab(String nomfunction,String Table){
 	 for(j=0;j<TraiteurFichier.ListdeslignesJs.size();j++){
 	        //on recupére la position de la //function
 	 	    if(TraiteurFichier.ListdeslignesJs.get(j).equalsIgnoreCase("//function")){
-	 	    	
+	 	    	 //a chaque input trouvé on lui injecte son affichage on part les chercher de la table 
+		 		
+	 	    	for(int i=0;i<TraiteurFichier.ListdeslignesModel.size();i++){	
+		 			 if((TraiteurFichier.ListdeslignesModel.get(i).equalsIgnoreCase(Table))&&(TraiteurFichier.ListdeslignesModel.get(i-1).equalsIgnoreCase("Table"))){
+				f=i+2;
+		 while((!TraiteurFichier.ListdeslignesModel.get(f).equalsIgnoreCase("End.")))
+	 	    	{String variable=TraiteurFichier.ListdeslignesModel.get(f);
+	 	    	TableinputList.add(variable);  f++;}
+		 			 }
+		 	}
 		 	    //on prépare le code a injecter 	
 	 	    	CodeAajouter=nomfunction+"() { if(";
 	 	    	//on ajoute autant de condion que de variable
@@ -210,7 +239,7 @@ public static void InjecterFunRemplirTab(String nomfunction,List<String> Tablein
 	     //on prepare le et logique au cas ou il y'aurait un autre input
 		 if ((f+1)<TableinputList.size())CodeAajouter=CodeAajouter+" &&";	 
 	 }	    			
-	 CodeAajouter=CodeAajouter+") { this.itemsRef.push({ "; 			
+	 CodeAajouter=CodeAajouter+") { this."+Table+"itemsRef.push({ "; 			
 	 for(int f=0;f<TableinputList.size();f++){
 		 CodeAajouter=CodeAajouter+" "+TableinputList.get(f)+": this.state."+TableinputList.get(f)+" ,";
 	     }		    			
@@ -226,7 +255,7 @@ public static void InjecterFunRemplirTab(String nomfunction,List<String> Tablein
 	 	    			
 	 	    	//on injecte le code
 		 	    TraiteurFichier.ListdeslignesJs.add(j+1, CodeAajouter);
-	                                                             }
+	                                                             }TableinputList=new ArrayList<String>();
 	                                           }  
 
 }

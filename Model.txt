@@ -2,9 +2,10 @@ application 'applicationPfe' =>  "ApplicationPfe.univTlemcen" {
 	
 	   version:1  => "VersionPourPfe" 
 	   sdk: { max:23 ; min:19 ;  }  
-	   Le model : {  Table  table1 champ :  Input1 , Input2 ; End. }
+	   Le model : {  Table  client champ :  Input1 , Input2 ; End. }
+           Le model : {  Table  tache champ :  Input1 , Input2 ; End. }
 	
-	   Le model : { DataBase base1	:   apiKey :  apiKey1 ; authDomain :   authDomain1 ; databaseURL :   databaseURL1 ; contient :  table1 ; End. }
+	   Le model : { DataBase base1	:   apiKey :  AIzaSyDysc3BPHCAGkHJ4K61zwXhZb07M5rnCQE ; authDomain :   pfedsl-68809.firebaseapp.com ; databaseURL :   https://pfedsl-68809.firebaseio.com/ ; contient :  client ; End. }
 	  	
 	  	 	 La vue : { Icone icone1 Type : evilicon ; Style :
 Style1 ; End. } 
@@ -35,11 +36,14 @@ rtl ; End. }
         
 	  	
        La vue : { Layout ApplicationTODO :   contient :  List1 , Label1 , Input1
-, Label2 , Input2 , Ajouter ; Style :  Style1 ; End. } La vue : {  listView List1  Style :  Style1 ; use :  table1 ; End. }
+, Label2 , Input2 , Ajouter ; Style :  Style1 ; End. } La vue : {  listView List1  Style :  Style1 ; use :  client ; End. } La vue : {  listView List2  Style :  Style1 ; use :  tache ; End. }
  La vue : { Text Label1 Contenu "Contenu" ; Style Style1 ; End. } La vue : { Text Label2 Contenu "Contenu" ;
 Style Style1 ; End. } La vue : { Input Input1 TextType ; Style :  Style1 ;
 End. } La vue : { Input Input2 TextType ; Style :  Style1 ; End. } La vue : {
 Bouton Ajouter :  icon :   icone1 ; onclique :  ReplirTable ; onlongclique : 
+alrte2 ; Style :  Style1 ; Raised/Large :  none ; IconRight :  true ; End. }
+La vue : {
+Bouton Ajoutertache :  icon :   icone1 ; onclique :  ReplirTabletache ; onlongclique : 
 alrte2 ; Style :  Style1 ; Raised/Large :  none ; IconRight :  true ; End. }
 La vue : { Layout fonctions :   contient :   fonctions ; Style :   Style1 ; End.
 } 
@@ -48,4 +52,5 @@ La vue : { Layout fonctions :   contient :   fonctions ; Style :   Style1 ; End.
        Le controleur : {   AlertFunction alrte2 :  Message :  alerte2 ; End. } 
        
 	   
-	   Le controleur : {   RemplirTable ReplirTable :  use :  table1 ; End. } }
+	   Le controleur : {   RemplirTable ReplirTable :  use :  client ; End. }
+Le controleur : {   RemplirTable ReplirTabletache :  use :  tache ; End. } }
