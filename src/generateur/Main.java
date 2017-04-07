@@ -36,8 +36,13 @@ public class Main {
 		TraiteurFichier.AfficherListJs();
 		System.out.println("************************************************************");
 		TraiteurFichier.AfficherListModel();
+		
+		SqueletteVue.PreparerSquelette();
+		System.out.println("************************************************************");
+
+		TraiteurFichier.AfficherListJs();
 		//on lance l'execution
-		Controleur.Execution();
+//		Controleur.Execution();
 		//on lance l'ecriture du fichier
 		TraiteurFichier.EcritureFicher();
 }

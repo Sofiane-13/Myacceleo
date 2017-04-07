@@ -98,7 +98,7 @@ public static void InjecterInput(String nominput,String Style){
 		
 	
 }
-public static void	InjecterListView(String Stylelistview,String table){
+public static void	InjecterListView(String Stylelistview,String table,String ligne,String colonne){
 	for(j=0;j<TraiteurFichier.ListdeslignesJs.size();j++){
 		//on inject la ListView dans la vue
 		 if(TraiteurFichier.ListdeslignesJs.get(j).equalsIgnoreCase("//Vue")){

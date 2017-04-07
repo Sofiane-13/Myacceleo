@@ -12,6 +12,7 @@ public class Controleur {
     static String NomLabel,stylelabel,contenu;
     static String Stylelistview,table;
     static String nomList,Table;
+    static String ligne,colonne;
     static List<String> ListViewinputList = new ArrayList<String>();
     static List<String> TableinputList = new ArrayList<String>();
     
@@ -71,9 +72,11 @@ public class Controleur {
 	 	    	nomList=TraiteurFichier.ListdeslignesModel.get(i+1);
 	 	    	Stylelistview=TraiteurFichier.ListdeslignesModel.get(i+3);
 	 	    	Table=TraiteurFichier.ListdeslignesModel.get(i+5);
+	 	    	ligne=TraiteurFichier.ListdeslignesModel.get(i+7);
+	 	    	colonne=TraiteurFichier.ListdeslignesModel.get(i+9);
 	    	
 	 	    	//on appelle l'injecteur 
-	 	    	Injecteur.InjecterListView(Stylelistview,Table);
+	 	    	Injecteur.InjecterListView(Stylelistview,Table,ligne,colonne);
 	         }
 	  //on test si il y'a un Stylesheet
 	         else if (TraiteurFichier.ListdeslignesModel.get(i).equalsIgnoreCase("StyleSheet")) {

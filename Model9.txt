@@ -36,15 +36,15 @@ rtl ; End. }
         
 	  	
        La vue : { Layout ApplicationTODO :   contient :  List1 , Label1 , Input1
-, Label2 , Input2 , Ajouter ; Style :  Style1 ; End. } La vue : {  listView List1  Style :  Style1 ; use :  client ; ligne : 3 ; colonne : 1 ; End. } La vue : {  listView List2  Style :  Style1 ; use :  tache ; ligne : 4 ; colonne : 1 ; End. }
+, Label2 , Input2 , Ajouter ; Style :  Style1 ; End. } La vue : {  listView List1  Style :  Style1 ; use :  client ; End. } La vue : {  listView List2  Style :  Style1 ; use :  tache ; End. }
  La vue : { Text Label1 Contenu "Contenu" ; Style Style1 ; End. } La vue : { Text Label2 Contenu "Contenu" ;
-Style Style1 ; End. } La vue : { Input Input1 TextType ; Style :  Style1 ; ligne : 1 ; colonne : 1 ;
-End. } La vue : { Input Input2 TextType ; Style :  Style1 ; ligne : 1 ; colonne : 2 ; End. } La vue : {
+Style Style1 ; End. } La vue : { Input Input1 TextType ; Style :  Style1 ;
+End. } La vue : { Input Input2 TextType ; Style :  Style1 ; End. } La vue : {
 Bouton Ajouter :  icon :   icone1 ; onclique :  ReplirTable ; onlongclique : 
-alrte2 ; Style :  Style1 ; Raised/Large :  none ; IconRight :  true ; ligne : 2 ; colonne : 2 ; End. }
+alrte2 ; Style :  Style1 ; Raised/Large :  none ; IconRight :  true ; End. }
 La vue : {
 Bouton Ajoutertache :  icon :   icone1 ; onclique :  ReplirTabletache ; onlongclique : 
-alrte2 ; Style :  Style1 ; Raised/Large :  none ; IconRight :  true ; ligne : 2 ; colonne : 1 ; End. }
+alrte2 ; Style :  Style1 ; Raised/Large :  none ; IconRight :  true ; End. }
 La vue : { Layout fonctions :   contient :   fonctions ; Style :   Style1 ; End.
 } 
         

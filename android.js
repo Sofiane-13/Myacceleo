@@ -25,9 +25,11 @@ componentDidMount() {
 render() {
 //Vue
 return(
-<View>
+<ScrollView>
+<Grid>
+</Grid>
+</ScrollView  >
 
-</View>
 );
 }
 }
