@@ -99,22 +99,24 @@ public static void InjecterInput(String nominput,String Style){
 	
 }
 public static void	InjecterListView(String Stylelistview,String table,String ligne,String colonne){
-	for(j=0;j<TraiteurFichier.ListdeslignesJs.size();j++){
+	System.out.println(ligne+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+colonne);
+	for(j=0;j<TraiteurFichier.ListdeslignesJsVue.size();j++){
 		//on inject la ListView dans la vue
-		 if(TraiteurFichier.ListdeslignesJs.get(j).equalsIgnoreCase("//Vue")){
-			 
+		 if((TraiteurFichier.ListdeslignesJsVue.get(j).equalsIgnoreCase(ligne))&&(TraiteurFichier.ListdeslignesJsVue.get(j+1).equalsIgnoreCase(colonne))){
+				System.out.println("Condition ---------------------------------------------------");
+
 			 CodeAajouter="<ListView dataSource={this.state."+table+"Source} renderRow={this.renderRow"+table+".bind(this)} enableEmptySections={true} />";			 
 			//on injecte le code
-		 	    TraiteurFichier.ListdeslignesJs.add(j+3, CodeAajouter);
+		 	    TraiteurFichier.ListdeslignesJsVue.add(j+3, CodeAajouter);
 		    }
 			//on inject la function removeRow
 		 
-		 if(TraiteurFichier.ListdeslignesJs.get(j).equalsIgnoreCase("//function")){
+		 if(TraiteurFichier.ListdeslignesJsVue.get(j).equalsIgnoreCase("//function")){
 			 CodeAajouter="remove"+table+"(rowData) {  Alert.alert( ' Bravo ligne supprimée !');   this."+table+"itemsRef.child(rowData.id).remove();   }";
-			 	TraiteurFichier.ListdeslignesJs.add(j+1, CodeAajouter);
+			 	TraiteurFichier.ListdeslignesJsVue.add(j+1, CodeAajouter);
 		 }
 			//on inject la function renderRow
-		 if(TraiteurFichier.ListdeslignesJs.get(j).equalsIgnoreCase("//function")){
+		 if(TraiteurFichier.ListdeslignesJsVue.get(j).equalsIgnoreCase("//function")){
 			 //on ouvre le renderRow
 			 
 			 CodeAajouter="renderRow"+table+"(rowData) { return ( <TouchableHighlight onPress={() => this.remove"+table+"(rowData)}><View >";
@@ -133,9 +135,9 @@ public static void	InjecterListView(String Stylelistview,String table,String lig
 		 }
 		 //les styles du listview
 
-		if(TraiteurFichier.ListdeslignesJs.get(j).equalsIgnoreCase("//StyleSheet")){
+		if(TraiteurFichier.ListdeslignesJsVue.get(j).equalsIgnoreCase("//StyleSheet")){
 			 CodeAajouter=" row: { flexDirection: 'row', padding: 12, height: 44 }, separator: { height: 1, backgroundColor: '#CCCCCC', },";
-			 TraiteurFichier.ListdeslignesJs.add(j+1, CodeAajouter);
+			 TraiteurFichier.ListdeslignesJsVue.add(j+1, CodeAajouter);
 		 }
 	}
 

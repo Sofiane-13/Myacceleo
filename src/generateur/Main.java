@@ -31,19 +31,29 @@ public class Main {
 		
 		//on lit les fichiers
 		 
-		TraiteurFichier.LectureFichier();
+		TraiteurFichier.LectureFichierJs();//lecture du squelette
+		TraiteurFichier.LectureFichierModel();
 		
 		TraiteurFichier.AfficherListJs();
 		System.out.println("************************************************************");
 		TraiteurFichier.AfficherListModel();
 		
-		SqueletteVue.PreparerSquelette();
+		SqueletteVue.PreparerSquelette();//on integre la vu au squelette
+		System.out.println("************************************************************");
+		TraiteurFichier.EcritureFicherandroidvue();//on ecrit le fichier squellette avec la vue
+		
+		TraiteurFichier.LectureFichierJsVue();//on lit le fichier squellette avec la vue
 		System.out.println("************************************************************");
 
-		TraiteurFichier.AfficherListJs();
+		TraiteurFichier.AfficherListJsVue();
 		//on lance l'execution
-//		Controleur.Execution();
+		Controleur.Execution();
+		System.out.println("************************************************************");
+
+		TraiteurFichier.AfficherListJsVue();
+		
+
 		//on lance l'ecriture du fichier
-		TraiteurFichier.EcritureFicher();
+		TraiteurFichier.EcritureFicherindexandroid();
 }
 }
