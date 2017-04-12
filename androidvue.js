@@ -12,7 +12,7 @@ from
 'react-native';
 import
 {
-Button
+Button,Grid,Col,Row
 }
 from
 'react-native-elements'
@@ -46,8 +46,8 @@ Component
 {
 constructor(props)
 {
-//Constructeur
 super(props);
+//Constructeur
 this.itemsRef
 =
 myFirebaseRefapp.database().ref('item');
@@ -96,32 +96,32 @@ render()
 {
 //Vue
 return(
-<View>
+
 <ScrollView>
 <Grid>
  <Row resource-id=' 1 '> <Col resource-id=' 1 1 '> </Col> 
- <Col resource-id=' 1 2 '> </Col> 
 </Row> 
  <Row resource-id=' 2 '> <Col resource-id=' 2 1 '> </Col> 
- <Col resource-id=' 2 2 '> </Col> 
 </Row> 
  <Row resource-id=' 3 '> <Col resource-id=' 3 1 '> </Col> 
+ <Col resource-id=' 3 2 '> </Col> 
 </Row> 
  <Row resource-id=' 4 '> <Col resource-id=' 4 1 '> </Col> 
+ <Col resource-id=' 4 2 '> </Col> 
 </Row> 
 
 </Grid>
-<ScrollView>
-</View>
+</ScrollView>
+
 );
 }
 }
-
 var
 styles
 =
 StyleSheet.create({
 //StyleSheet
 });
+
 AppRegistry.registerComponent('pfe',
 ()=>pfe);

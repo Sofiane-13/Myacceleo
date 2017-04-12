@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {AppRegistry,ScrollView,StyleSheet,Text,Alert,View,TouchableHighlight,TextInput,ListView} from 'react-native';
-import { Button } from 'react-native-elements'
+import { Button,Grid,Col,Row } from 'react-native-elements'
 var Firebase = require('firebase');
 var config = {
 //ConfigurationDATABASE
@@ -9,8 +9,8 @@ const myFirebaseRefapp =  firebase.initializeApp(config);
 import * as firebase from "firebase";
 export default class pfe extends Component {
 constructor(props) {
-//Constructeur
 super(props);
+//Constructeur
 this.itemsRef = myFirebaseRefapp.database().ref('item');
 this.state = {
 //Debutdustate
@@ -34,16 +34,20 @@ todoSource: this.state.todoSource.cloneWithRows(this.items)});
 render() {
 //Vue
 return(
-<View>
+
 <ScrollView>
 <Grid>
 </Grid>
-<ScrollView>
-</View>
+</ScrollView>
+
 );
 }
 }
- var styles = StyleSheet.create({
+var
+styles
+=
+StyleSheet.create({
 //StyleSheet
 });
+
 AppRegistry.registerComponent('pfe', ()=>pfe);

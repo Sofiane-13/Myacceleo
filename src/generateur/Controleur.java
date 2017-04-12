@@ -55,16 +55,20 @@ public class Controleur {
 	    	Style=TraiteurFichier.ListdeslignesModel.get(i+9);
 	    	raisedlarge=TraiteurFichier.ListdeslignesModel.get(i+11);
 	    	iconright=TraiteurFichier.ListdeslignesModel.get(i+13);
+	    	ligne=TraiteurFichier.ListdeslignesModel.get(i+15);
+ 	    	colonne=TraiteurFichier.ListdeslignesModel.get(i+17);
 	    	//appeller injecteur	
-	    	Injecteur.InjecterBouton(nombouton,onclique,onlongclique,icon,Style,raisedlarge,iconright);
+	    	Injecteur.InjecterBouton(nombouton,onclique,onlongclique,icon,Style,raisedlarge,iconright,ligne,colonne);
 	    	                                             }
 	    	 //on test si il y'a un label
 	         else if (TraiteurFichier.ListdeslignesModel.get(i).equalsIgnoreCase("Input")) {
 	        	//on recupére les informations de la function
 	 	    	nominput=TraiteurFichier.ListdeslignesModel.get(i+1);
 	 	    	Style=TraiteurFichier.ListdeslignesModel.get(i+4);
+	 	    	ligne=TraiteurFichier.ListdeslignesModel.get(i+6);
+	 	    	colonne=TraiteurFichier.ListdeslignesModel.get(i+8);
 	 	    	//on appelle l'injecteur 
-	 	    	Injecteur.InjecterInput(nominput,Style);
+	 	    	Injecteur.InjecterInput(nominput,Style,ligne,colonne);
 	         }
 	  //on test si il y'a une listeView
 	         else if (TraiteurFichier.ListdeslignesModel.get(i).equalsIgnoreCase("listView")) {
