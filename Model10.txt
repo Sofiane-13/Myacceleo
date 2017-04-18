@@ -1,0 +1,65 @@
+application 'applicationPfe' =>  "ApplicationPfe.univTlemcen" {
+	
+	   version:1  => "VersionPourPfe" 
+	   sdk: { max:23 ; min:19 ;  }  
+	   Le model : {  Table  client champ :  Input1 , Input2 ; End. }
+           Le model : {  Table  tache champ :  Input1 , Input2 ; End. }
+	
+	   Le model : { DataBase base1	:   apiKey :  AIzaSyDysc3BPHCAGkHJ4K61zwXhZb07M5rnCQE ; authDomain :   pfedsl-68809.firebaseapp.com ; databaseURL :   https://pfedsl-68809.firebaseio.com/ ; contient :  client ; End. }
+	  	
+	  	 	 La vue : { Icone icone1 Type : evilicon ; Style :
+Style1 ; End. } 
+        
+	 La vue : { StyleText name :  monstyletext right :   13 ; } La vue : { StyleText name : monstyletext right :   13 ; } 
+La vue : { StyleText name : monstyletext right :   13 ; } 
+
+
+La vue : { StyleView Style1 right :   13 ;} La vue : { StyleFlexbox Style1 right :   13 ;}
+La vue : { StyleImage Style1 right :   13 ;}  	
+       
+
+
+
+
+La vue : { StyleSheet Style1 right :   13 ; width :   10 ; height :  
+12 ; maxHeight :   9 ; maxWidth :   14 ; minHeight :   2 ; minWidth :   18 ;
+left :   13 ; Flex :   12 ; flexWrap :   nowrap ; JustifyContent :   center ;
+BorderRadium :   9 ; position :   relative ; padding :   14 ; paddingBottom
+:   12 ; paddingHorizontal :   9 ; paddingLeft :   6 ; paddingRight :   19 ;
+paddingTop :   17 ; paddingVertical :   none ; opacity :   none ; bottom :  
+12 ; margin :   8 ; marginBottom :   none ; marginHorizontal :   8 ;
+marginLeft :   none ; marginTop :   16 ; marginVertical :   none ; marginRight
+:   14 ; fontSize :   12 ; fontStyle :   italic ; fontWeight :   bold ;
+borderStyle :   dashed ; borderBottomLeftRadius :   8 ;
+borderBottomRightRadius :   4 ; borderBottomWidth :   9 ; borderWidth :   12 ;
+borderColor :   white #ffffff ; borderLeftColor :   green #008000 ;
+borderLeftWidth :   21 ; borderRadius :   9 ; borderRightColor :  
+darkorange #ff8c00 ; borderRightWidth :   19 ; borderTopColor :  
+lightgray #d3d3d3 ; borderTopLeftRadius :   25 ; borderTopRightRadius :   13 ;
+borderTopWidth :   14 ; backfaceVisibility :   hidden ; BackGroundColor :  
+lightgray #d3d3d3 ; lineHeight :   15 ; textAlign :   justify ;
+textDecorationLine :   line-through ; textShadowColor :   gold  #ffd700 ;
+textAlignVertical :   bottom ; textShadowRadius :   15 ; fontVariant :  
+oldstyle-nums ; letterSpacing :   6 ; textDecorationColor :  
+floralwhite #fffaf0 ; textDecorationStyle :   dashed ; writingDirection :  
+rtl ; End. }  
+        
+	  	 La vue : { StyleLAyout ligne : 4 ; colonne : 5 ; color : red }
+       La vue : { Layout ApplicationTODO :   contient :  List1 , Label1 , Input1
+, Label2 , Input2 , Ajouter ; Style :  Style1 ; End. } La vue : {  listView List1  Style :  Style1 ; use :  client ; ligne : 4 ; colonne : 1 ; End. } La vue : {  listView List2  Style :  Style1 ; use :  tache ; ligne : 4 ; colonne : 2 ; End. }
+ La vue : { Text Label1 Contenu "Contenu" ; Style Style1 ; End. } La vue : { Text Label2 Contenu "Contenu" ;
+Style Style1 ; End. } La vue : { Input Input1 TextType ; Style :  Style1 ; ligne : 1 ; colonne : 1 ;
+End. } La vue : { Input Input2 TextType ; Style :  Style1 ; ligne : 2 ; colonne : 1 ; End. } La vue : {
+Bouton Ajouter :  icon :   icone1 ; onclique :  ReplirTable ; onlongclique : 
+alrte2 ; Style :  Style1 ; Raised/Large :  none ; IconRight :  true ; ligne : 3 ; colonne : 1 ; End. }
+La vue : {
+Bouton Ajoutertache :  icon :   icone1 ; onclique :  ReplirTabletache ; onlongclique : 
+alrte2 ; Style :  Style1 ; Raised/Large :  none ; IconRight :  true ; ligne : 3 ; colonne : 2 ; End. }
+La vue : { Layout fonctions :   contient :   fonctions ; Style :   Style1 ; End.
+} 
+        
+       Le controleur : {   AlertFunction alrte2 :  Message :  alerte2 ; End. } 
+       
+	   
+	   Le controleur : {   RemplirTable ReplirTable :  use :  client ; End. }
+Le controleur : {   RemplirTable ReplirTabletache :  use :  tache ; End. } }

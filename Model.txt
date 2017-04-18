@@ -1,66 +1,85 @@
-application 'applicationPfe' =>  "ApplicationPfe.univTlemcen" {
-	
-	   version:1  => "VersionPourPfe" 
-	   sdk: { max:23 ; min:19 ;  }  
-	   Le model : {  Table  client champ :  Input1 , Input2 ; End. }
-           Le model : {  Table  tache champ :  Input1 , Input2 ; End. }
-	
-	   Le model : { DataBase base1	:   apiKey :  AIzaSyDysc3BPHCAGkHJ4K61zwXhZb07M5rnCQE ; authDomain :   pfedsl-68809.firebaseapp.com ; databaseURL :   https://pfedsl-68809.firebaseio.com/ ; contient :  client ; End. }
-	  	
-	  	 	 La vue : { Icone icone1 Type : evilicon ; Style :
-Style1 ; End. } 
-        
-	 La vue : { StyleText name :  monstyletext right :   13 ; } La vue : { StyleText name : monstyletext right :   13 ; } 
-La vue : { StyleText name : monstyletext right :   13 ; } 
+application 'applicationPfe' =>  "ApplicationPfe.univTlemcen"  FirstLayout :  layout2 {  Le model : {
+DataBase bases apiKey : key authDomain : auth databaseURL : urlm ; End. }
+Le model : {  Table :  table1 champ : input1 ; End. }
 
-
-La vue : { StyleView Style1 right :   13 ;} La vue : { StyleFlexbox Style1 right :   13 ;}
-La vue : { StyleImage Style1 right :   13 ;}  	
-       
-
-
-
-
-La vue : { StyleSheet Style1 right :   13 ; width :   10 ; height :  
-12 ; maxHeight :   9 ; maxWidth :   14 ; minHeight :   2 ; minWidth :   18 ;
-left :   13 ; Flex :   12 ; flexWrap :   nowrap ; JustifyContent :   center ;
-BorderRadium :   9 ; position :   relative ; padding :   14 ; paddingBottom
-:   12 ; paddingHorizontal :   9 ; paddingLeft :   6 ; paddingRight :   19 ;
-paddingTop :   17 ; paddingVertical :   none ; opacity :   none ; bottom :  
-12 ; margin :   8 ; marginBottom :   none ; marginHorizontal :   8 ;
-marginLeft :   none ; marginTop :   16 ; marginVertical :   none ; marginRight
-:   14 ; fontSize :   12 ; fontStyle :   italic ; fontWeight :   bold ;
-borderStyle :   dashed ; borderBottomLeftRadius :   8 ;
-borderBottomRightRadius :   4 ; borderBottomWidth :   9 ; borderWidth :   12 ;
-borderColor :   white #ffffff ; borderLeftColor :   green #008000 ;
-borderLeftWidth :   21 ; borderRadius :   9 ; borderRightColor :  
-darkorange #ff8c00 ; borderRightWidth :   19 ; borderTopColor :  
-lightgray #d3d3d3 ; borderTopLeftRadius :   25 ; borderTopRightRadius :   13 ;
-borderTopWidth :   14 ; backfaceVisibility :   hidden ; BackGroundColor :  
-lightgray #d3d3d3 ; lineHeight :   15 ; textAlign :   justify ;
-textDecorationLine :   line-through ; textShadowColor :   gold  #ffd700 ;
-textAlignVertical :   bottom ; textShadowRadius :   15 ; fontVariant :  
-oldstyle-nums ; letterSpacing :   6 ; textDecorationColor :  
-floralwhite #fffaf0 ; textDecorationStyle :   dashed ; writingDirection :  
-rtl ; End. }  
-        
-	  	 La vue : { StyleLAyout ligne : 4 ; colonne : 5 ; color : red }
-       La vue : { Layout ApplicationTODO :   contient :  List1 , Label1 , Input1
-, Label2 , Input2 , Ajouter ; Style :  Style1 ; End. } La vue : {  listView List1  Style :  Style1 ; use :  client ; ligne : 4 ; colonne : 1 ; End. } La vue : {  listView List2  Style :  Style1 ; use :  tache ; ligne : 4 ; colonne : 2 ; End. }
- La vue : { Text Label1 Contenu "Contenu" ; Style Style1 ; End. } La vue : { Text Label2 Contenu "Contenu" ;
-Style Style1 ; End. } La vue : { Input Input1 TextType ; Style :  Style1 ; ligne : 1 ; colonne : 1 ;
-End. } La vue : { Input Input2 TextType ; Style :  Style1 ; ligne : 2 ; colonne : 1 ; End. } La vue : {
-Bouton Ajouter :  icon :   icone1 ; onclique :  ReplirTable ; onlongclique : 
-alrte2 ; Style :  Style1 ; Raised/Large :  none ; IconRight :  true ; ligne : 3 ; colonne : 1 ; End. }
+ La vue : { ContainerStyle Styles Style :  styleviw ; End. } 
+La vue : { Layout Layout1 Title :  layouOne StyleBar :  styleviw contient :  icone1 Style : 
+styleviw ; End. }
+La vue : { Icone icone1 Type :  octicon Style :  styleviw ligne :  none
+colonne :  none ; End. }
+La vue : { ContainerFonctions Fonctions Style : 
+styleviw ; End. } 
+La vue : { Input input1 TextType :  Style :  StyleTO
+ligne :  none colonne :  none ; End. } 
+La vue : { listView list1 Style : 
+styleviw use :   table1 ligne :  none colonne :  none ; End. } 
 La vue : {
-Bouton Ajoutertache :  icon :   icone1 ; onclique :  ReplirTabletache ; onlongclique : 
-alrte2 ; Style :  Style1 ; Raised/Large :  none ; IconRight :  true ; ligne : 3 ; colonne : 2 ; End. }
-La vue : { Layout fonctions :   contient :   fonctions ; Style :   Style1 ; End.
-} 
-        
-	  	
-       Le controleur : {   AlertFunction alrte2 :  Message :  alerte2 ; End. } 
-       
-	   
-	   Le controleur : {   RemplirTable ReplirTable :  use :  client ; End. }
-Le controleur : {   RemplirTable ReplirTabletache :  use :  tache ; End. } }
+Layout layout2 Title :  Layouttwo StyleBar :  styleviw contient :  list1
+Style :  styleviw ; End. } 
+La vue : { Bouton  todo icon :  icone1 onclique : 
+navig onlongclique :  alerte Style :  styleviw Raised/Large :  none
+IconRight :  none ligne :  none colonne :  none ; End. } La vue : { Image
+imag1 UrlImage :  urlikram StyleImage :  Mage ligne :  none colone :  none
+; End. } 
+La vue : { MapView mapal latitude :  12.2 longitude :  15.2
+latitudeDelta :  12.3 longitudeDelta :  66.6 ligne :  none colone :  none
+; End. }.
+La vue : { Accelerometer accel1 Style :  StyleTO ligne :  none
+colone :  none ; End. }
+ La vue : { ActivityIndicator activ1 size :  none
+ligne :  none colone :  none ; End. } La vue : { Audio audi urlAudio : 
+urlaudio Textbouton :  ikram Style :  styleviw ligne :  none colone :  none
+; End. } 
+La vue : { Video vid UrlVideo :  urlvid mute :  none width :  none
+height :  none ligne :  none colone :  none ; End. }
+
+ Le controleur : { Styleflexbox flexStyle alignItems :  none alignSelf :  none
+borderBottomWidth :  none borderLeftWidth :  none borderRightWidth :  none
+borderTopWidth :  none borderWidth :  none bottom :  none flex :  none
+flexDirection :  none flexWrap :  wrap height :  none justifyContent :  none
+left :  none margin :  none marginBottom :  none marginHorizontal :  none
+marginLeft :  none marginRight :  none marginTop :  none marginVertical : 
+none padding :  none paddingBottom :  none paddingHorizontal :  none }
+ Le controleur : {  StyleView styleviw backfaceVisibility :  none
+backgroundColor :  none borderBottomColor :  none borderBottomLeftRadius : 
+none borderBottomRightRadius :  none borderBottomWidth :  none borderColor : 
+none borderLeftColo :  none borderLeftWidth :  none borderRadius :  none
+borderRightColor :  none borderRightWidth :  none borderStyle :  none
+borderTopColor :  none borderTopLeftRadius :  none borderTopRightRadius : 
+none borderTopWidth :  none borderWidth :  none opacity :  none alignItems : 
+none alignSelf :  none borderBottomWidth :  none borderLeftWidth :  none
+borderRightWidth :  none borderTopWidth :  none borderWidth :  none bottom : 
+none flex :  none flexDirection :  none flexWrap :  wrap height :  none
+justifyContent :  none left :  none margin :  none marginBottom :  none
+marginHorizontal :  none marginLeft :  none marginRight :  none marginTop : 
+none marginVertical :  none padding :  none paddingBottom :  none
+paddingHorizontal :  none paddingRight :  none paddingTop :  none
+paddingVertical :  none right :  none width :  none }
+
+ Le controleur : { StyleImage :  Mage backfaceVisibility :  none backgroundColor :  none
+borderBottomLeftRadius :  none borderBottomRightRadius :  none borderColor : 
+none borderRadius :  none borderTopLeftRadius :  none borderTopRightRadius : 
+none borderWidth :  none opacity :  none overflow :  visible alignItems : 
+none alignSelf :  none borderBottomWidth :  none borderLeftWidth :  none
+borderRightWidth :  none borderTopWidth :  none borderWidth :  none bottom : 
+none flex :  none flexDirection :  none flexWrap :  wrap height :  none
+justifyContent :  none left :  none margin :  none marginBottom :  none
+marginHorizontal :  none marginLeft :  none marginRight :  none marginTop : 
+none marginVertical :  none padding :  none paddingBottom :  none
+paddingHorizontal :  none paddingLeft :  none paddingRight :  none
+paddingTop :  none paddingVertical :  none position :  absolute right :  none
+width :  none }
+
+ Le controleur : { StyleText StyleTO color : none fontFamily: h1 fontSize : none
+fontStyle : normal fontWeight : normal lineHeight : none TextAlign : auto
+TextDecorationLine : none TextShadowColor : none TextShadowRadius : none
+backfaceVisibility :  none backgroundColor :  none borderBottomColor :  none
+borderBottomLeftRadius :  none borderBottomRightRadius :  none
+borderBottomWidth :  none borderColor :  none borderLeftColor :  none
+borderLeftWidth :  none borderRadius :  none borderRightColor :  none
+borderRightWidth :  none borderStyleenum :  none borderTopColor :  none
+borderTopLeftRadius :  none borderTopRightRadius :  none borderTopWidth : 
+none borderWidth :  none opacity :  none ; End. }
+ Le controleur : {  AlertFunction alerte Message : alerte ; End. }
+ Le controleur : {  RemplirTable remlirTable use :   table1 ;End. }
+ Le controleur : { Navigate navig Reference :  Layout1 ;End. } }
