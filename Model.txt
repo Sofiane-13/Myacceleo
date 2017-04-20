@@ -2,23 +2,23 @@ application 'applicationPfe' =>  "ApplicationPfe.univTlemcen"  FirstLayout :  la
 DataBase bases apiKey : key authDomain : auth databaseURL : urlm ; End. }
 Le model : {  Table :  table1 champ : input1 ; End. }
 
- La vue : { ContainerStyle Styles Style :  styleviw ; End. } 
-La vue : { Layout Layout1 Title :  layouOne StyleBar :  styleviw contient :  icone1 Style : 
+La vue : { ContainerStyle Styles Style :  styleviw ; End. } 
+La vue : { Layout Layout1 Title :  layouOne StyleBar :  styleviw contient :  icone1 todo Style : 
 styleviw ; End. }
-La vue : { Icone icone1 Type :  octicon Style :  styleviw ligne :  none
-colonne :  none ; End. }
+La vue : { Icone icone1 Type :  octicon Style :  styleviw ligne :  1
+colonne :  3 ; End. }
 La vue : { ContainerFonctions Fonctions Style : 
 styleviw ; End. } 
 La vue : { Input input1 TextType :  Style :  StyleTO
-ligne :  none colonne :  none ; End. } 
+ligne :  5 colonne :  2 ; End. } 
 La vue : { listView list1 Style : 
-styleviw use :   table1 ligne :  none colonne :  none ; End. } 
+styleviw use :   table1 ligne :  2 colonne :  3 ; End. } 
 La vue : {
-Layout layout2 Title :  Layouttwo StyleBar :  styleviw contient :  list1
+Layout layout2 Title :  Layouttwo StyleBar :  styleviw contient :  list1 input1
 Style :  styleviw ; End. } 
 La vue : { Bouton  todo icon :  icone1 onclique : 
 navig onlongclique :  alerte Style :  styleviw Raised/Large :  none
-IconRight :  none ligne :  none colonne :  none ; End. } La vue : { Image
+IconRight :  none ligne :  2 colonne :  3 ; End. } La vue : { Image
 imag1 UrlImage :  urlikram StyleImage :  Mage ligne :  none colone :  none
 ; End. } 
 La vue : { MapView mapal latitude :  12.2 longitude :  15.2

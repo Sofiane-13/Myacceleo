@@ -51,10 +51,13 @@ public static void InjecterLabel( String NomLabel, String stylelabel, String con
 public static void InjecterBouton(String nombouton,String onclique,String onlongclique,String icon,String Style,String raisedlarge,String iconright,String ligne,String colonne){
 	//parcourire le nodejs
 	
-	 for(j=0;j<TraiteurFichier.ListdeslignesJsVue.size();j++){
+	 for(j=0;j<Controleur.complist.size();j++){
        //on recupére la position du <View>
-	        if((TraiteurFichier.ListdeslignesJsVue.get(j).equalsIgnoreCase(ligne))&&(TraiteurFichier.ListdeslignesJsVue.get(j+1).equalsIgnoreCase(colonne))){
-		 	    //on prépare le code a injecter 	
+		 System.out.println("**"+Controleur.complist.get(j));
+	        if((Controleur.complist.get(j).equalsIgnoreCase(ligne))&&(Controleur.complist.get(j+1).equalsIgnoreCase(colonne))){
+	        	 System.out.println("\n ***********************************************************");
+
+	        	//on prépare le code a injecter 	
 	        	CodeAajouter="<Button";
 	        	if(raisedlarge.equalsIgnoreCase("raised"))CodeAajouter=CodeAajouter+" raised";
 	        	else if(raisedlarge.equalsIgnoreCase("large"))CodeAajouter=CodeAajouter+" large";
@@ -64,8 +67,9 @@ public static void InjecterBouton(String nombouton,String onclique,String onlong
 	        	 }
 
 	        	CodeAajouter=CodeAajouter+ " title='"+nombouton+"' onPress={() => this."+onclique+"()} onLongPress={() => this."+onlongclique+"()} buttonStyle={ styles."+Style+" } icon={{name: 'squirrel', type: '"+typeicon+"', buttonStyle: styles."+Styleicon+" }}  />";
-		 	    //on injecte le code
-		 	    TraiteurFichier.ListdeslignesJsVue.add(j+3, CodeAajouter); 
+	        	 
+	        	//on injecte le code
+	        	Controleur.complist.add(j+3, CodeAajouter); 
 	                                                             }
 	                                           }
 	}

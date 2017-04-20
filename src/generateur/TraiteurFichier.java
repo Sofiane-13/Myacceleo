@@ -105,38 +105,58 @@ static File fileJsVue=new File("./index.android.js");
 			    }
 			}
 	
-			public static void EcritureFicherandroidvue(){
-				//on vide le tableau
-				resJs=null;
-				for(i=0;i<ListdeslignesJs.size();i++){
-					Codefinale=Codefinale+ListdeslignesJs.get(i)+"\n";
-			    }
-				try {
-					//on crée un nouveau js file
-					Newfilejs.createNewFile();
-					//on crée un file writer
-					FileWriter FileWriter=new FileWriter(Newfilejs);
-					FileWriter.write(Codefinale);
-					FileWriter.close();
-					
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				
-}
-			public static void EcritureFicherindexandroid(){
-				//on vide le tableau
-				resJs=null;
+//			public static void EcritureFicherandroidvue(){
+//				//on vide le tableau
+//				resJs=null;
+//				for(i=0;i<ListdeslignesJs.size();i++){
+//					Codefinale=Codefinale+ListdeslignesJs.get(i)+"\n";
+//			    }
+//				try {
+//					//on crée un nouveau js file
+//					Newfilejs.createNewFile();
+//					//on crée un file writer
+//					FileWriter FileWriter=new FileWriter(Newfilejs);
+//					FileWriter.write(Codefinale);
+//					FileWriter.close();
+//					
+//				} catch (IOException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+//				
+//}
+//			public static void EcritureFicherindexandroid(){
+//				//on vide le tableau
+//				resJs=null;
+//				Codefinale="";
+//				for(i=0;i<ListdeslignesJsVue.size();i++){
+//					Codefinale=Codefinale+ListdeslignesJsVue.get(i)+"\n";
+//			    }
+//				try {
+//					//on crée un nouveau js file
+//					Newfilejs.createNewFile();
+//					//on crée un file writer
+//					FileWriter FileWriter=new FileWriter(fileJsVue);
+//					FileWriter.write(Codefinale);
+//					FileWriter.close();
+//					
+//				} catch (IOException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+//				
+//}
+			public static void EcritureComposant(String nom){
 				Codefinale="";
-				for(i=0;i<ListdeslignesJsVue.size();i++){
-					Codefinale=Codefinale+ListdeslignesJsVue.get(i)+"\n";
+				for(i=0;i<Controleur.complist.size();i++){
+					Codefinale=Codefinale+Controleur.complist.get(i)+"\n";
 			    }
 				try {
 					//on crée un nouveau js file
-					Newfilejs.createNewFile();
+					File Compfile=new File("./"+nom+".js");
+					Compfile.createNewFile();
 					//on crée un file writer
-					FileWriter FileWriter=new FileWriter(fileJsVue);
+					FileWriter FileWriter=new FileWriter(Compfile);
 					FileWriter.write(Codefinale);
 					FileWriter.close();
 					
@@ -144,9 +164,26 @@ static File fileJsVue=new File("./index.android.js");
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				
-}
-
+			}
+			public static void Ecritureindex(){
+				Codefinale="";
+				for(i=0;i<Controleur.indexlist.size();i++){
+					Codefinale=Codefinale+Controleur.indexlist.get(i)+"\n";
+			    }
+				try {
+					//on crée un nouveau js file
+					File Compfile=new File("./index.android.js");
+					Compfile.createNewFile();
+					//on crée un file writer
+					FileWriter FileWriter=new FileWriter(Compfile);
+					FileWriter.write(Codefinale);
+					FileWriter.close();
+					
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 			
 			
 			

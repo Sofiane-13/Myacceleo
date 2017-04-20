@@ -18,15 +18,15 @@ public class Main {
 	static String nombouton,nomfunction,iconbouton,utilise,ajouter;
 	
 	public static void main(String[] args) {
-		int id=(int) Math.random()*5;
-		Random ran = new Random();
-		int x = ran.nextInt(6) + 5;
-		Random r = new Random();
-		int[] fiveRandomNumbers = r.ints(5, 0, 11).toArray();
-		int randomNumber = r.ints(1, 0, 11).findFirst().getAsInt();
-		SecureRandom random = new SecureRandom();
-		String lol = new BigInteger(130, random).toString(32);
-		System.out.println(lol);
+//		int id=(int) Math.random()*5;
+//		Random ran = new Random();
+//		int x = ran.nextInt(6) + 5;
+//		Random r = new Random();
+//		int[] fiveRandomNumbers = r.ints(5, 0, 11).toArray();
+//		int randomNumber = r.ints(1, 0, 11).findFirst().getAsInt();
+//		SecureRandom random = new SecureRandom();
+//		String lol = new BigInteger(130, random).toString(32);
+//		System.out.println(lol);
 //	    JFrame fenetre = new JFrame();
 //	    //Définit un titre pour notre fenêtre
 //	    fenetre.setTitle("Créer votre application");
@@ -41,13 +41,13 @@ public class Main {
 //		
 //		
 //		//on lit les fichiers
-//		 
-//		TraiteurFichier.LectureFichierJs();//lecture du squelette
-//		TraiteurFichier.LectureFichierModel();
-//		
+		 
+		//TraiteurFichier.LectureFichierJs();//lecture du squelette
+		TraiteurFichier.LectureFichierModel();
+		
 //		TraiteurFichier.AfficherListJs();
 //		System.out.println("************************************************************");
-//		TraiteurFichier.AfficherListModel();
+		TraiteurFichier.AfficherListModel();
 //		
 //		SqueletteVue.PreparerSquelette();//on integre la vu au squelette
 //		System.out.println("************************************************************");
@@ -58,7 +58,7 @@ public class Main {
 //
 //		TraiteurFichier.AfficherListJsVue();
 //		//on lance l'execution
-//		Controleur.Execution();
+		Controleur.Execution();
 //		System.out.println("************************************************************");
 //
 //		TraiteurFichier.AfficherListJsVue();
