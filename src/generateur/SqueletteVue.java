@@ -12,9 +12,9 @@ public class SqueletteVue {
   static	int i,m,n;
 static int [][] cellule = new int [100][100];
 	public static void PreparerSquelette(){
-
+		CodeAinjecter="";
 	for(m=0;m<100;m++){
-		if(Controleur.celluleVue[m][0]==1){CodeAinjecter=CodeAinjecter+" <Row resource-id=' "+(m+1)+" '>";System.out.println(cellule[m][0]);}
+		if(Controleur.celluleVue[m][0]==1){CodeAinjecter=CodeAinjecter+" <Row resource-id=' "+(m+1)+" '>";/*System.out.println(cellule[m][0]);*/}
 		for(n=0;n<100;n++){
 			if(Controleur.celluleVue[m][n]==1){CodeAinjecter=CodeAinjecter+" <Col resource-id=' "+(m+1)+" "+(n+1)+" '> </Col> \n"; }
 		}
@@ -22,11 +22,11 @@ static int [][] cellule = new int [100][100];
 		}
 	for(int j=0;j<Controleur.complist.size();j++){
 		//on inject la ListView dans la vue
-		 if(Controleur.complist.get(j).equalsIgnoreCase("<Grid>")){
+		 if(Controleur.complist.get(j).equalsIgnoreCase("<ScrollView>")){
 			 Controleur.complist.add(j+1, CodeAinjecter);
 		 }}
 		
-	   System.out.println(CodeAinjecter); 		    
+	  // System.out.println(CodeAinjecter); 		    
 		
 		
 		

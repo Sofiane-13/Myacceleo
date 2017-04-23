@@ -5,8 +5,6 @@ Component
 }
 from
 'react';
-
-
 import
 {
 Scene,
@@ -23,20 +21,37 @@ import
 {AppRegistry,ScrollView,StyleSheet,Text,Alert,View,TouchableHighlight,TextInput,ListView}
 from
 'react-native';
-
-//import
-
-
-
-
-
+var
+Firebase=require('firebase');
+var
+config={
+apiKey:
+"AIzaSyDysc3BPHCAGkHJ4K61zwXhZb07M5rnCQE",
+authDomain:
+"pfedsl-68809.firebaseapp.com",
+databaseURL:
+"https://pfedsl-68809.firebaseio.com/",
+};
+const
+myFirebaseRefapp=firebase.initializeApp(config);
+import
+*
+as
+firebase
+from
+"firebase";
 export
+const
+getDatabase=()=>{
+return(
 
-
+myFirebaseRefapp.database()
+);}
+//import
+import layout2 from './layout2';
+import Layout1 from './Layout1';
+export
 default
-
-
-
 class
 pfe
 extends
@@ -50,20 +65,8 @@ return(
 key="root">
 <Scene key="layout2" component={layout2} title="Layouttwo" />
 <Scene key="Layout1" component={Layout1} title="layouOne" />
-
-
-
-
-
-
-
-
-
-
-
 </Scene>
 </Router>
-
 );
 }
 }

@@ -1,9 +1,9 @@
 application 'applicationPfe' =>  "ApplicationPfe.univTlemcen"  FirstLayout :  layout2 {  Le model : {
 DataBase bases apiKey : key authDomain : auth databaseURL : urlm ; End. }
-Le model : {  Table :  table1 champ : input1 ; End. }
+Le model : {  Table :  table1 champ : input1 input2 input3 ; End. }
 
 La vue : { ContainerStyle Styles Style :  styleviw ; End. } 
-La vue : { Layout Layout1 Title :  layouOne StyleBar :  styleviw contient :  icone1 todo Style : 
+La vue : { Layout Layout1 Title :  layouOne StyleBar :  styleviw contient :  icone1 todo input2 input3 list1 input1 Style : 
 styleviw ; End. }
 La vue : { Icone icone1 Type :  octicon Style :  styleviw ligne :  1
 colonne :  3 ; End. }
@@ -11,13 +11,17 @@ La vue : { ContainerFonctions Fonctions Style :
 styleviw ; End. } 
 La vue : { Input input1 TextType :  Style :  StyleTO
 ligne :  5 colonne :  2 ; End. } 
+La vue : { Input input2 TextType :  Style :  StyleTO
+ligne :  6 colonne :  2 ; End. } 
+La vue : { Input input3 TextType :  Style :  StyleTO
+ligne :  7 colonne :  2 ; End. } 
 La vue : { listView list1 Style : 
 styleviw use :   table1 ligne :  2 colonne :  3 ; End. } 
 La vue : {
 Layout layout2 Title :  Layouttwo StyleBar :  styleviw contient :  list1 input1
 Style :  styleviw ; End. } 
 La vue : { Bouton  todo icon :  icone1 onclique : 
-navig onlongclique :  alerte Style :  styleviw Raised/Large :  none
+remlirTable onlongclique :  alerte Style :  styleviw Raised/Large :  none
 IconRight :  none ligne :  2 colonne :  3 ; End. } La vue : { Image
 imag1 UrlImage :  urlikram StyleImage :  Mage ligne :  none colone :  none
 ; End. } 

@@ -10,15 +10,15 @@ public class Controleur {
 	static String nombouton,iconright,raisedlarge,Style,onclique,nomfunction,onlongclique,icon,iconbouton,utilise,nomlabel,MessageAlert;
     static String nomInputStyle,heigh,padding,marginRight,nominput,flex,fontSize,borderWidth,borderColor,borderRadius,FlexDirection,JustifyContent,borderRadium;
     static String lineHeight,textAlign,textDecorationLine,right,width,maxheigh,maxWidth,BorderRadium,position,minHeight,minWidth,left,Flex,flexWrap,fontStyle,paddingBottom,paddingHorizontal,paddingLeft,paddingRight,paddingTop,paddingVertical,opacity,bottom,margin,marginBottom,marginHorizontal,marginLeft,marginTop,marginVertical,fontWeight,borderStyle,borderBottomLeftRadius,borderBottomRightRadius,textShadowColor,borderRightColor,borderLeftColor,borderBottomWidth,borderLeftWidth,textAlignVertical,borderRightWidth,tborderRightColor,textShadowRadius,extShadowRadius,fontVariant,letterSpacing,textDecorationColor,textDecorationStyle,writingDirection,borderRightColorborderRightWidth,borderTopColor,borderTopLeftRadius,borderTopRightRadius,borderTopWidth,backfaceVisibility,BackGroundColor;
-    static String NomDataBase,apikye,authDomain,databaseURL;
+
     static String NomLabel,stylelabel,contenu;
     static String Stylelistview,table;
     static String nomList,Table;
     static String ligne,colonne;
     static List<String> ListViewinputList = new ArrayList<String>();
     static List<String> TableinputList = new ArrayList<String>();
-    static String squellettecomp=" import React, { Component } from 'react' import {AppRegistry,ScrollView,StyleSheet,Text,Alert,View,TouchableHighlight,TextInput,ListView} from 'react-native'; import { Button,Grid,Col,Row } from 'react-native-elements' var Firebase = require('firebase'); var config = { //ConfigurationDATABASE }; const myFirebaseRefapp =  firebase.initializeApp(config); import * as firebase from \"firebase\"; export default class extends Component { constructor(props) { super(props); //Constructeur this.state = { //Debutdustate } componentDidMount() { //DidMount } //function render() { //Vue return(  <ScrollView> <Grid> </Grid> </ScrollView> ); } } var styles = StyleSheet.create({ //StyleSheet }); AppRegistry.registerComponent('pfe', ()=>pfe);";
-    static String indexandroid= "import React, { Component } from 'react';   import { Scene, Router, TabBar, Modal, Schema, Actions, Reducer, ActionConst} from 'react-native-router-flux'; import {AppRegistry,ScrollView,StyleSheet,Text,Alert,View,TouchableHighlight,TextInput,ListView} from 'react-native';  //import      export   default    class pfe extends Component {render() { return( <Router > <Scene key=\"root\">            </Scene> </Router>  ); } } AppRegistry.registerComponent('pfe', ()=>pfe);";
+    static String squellettecomp=" import React, { Component } from 'react' import {AppRegistry,ScrollView,StyleSheet,Text,Alert,View,TouchableHighlight,TextInput,ListView} from 'react-native'; import { Button,Grid,Col,Row } from 'react-native-elements'  import { Actions } from 'react-native-router-flux'; import { getDatabase } from './index.android.js'; export default class extends Component { constructor(props) { super(props); //Constructeur this.state = { //Debutdustate } } componentDidMount() { //DidMount } //function render() { //Vue return(  <View style={{marginTop: 50, }}> <ScrollView>  </ScrollView> </View> ); } } var styles = StyleSheet.create({ //StyleSheet }); AppRegistry.registerComponent( ,()=> );";
+    static String indexandroid= "import React, { Component } from 'react'; import { Scene, Router, TabBar, Modal, Schema, Actions, Reducer, ActionConst} from 'react-native-router-flux'; import {AppRegistry,ScrollView,StyleSheet,Text,Alert,View,TouchableHighlight,TextInput,ListView} from 'react-native'; var Firebase=require('firebase'); var config={ apiKey: \"AIzaSyDysc3BPHCAGkHJ4K61zwXhZb07M5rnCQE\", authDomain: \"pfedsl-68809.firebaseapp.com\", databaseURL: \"https://pfedsl-68809.firebaseio.com/\", }; const myFirebaseRefapp=firebase.initializeApp(config); import * as firebase from \"firebase\"; export const getDatabase=()=>{ return(  myFirebaseRefapp.database() );} //import export default class pfe extends Component {render() { return( <Router > <Scene key=\"root\"> </Scene> </Router> ); } } AppRegistry.registerComponent('pfe', ()=>pfe);";
     public static List<String> complist= new ArrayList<String>();
     public static int [][] celluleVue = new int [100][100];
     static String [] tabcom = null;
@@ -29,7 +29,7 @@ public class Controleur {
 		tabindex=indexandroid.split(" ");
 		 for(j=0;j<tabindex.length;j++){
 			 indexlist.add(tabindex[j]);
-			 System.out.println(tabindex[j]);
+			// System.out.println(tabindex[j]);
 		    }
 		
 	
@@ -41,7 +41,7 @@ public class Controleur {
     		 tabcom=squellettecomp.split(" "); 
     		 for(j=0;j<tabcom.length;j++){
     			 complist.add(tabcom[j]);
-    			 System.out.println("Num "+j+" "+tabcom[j]);
+    		//	 System.out.println("Num "+j+" "+tabcom[j]);
     		    }
     		 
     		 //on récupére le nom et le titre du layout
@@ -50,21 +50,29 @@ public class Controleur {
     		 
     		 //on injecte le Layout dans l'index
     		 for(j=0;j<indexlist.size();j++){
+    			 if(indexlist.get(j).equalsIgnoreCase("//import")){
+     				Codeainjecter="import "+nomlayout+" from './"+nomlayout+"';";
+     			indexlist.add(j+1,Codeainjecter); 
+     			}
     			if(indexlist.get(j).equalsIgnoreCase("key=\"root\">")){
     				Codeainjecter="<Scene key=\""+nomlayout+"\" component={"+nomlayout+"} title=\""+titrelayout+"\" />";
     			indexlist.add(j+1,Codeainjecter); 
     			}
     		    }
     		 //affichage index
-    		 System.out.println("affichage index-------------------------------------------");
+    		// System.out.println("affichage index-------------------------------------------");
     		 for(j=0;j<indexlist.size();j++){
-    			 System.out.println(indexlist.get(j));
+    		//	 System.out.println(indexlist.get(j));
     		    }
     		 
+    		 
+    		
     		 //on ajoute le nom du composant dans la liste composant
     		 for(j=0;j<complist.size();j++){
     			 if(complist.get(j).equalsIgnoreCase("class"))complist.add(j+1,nomlayout);
+    			 if(complist.get(j).equalsIgnoreCase("AppRegistry.registerComponent(")){complist.add(j+1,"'"+nomlayout+"'");complist.add(j+3,nomlayout);}
     		 }
+    		
     		 
     		 //on recupére les composent de ce layout un par un 
     			f=i+7;
@@ -86,7 +94,7 @@ public class Controleur {
     				 //si c'est un boutton
     				 if(TraiteurFichier.ListdeslignesModel.get(j-1).equalsIgnoreCase("Bouton")){
     					 //on ajoute dans cellule la ligne et la col
-    					 System.out.println("------------------------------------------");
+    					// System.out.println("------------------------------------------");
     					 ligne=TraiteurFichier.ListdeslignesModel.get(j+14);
     					 colonne=TraiteurFichier.ListdeslignesModel.get(j+16);
     					 SqueletteVue.RemplirCellue(ligne, colonne);
@@ -117,11 +125,12 @@ public class Controleur {
    			SqueletteVue.PreparerSquelette();
    			for(j=0;j<complist.size();j++){
    			 
-   			 System.out.println("fin num "+j+" "+complist.get(j));
+   			// System.out.println("fin num "+j+" "+complist.get(j));
    		    }
    			
    			//on split la liste
    			String [] tabcom = null;
+   			compocode="";
    			for(j=0;j<complist.size();j++){
       			 compocode=compocode+" "+complist.get(j);
       		    }
@@ -129,7 +138,7 @@ public class Controleur {
    			complist.clear();
    			for(j=1;j<tabcom.length;j++){
    			 complist.add(tabcom[j]);
-   			 System.out.println("Num "+j+" "+tabcom[j]);
+   		//	 System.out.println("Num "+j+" "+tabcom[j]);
    		    }
    		    //on recupére les composant du layout une deuxiéme fois afin d'injecter le code
    		//on recupére les composent de ce layout un par un pour une deuxiéme fois afin d'injecter le code
@@ -140,9 +149,9 @@ public class Controleur {
  	    			 if(TraiteurFichier.ListdeslignesModel.get(j).equalsIgnoreCase(TraiteurFichier.ListdeslignesModel.get(f))){
  	    				 //on test la nature du composant
  	    				 
- 	    				 //si c'est une icone
+ 	    				 //si c'est une Boutton
  	    				 if(TraiteurFichier.ListdeslignesModel.get(j-1).equalsIgnoreCase("Bouton")){
- 	    					 System.out.println(TraiteurFichier.ListdeslignesModel.get(j-1)+"///////////////////////////////////////////////////////////////");
+ 	    				//	 System.out.println(TraiteurFichier.ListdeslignesModel.get(j-1)+"///////////////////////////////////////////////////////////////");
  	    					 //on recupére les information du boutton
  	    					nombouton=TraiteurFichier.ListdeslignesModel.get(j);
  	    			    	onclique=TraiteurFichier.ListdeslignesModel.get(j+4);
@@ -153,34 +162,70 @@ public class Controleur {
  	    			    	iconright=TraiteurFichier.ListdeslignesModel.get(j+12);
  	    			    	ligne=TraiteurFichier.ListdeslignesModel.get(j+14);
  	    		 	    	colonne=TraiteurFichier.ListdeslignesModel.get(j+16);
- 	    		 	    	 System.out.println(ligne+"     "+colonne);
+ 	    		 	    //	 System.out.println(ligne+"     "+colonne);
  	    			    	//appeller injecteur	
  	    		 		   
  	    					Injecteur.InjecterBouton(nombouton, onclique, onlongclique, icon, Style, raisedlarge, iconright, ligne, colonne);
  	    				 }
+ 	    				if(TraiteurFichier.ListdeslignesModel.get(j-1).equalsIgnoreCase("Input")){
+ 	    					nominput=TraiteurFichier.ListdeslignesModel.get(j);
+ 	    		 	    	Style=TraiteurFichier.ListdeslignesModel.get(j+3);
+ 	    		 	    	ligne=TraiteurFichier.ListdeslignesModel.get(j+5);
+ 	    		 	    	colonne=TraiteurFichier.ListdeslignesModel.get(j+7);
+ 	    		 	    	//on appelle l'injecteur 
+ 	    		 	    	System.out.println(TraiteurFichier.ListdeslignesModel.get(j-1)+" "+TraiteurFichier.ListdeslignesModel.get(j)+" "+TraiteurFichier.ListdeslignesModel.get(j+1)+" "+TraiteurFichier.ListdeslignesModel.get(j+2)+" "+TraiteurFichier.ListdeslignesModel.get(j+3)+" "+TraiteurFichier.ListdeslignesModel.get(j+4)+" "+TraiteurFichier.ListdeslignesModel.get(j+5)+" "+TraiteurFichier.ListdeslignesModel.get(j+6)+" "+TraiteurFichier.ListdeslignesModel.get(j+7));
+ 	    		 	    	Injecteur.InjecterInput(nominput,Style,ligne,colonne);
+ 	    				}
+ 	    				if(TraiteurFichier.ListdeslignesModel.get(j-1).equalsIgnoreCase("listView")){
+ 	    					//on recupére les informations de la List
+ 	    		 	    	nomList=TraiteurFichier.ListdeslignesModel.get(j);
+ 	    		 	    	Stylelistview=TraiteurFichier.ListdeslignesModel.get(j+2);
+ 	    		 	    	Table=TraiteurFichier.ListdeslignesModel.get(j+4);
+ 	    		 	    	ligne=TraiteurFichier.ListdeslignesModel.get(j+6);
+ 	    		 	    	colonne=TraiteurFichier.ListdeslignesModel.get(j+8);
+ 	    		    	
+ 	    		 	    	//on appelle l'injecteur 
+ 	    		 	    	Injecteur.InjecterListView(Stylelistview,Table,ligne,colonne);
+ 	    		 	    }
  	    				 }
  	    			 }
  				 f++; }
-   			//....................
+   			//Apres avoir fini avec les composant de la vue on lui inject tout les function et table
+ 			for(f=0;f<TraiteurFichier.ListdeslignesModel.size();f++){
+ 		    	//si on trouve remplir table
+ 		    	 if(TraiteurFichier.ListdeslignesModel.get(f).equalsIgnoreCase("RemplirTable")){
+ 		    		//on recupére les informations de la function
+ 		 	    	nomfunction=TraiteurFichier.ListdeslignesModel.get(f+1);
+ 		 	        
+ 		 	    	Table=TraiteurFichier.ListdeslignesModel.get(f+3);
+ 		 	        	
+ 		 	    	//on appelle l'injecteur
+ 		 	    	Injecteur.InjecterFunRemplirTab(nomfunction,Table);
+ 		    	 }
+ 		    	if(TraiteurFichier.ListdeslignesModel.get(f).equalsIgnoreCase("Table")){
+ 		    		//on recupére les informations de la function
+ 		    		 Table=TraiteurFichier.ListdeslignesModel.get(f+1);
+ 		    		 Injecteur.InjecterTable(Table);
+ 		    	 }
+ 		    	if(TraiteurFichier.ListdeslignesModel.get(f).equalsIgnoreCase("AlertFunction")){
+ 		    		//on recupére les informations de la function
+ 		 	    	nomfunction=TraiteurFichier.ListdeslignesModel.get(f+1);
+ 		 	    	MessageAlert=TraiteurFichier.ListdeslignesModel.get(f+3);
+ 		 	    	Injecteur.InjecterAlertFunction(nomfunction,MessageAlert);
+ 		    	 }
+ 		    	 }
    			//La on devra ecrire le composant avant d'entamer un  autre
    			TraiteurFichier.EcritureComposant(nomlayout);
    			//on remet le tableau a 0
    		  celluleVue = new int [100][100];
+   		  tabcom = null;
    		  complist.clear();
+   		for(j=0;j<complist.size();j++){
+			//System.out.println("--"+complist.get(j));
+		 }
     	 }
-//    	//Le model
-//    	 if(TraiteurFichier.ListdeslignesModel.get(i).equalsIgnoreCase("DataBase")){
-//   	/* | */	 NomDataBase=TraiteurFichier.ListdeslignesModel.get(i+1);
-//    		 apikye=TraiteurFichier.ListdeslignesModel.get(i+3);
-//    		 authDomain=TraiteurFichier.ListdeslignesModel.get(i+5);
-//    		 databaseURL=TraiteurFichier.ListdeslignesModel.get(i+7);
-//    			Injecteur.InjecterDataBase(NomDataBase,apikye,authDomain,databaseURL);
-//    	 }
-//    	 if(TraiteurFichier.ListdeslignesModel.get(i).equalsIgnoreCase("Table")){
-//    		 Table=TraiteurFichier.ListdeslignesModel.get(i+1);
-//    		 Injecteur.InjecterTable(Table);
-//    	 }
-//    	//la vue    
+
+    	//la vue    
 //	   //on test si il y'a un label
 //    	 if(TraiteurFichier.ListdeslignesModel.get(i).equalsIgnoreCase("Text")){
 //    		   		 NomLabel=TraiteurFichier.ListdeslignesModel.get(i+1);
@@ -189,43 +234,7 @@ public class Controleur {
 //    		    		
 //    		    			Injecteur.InjecterLabel(NomLabel,stylelabel,contenu);
 //    		    	 }
-//    	 //on test si il y'a un bouton
-//	    if(TraiteurFichier.ListdeslignesModel.get(i).equalsIgnoreCase("Bouton")){
-//	    	//on recupére les informations du bouton
-//	    	nombouton=TraiteurFichier.ListdeslignesModel.get(i+1);
-//	    	onclique=TraiteurFichier.ListdeslignesModel.get(i+5);
-//	    	onlongclique=TraiteurFichier.ListdeslignesModel.get(i+7);
-//	    	icon=TraiteurFichier.ListdeslignesModel.get(i+3);
-//	    	Style=TraiteurFichier.ListdeslignesModel.get(i+9);
-//	    	raisedlarge=TraiteurFichier.ListdeslignesModel.get(i+11);
-//	    	iconright=TraiteurFichier.ListdeslignesModel.get(i+13);
-//	    	ligne=TraiteurFichier.ListdeslignesModel.get(i+15);
-// 	    	colonne=TraiteurFichier.ListdeslignesModel.get(i+17);
-//	    	//appeller injecteur	
-//	    	Injecteur.InjecterBouton(nombouton,onclique,onlongclique,icon,Style,raisedlarge,iconright,ligne,colonne);
-//	    	                                             }
-//	    	 //on test si il y'a un input
-//	         else if (TraiteurFichier.ListdeslignesModel.get(i).equalsIgnoreCase("Input")) {
-//	        	//on recupére les informations de la function
-//	 	    	nominput=TraiteurFichier.ListdeslignesModel.get(i+1);
-//	 	    	Style=TraiteurFichier.ListdeslignesModel.get(i+4);
-//	 	    	ligne=TraiteurFichier.ListdeslignesModel.get(i+6);
-//	 	    	colonne=TraiteurFichier.ListdeslignesModel.get(i+8);
-//	 	    	//on appelle l'injecteur 
-//	 	    	Injecteur.InjecterInput(nominput,Style,ligne,colonne);
-//	         }
-//	  //on test si il y'a une listeView
-//	         else if (TraiteurFichier.ListdeslignesModel.get(i).equalsIgnoreCase("listView")) {
-//	        	//on recupére les informations de la List
-//	 	    	nomList=TraiteurFichier.ListdeslignesModel.get(i+1);
-//	 	    	Stylelistview=TraiteurFichier.ListdeslignesModel.get(i+3);
-//	 	    	Table=TraiteurFichier.ListdeslignesModel.get(i+5);
-//	 	    	ligne=TraiteurFichier.ListdeslignesModel.get(i+7);
-//	 	    	colonne=TraiteurFichier.ListdeslignesModel.get(i+9);
-//	    	
-//	 	    	//on appelle l'injecteur 
-//	 	    	Injecteur.InjecterListView(Stylelistview,Table,ligne,colonne);
-//	         }
+
 //	  //on test si il y'a un Stylesheet
 //	         else if (TraiteurFichier.ListdeslignesModel.get(i).equalsIgnoreCase("StyleSheet")) {
 //	        	 nomInputStyle=TraiteurFichier.ListdeslignesModel.get(i+1);
@@ -292,25 +301,7 @@ public class Controleur {
 //	        	 
 //	        	 Injecteur.InjecterStyleSheet(nomInputStyle,right,width,maxheigh,maxWidth,minHeight,minWidth,left,Flex,flexWrap,JustifyContent,BorderRadium,position,padding,paddingBottom,paddingHorizontal,paddingLeft,paddingRight,paddingTop,paddingVertical,opacity,bottom,margin,marginBottom,marginHorizontal,marginLeft,marginTop,marginVertical,marginRight,fontSize,fontStyle,fontWeight,borderStyle,borderBottomLeftRadius,borderBottomRightRadius,borderBottomWidth,borderWidth,borderColor,borderLeftColor,borderLeftWidth,borderRadius,borderRightColor,borderRightWidth,borderTopColor,borderTopLeftRadius,borderTopRightRadius,borderTopWidth,backfaceVisibility,BackGroundColor,lineHeight,textAlign,textDecorationLine,textShadowColor,textAlignVertical,textShadowRadius,fontVariant,letterSpacing,textDecorationColor,textDecorationStyle,writingDirection);
 //	         }
-//	    //controleur
-//	  //on test si il y'a un Remplir table
-//	 	    else if(TraiteurFichier.ListdeslignesModel.get(i).equalsIgnoreCase("RemplirTable")){
-//	 	    	//on recupére les informations de la function
-//	 	    	nomfunction=TraiteurFichier.ListdeslignesModel.get(i+1);
-//	 	        
-//	 	    	Table=TraiteurFichier.ListdeslignesModel.get(i+3);
-//	 	        	
-//	 	    	//on appelle l'injecteur
-//	 	    	Injecteur.InjecterFunRemplirTab(nomfunction,Table);
-//	 	    	
-//	 	    }
-//	 	   else if(TraiteurFichier.ListdeslignesModel.get(i).equalsIgnoreCase("AlertFunction")){
-//	 		//on recupére les informations de la function
-//	 	    	nomfunction=TraiteurFichier.ListdeslignesModel.get(i+1);
-//	 	    	MessageAlert=TraiteurFichier.ListdeslignesModel.get(i+3);
-//	 	    	Injecteur.InjecterAlertFunction(nomfunction,MessageAlert);
-//	 	   }
-//	    
+
     	
                                              }
     //on ecrit l'index
