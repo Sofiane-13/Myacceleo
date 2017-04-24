@@ -1,89 +1,207 @@
-application 'applicationPfe' =>  "ApplicationPfe.univTlemcen"  FirstLayout :  layout2 {  Le model : {
-DataBase bases apiKey : key authDomain : auth databaseURL : urlm ; End. }
-Le model : {  Table :  table1 champ : input1 input2 input3 ; End. }
+application "APPLICATIONPfe " => "pfePackage" FirstLayout :  { 
+	
+	
+//	Le model : {
+//DataBase Base apiKey  : kaya ; authDomain : ader ; databaseURL : fdre ; End. }
 
-La vue : { ContainerStyle Styles Style :  styleviw ; End. } 
-La vue : { Layout Layout1 Title :  layouOne StyleBar :  styleviw contient :  icone1 todo input2 input3 list1 input1 Style : 
-styleviw ; End. }
-La vue : { Icone icone1 Type :  octicon Style :  styleviw ligne :  1
-colonne :  3 ; End. }
-La vue : { ContainerFonctions Fonctions Style : 
-styleviw ; End. } 
-La vue : { Input input1 TextType :  Style :  StyleTO
-ligne :  5 colonne :  2 ; End. } 
-La vue : { Input input2 TextType :  Style :  StyleTO
-ligne :  6 colonne :  2 ; End. } 
-La vue : { Input input3 TextType :  Style :  StyleTO
-ligne :  7 colonne :  2 ; End. } 
-La vue : { listView list1 Style : 
-styleviw use :   table1 ligne :  2 colonne :  3 ; End. } 
+Le model : { Table lestaches champ  : Input2 , Input1 ; End. } 
+La vue : { ContainerStyle Styles Style  : View ; End. } 
+La vue : { ContainerFonctions
+Fonctions Style  : View ; End. } 
+
+La vue : { Layout Layout2 Title : Layout2 ;
+StyleBar : View ; contient : List1 , Activp , AddTache , Tache , Description ,
+Date , Input1 , Input2 , RetourLayout2 ; Style  : View ; End. } La vue : {
+listView List1 Style  : View ; use  : lestaches ; ligne : 5 ; colonne : 1 ;
+End. } 
+La vue : { ActivityIndicator Activp size  : none ; ligne : 6 ; colone :
+2 ; End. } 
+La vue : { Bouton AddTache icon  : icone1 ; onclique : VERSER ; 
+onlongclique : AlerteTable ; Style  : View ; Raised/Large : raised ; IconRight
+: none ; ligne : 4 ; colonne : 2 ; End. } 
+La vue : { Text Tache contenu  :
+NomTache ; Style  : View ; ligne : 1 ; colonne : 1 ; End. }
+ La vue : { Text
+Description contenu  : Brievement ; Style  : View ; ligne : 2 ; colonne : 1 ;
+End. } 
+La vue : { Text Date contenu  : LaDate ; Style  : View ; ligne : 3 ;
+colonne : 1 ; End. } 
+La vue : { Input Input1 Style  : Dtext ; ligne : 1 ; colonne : 2 ; End. } 
+La vue : { Input Input2 Style  : Dtext ; ligne : 2 ; colonne : 2 ; End. } 
+La vue : { Icone icone1
+Type  : octicon ; Style  : View ; ligne : 1 ; colonne : 1 ; End. }
+ La vue : {
+Layout Layout1 Title : Layout1 ; StyleBar : View ; contient : TODOlist , RetourLayout5 , RetourLayout4 , RetourLayout3 , RetourLayout2
+image1 , Accesoire , icone1 , ActivityNum1 , Linkedin , GitHub ; Style  : View ; End. }
+ La vue : {
+Bouton TODOlist icon  : icone1 ; onclique : TODO ; onlongclique : TodoList ;
+Style  : View ; Raised/Large : none ; IconRight : none ; ligne : 2 ; colonne :
+1 ; End. }
+ La vue : { Layout Layout3 Title : Layout3 ; StyleBar : View ;
+contient : son , Film , Accelerometrre , RetourLayout5 , RetourLayout4 ,  SVGGame , recte ,
+ciclle ; Style  : View ; End.
+} 
+La vue : { Audio son UrlTel  : urlAu ; StyleA  : View ; Textbouton : music ;
+ligne : 1 ; colone : 1 ; End. } 
+La vue : { Image image1 UrlImage  : urli ;
+Style  : Imge ; ligne : 1 ; colone : 1 ; End. }
+ La vue : { Bouton
+Accesoire icon  : icone1 ; onclique : Accessoires ; onlongclique : Accessoires
+; Style  : View ; Raised/Large : none ; IconRight : none ; ligne : 3 ; colonne
+: 1 ; End. } 
+La vue : { Bouton Map icon  : icone1 ; onclique : Localisation ;
+onlongclique : Map ; Style  : View ; Raised/Large : none ; IconRight : none ;
+ligne : 4 ; colonne : 1 ; End. }
+ La vue : { Layout Layout4 Title : layout4 ;
+StyleBar : View ; contient : Carte , RetourLayout5 , RetourLayout3  , Zoom , PleinEcran ; Style 
+: View ; End. }
+La vue : { MapView Carte latitude  : 2.3 ; longitude : 125.8 ; latitudeDelta :
+236.6 ; longitudeDelta : 714.3 ; ligne : 1 ; colone : 1 ; End. }
+ La vue : {
+Video Film UrlVideo  : urlvds ; mute : none ; width : 6 ; height  : 6 ; ligne
+: 2 ; colone : 1 ; End. }
+ La vue : { Bouton RetourLayout2 icon  : icone1 ;
+onclique : l2 ; onlongclique : Retour ; Style  : View ; Raised/Large :
+none ; IconRight : none ; ligne : 4 ; colonne : 1 ; End. } 
 La vue : {
-Layout layout2 Title :  Layouttwo StyleBar :  styleviw contient :  list1 input1
-Style :  styleviw ; End. } 
-La vue : { Bouton  todo icon :  icone1 onclique : 
-remlirTable onlongclique :  alerte Style :  styleviw Raised/Large :  none
-IconRight :  none ligne :  2 colonne :  3 ; End. } La vue : { Image
-imag1 UrlImage :  urlikram StyleImage :  Mage ligne :  none colone :  none
-; End. } 
-La vue : { MapView mapal latitude :  12.2 longitude :  15.2
-latitudeDelta :  12.3 longitudeDelta :  66.6 ligne :  none colone :  none
-; End. }.
-La vue : { Accelerometer accel1 Style :  StyleTO ligne :  none
-colone :  none ; End. }
- La vue : { ActivityIndicator activ1 size :  none
-ligne :  none colone :  none ; End. } La vue : { Audio audi urlAudio : 
-urlaudio Textbouton :  ikram Style :  styleviw ligne :  none colone :  none
-; End. } 
-La vue : { Video vid UrlVideo :  urlvid mute :  none width :  none
-height :  none ligne :  none colone :  none ; End. }
+Accelerometer Accelerometrre Style  : Dtext ; ligne : 3 ; colone : 1 ; End. }
+La vue : { Bouton RetourLayout3 icon  : icone1 ; onclique : l3 ;
+onlongclique : Retour ; Style  : View ; Raised/Large : none ; IconRight : none
+; ligne : 4 ; colonne : 2 ; End. } 
+La vue : { Bouton RetourLayout4 icon  :
+icone1 ; onclique : l4 ; onlongclique : Retour ; Style  : View ;
+Raised/Large : none ; IconRight : none ; ligne : 2 ; colonne : 1 ; End. }
+La vue : { ActivityIndicator ActivityNum1 size  : small ; ligne : 5 ; colone :
+4 ; End. }
+ La vue : { SocialIcon Linkedin SocialIconeType : linkedin ; Button :
+none ; raised : none ; Onclique : AlerteTwit ; OnLongclique : Sauthentifier ;
+Style  : View ; ligne : 5 ; colonne : 1 ; End. }
+ La vue : { SocialIcon GitHub
+SocialIconeType : none ; Button : none ; raised : none ; Onclique : Git ;
+OnLongclique : Sauthentifier ; Style  : View ; ligne : 5 ; colonne : 2 ; End.
+} 
+La vue : { Layout Layout5 Title : Layout5 ; StyleBar : View ; contient :
+ImageFace , RetourLayout4 , RetourLayout3 , RetourLayout2  , Login , LabelNum1 , LabelNum2 , MotDePass ,
+Seconnecter ; Style  : View ; End. }
+ La vue : { Image ImageFace UrlImage  :
+Urlf ; Style : Imge ; ligne : 1 ; colone : 1 ; End. } 
+La vue : {
+SocialIcon Facebook SocialIconeType : facebook ; Button : none ; raised : none
+; Onclique : Facebok ; OnLongclique : Sauthentifier ; Style  : View ; ligne :
+5 ; colonne : 3 ; End. } 
+La vue : { Bouton RetourLayout5 icon  : icone1 ;
+onclique : l5 ; onlongclique : Retour ; Style  : View ; Raised/Large :
+none ; IconRight : false ; ligne : 4 ; colonne : 1 ; End. }
+ La vue : { Input Login  Style  : Dtext ; ligne : 2 ; colonne : 2 ; End. }
+La vue : { Input MotDePass Style  : Dtext ; ligne : 3 ;
+colonne : 2 ; End. } 
+La vue : { Text LabelNum1 contenu  : loginn ; Style  :
+View ; ligne : 2 ; colonne : 1 ; End. } 
+La vue : { Text LabelNum2 contenu  :
+PassWORD ; Style  : View ; ligne : 3 ; colonne : 1 ; End. } 
+La vue : { Bouton
+Seconnecter icon  : icone1 ; onclique : AlerteFace ; onlongclique :
+Sauthentifier ; Style  : View ; Raised/Large : none ; IconRight : none ; ligne
+: 4 ; colonne : 2 ; End. } 
+La vue : { RadioButton Zoom Style  : View ; ligne :
+2 ; colonne : 1 ; End. }
+ La vue : { CheckBox PleinEcran Style  : View ; ligne
+: 2 ; colonne : 2 ; End. }
+ La vue : { Svg SVGGame height  : 6 ; width : 7 ;
+Circle : ciclle ; Rect : recte ; ligne : 2 ; colone : 1 ; End. } 
+La vue : {
+circle ciclle Cx  : 5 ; Cy : 5 ; R : 2 ; StrokeWidth : 12 ; Stroke :
+gold  #ffd700 ; Fill : floralwhite #fffaf0 ; End. } 
+La vue : { rectangle recte
+X  : 11 ; Y : 13 ; Width : 10 ; Height : 5 ; StrokeWidth : 10 ; Stroke :
+darkorange #ff8c00 ; Fill : green #008000 ; End. } 
 
- Le controleur : { Styleflexbox flexStyle alignItems :  none alignSelf :  none
-borderBottomWidth :  none borderLeftWidth :  none borderRightWidth :  none
-borderTopWidth :  none borderWidth :  none bottom :  none flex :  none
-flexDirection :  none flexWrap :  wrap height :  none justifyContent :  none
-left :  none margin :  none marginBottom :  none marginHorizontal :  none
-marginLeft :  none marginRight :  none marginTop :  none marginVertical : 
-none padding :  none paddingBottom :  none paddingHorizontal :  none }
- Le controleur : {  StyleView styleviw backfaceVisibility :  none
-backgroundColor :  none borderBottomColor :  none borderBottomLeftRadius : 
-none borderBottomRightRadius :  none borderBottomWidth :  none borderColor : 
-none borderLeftColo :  none borderLeftWidth :  none borderRadius :  none
-borderRightColor :  none borderRightWidth :  none borderStyle :  none
-borderTopColor :  none borderTopLeftRadius :  none borderTopRightRadius : 
-none borderTopWidth :  none borderWidth :  none opacity :  none alignItems : 
-none alignSelf :  none borderBottomWidth :  none borderLeftWidth :  none
-borderRightWidth :  none borderTopWidth :  none borderWidth :  none bottom : 
-none flex :  none flexDirection :  none flexWrap :  wrap height :  none
-justifyContent :  none left :  none margin :  none marginBottom :  none
-marginHorizontal :  none marginLeft :  none marginRight :  none marginTop : 
-none marginVertical :  none padding :  none paddingBottom :  none
-paddingHorizontal :  none paddingRight :  none paddingTop :  none
-paddingVertical :  none right :  none width :  none }
+Le controleur : { StyleView View backfaceVisibility  : none ; backgroundColor :
+red ; borderBottomColor : red ; borderBottomLeftRadius : none ;
+borderBottomRightRadius : none ; borderBottomWidth : none ; borderColor : none
+; borderLeftColor : none ; borderLeftWidth : none ; borderRadius : none ;
+borderRightColor : none ; borderRightWidth : none ; borderStyle : none ;
+borderTopColor : none ; borderTopLeftRadius : none ; borderTopRightRadius :
+none ; borderTopWidth : none ; borderWidth : none ; opacity : none ;
+alignItems : none ; alignSelf : none ; bottom : none ; flex : none ;
+flexDirection : none ; flexWrap : wrap ; height  : none ; justifyContent :
+none ; left : none ; margin : none ; marginBottom : none ; marginHorizontal :
+none ; marginLeft : none ; marginRight : none ; marginTop : none ;
+marginVertical : none ; padding : none ; paddingBottom : none ;
+paddingHorizontal : none ; paddingRight : none ; paddingTop : none ;
+paddingVertical : none ; right : none ; width : none ; End. } 
 
- Le controleur : { StyleImage :  Mage backfaceVisibility :  none backgroundColor :  none
-borderBottomLeftRadius :  none borderBottomRightRadius :  none borderColor : 
-none borderRadius :  none borderTopLeftRadius :  none borderTopRightRadius : 
-none borderWidth :  none opacity :  none overflow :  visible alignItems : 
-none alignSelf :  none borderBottomWidth :  none borderLeftWidth :  none
-borderRightWidth :  none borderTopWidth :  none borderWidth :  none bottom : 
-none flex :  none flexDirection :  none flexWrap :  wrap height :  none
-justifyContent :  none left :  none margin :  none marginBottom :  none
-marginHorizontal :  none marginLeft :  none marginRight :  none marginTop : 
-none marginVertical :  none padding :  none paddingBottom :  none
-paddingHorizontal :  none paddingLeft :  none paddingRight :  none
-paddingTop :  none paddingVertical :  none position :  absolute right :  none
-width :  none }
 
- Le controleur : { StyleText StyleTO color : none fontFamily: h1 fontSize : none
-fontStyle : normal fontWeight : normal lineHeight : none TextAlign : auto
-TextDecorationLine : none TextShadowColor : none TextShadowRadius : none
-backfaceVisibility :  none backgroundColor :  none borderBottomColor :  none
-borderBottomLeftRadius :  none borderBottomRightRadius :  none
-borderBottomWidth :  none borderColor :  none borderLeftColor :  none
-borderLeftWidth :  none borderRadius :  none borderRightColor :  none
-borderRightWidth :  none borderStyleenum :  none borderTopColor :  none
-borderTopLeftRadius :  none borderTopRightRadius :  none borderTopWidth : 
-none borderWidth :  none opacity :  none ; End. }
- Le controleur : {  AlertFunction alerte Message : alerte ; End. }
- Le controleur : {  RemplirTable remlirTable use :   table1 ;End. }
- Le controleur : { Navigate navig Reference :  Layout1 ;End. } }
+
+
+Le controleur : {
+ StyleImage :  Imge backfaceVisibility  : none ; backgroundColor : none ;
+borderBottomLeftRadius : none ; borderBottomRightRadius : none ; borderColor :
+green ; borderRadius : none ; borderTopLeftRadius : none ; borderTopRightRadius
+: none ; borderWidth : none ; opacity : none ; overflow : none ; alignItems :
+none ; alignSelf : none ; bottom : none ; flex : none ; justifyContent : none
+; left : none ; margin : none ; marginBottom : none ; marginHorizontal : none
+; marginLeft : none ; marginRight : none ; marginTop : none ; marginVertical :
+none ; padding : none ; paddingBottom : none ; paddingHorizontal : none ;
+paddingRight : none ; paddingTop : none ; paddingVertical : none ; right :
+none ; width : none ; flexDirection : none ; flexWrap : wrap ; height  : none
+; End. }
+
+
+
+ Le controleur : { StyleText Dtext color : green ; fontFamily : h1 ; fontSize :
+none ; fontStyle : normal ; fontWeight : normal ; lineHeight : none ;
+TextAlign : auto ; TextDecorationLine : none ; TextShadowColor : none ;
+TextShadowRadius : none ; backfaceVisibility  : none ; backgroundColor : none
+; borderBottomColor : none ; borderBottomLeftRadius : none ;
+borderBottomRightRadius : none ; borderBottomWidth : none ; borderColor : none
+; borderLeftColor : none ; borderLeftWidth : none ; borderRadius : none ;
+borderRightColor : none ; borderRightWidth : none ; borderStyle : none ;
+borderTopColor : none ; borderTopLeftRadius : none ; borderTopRightRadius :
+none ; borderTopWidth : none ; borderWidth : none ; opacity : none ; End. }
+
+
+
+ Le controleur : { Styleflexbox Flex alignItems : none ; alignSelf : none ;
+borderBottomWidth : none ; borderLeftWidth : none ; borderRightWidth : none ;
+borderTopWidth : none ; borderWidth : none ; bottom : none ; flex : none ;
+flexDirection : none ; flexWrap : wrap ; height  : none ; justifyContent :
+none ; left : none ; margin : none ; marginBottom : none ; marginHorizontal :
+none ; marginLeft : none ; marginRight : none ; marginTop : none ;
+marginVertical : none ; padding : none ; paddingBottom : none ; End. }
+
+Le controleur : { Navigate TODO : Reference : Layout2 ; End. }
+
+Le controleur : { RemplirTable VERSER : use  : lestaches ; End. }
+
+Le controleur : { AlertFunction AlerteTable : Message : AttendezSVP ; End. }
+
+Le controleur : { AlertFunction TodoList : Message : Alerte22 ; End. }
+
+Le controleur : { Navigate retour : Reference : Layout2 ; End. }
+
+Le controleur : { AlertFunction Retour : Message : Retour ; End. }
+
+Le controleur : { AlertFunction Accessoires : Message : Accessoire ; End. }
+
+Le controleur : { AlertFunction Map : Message : Map ; End. }
+
+ Le controleur : {AlertFunction Git : Message : Github ; End. }
+
+ Le controleur : { AlertFunctionAlerteFace : Message : faceboouk ; End. } 
+
+Le controleur : { AlertFunction AlerteTwit : Message : Linkdin ; End. } 
+
+Le controleur : { AlertFunction Sauthentifier : Message : authentification ; End. } 
+
+Le controleur : { Navigate l1 : Reference : Layout1 ; End. } 
+
+Le controleur : { Navigate l2 : Reference : Layout2 ; End. } 
+
+Le controleur : { Navigate l3 : Reference : Layout3 ; End. } 
+
+Le controleur : { Navigate l4 : Reference : Layout4 ; End. }
+
+ Le controleur : { Navigate l5 : Reference : Layout5 ; End. } }
+
+

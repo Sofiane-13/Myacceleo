@@ -8,15 +8,7 @@ public class Injecteur {
 	static int i,j,f;
 	public static  List<String>	TableinputList=new ArrayList<String>();
 //Coté Model
-public static void	InjecterDataBase( String NomDataBase, String apikye, String authDomain, String databaseURL){
-	for(j=0;j<Controleur.complist.size();j++){
-		//on recupére la position du //ConfigurationDATABASE
-		 if(Controleur.complist.get(j).equalsIgnoreCase("//ConfigurationDATABASE")){
-			 CodeAajouter="apiKey: \""+apikye+"\" , authDomain:  \""+authDomain+"\" , databaseURL: \""+databaseURL+"\" ,";
-			 Controleur.complist.add(j+1, CodeAajouter); 
-		 }
-	                                                         }
-		                                           }
+
 public static void InjecterTable(String Table){
 	for(j=0;j<Controleur.complist.size();j++){
 		 if(Controleur.complist.get(j).equalsIgnoreCase("//Constructeur")){
@@ -75,7 +67,7 @@ public static void InjecterBouton(String nombouton,String onclique,String onlong
 	}
 
 public static void InjecterInput(String nominput,String Style,String ligne,String colonne){
-	System.out.println("jess la!!!!!!!!!!!!!!!!!!!!!!!!");
+	
 	for(j=0;j<Controleur.complist.size();j++){
 	        
 		//on inject dans le state la variable du label
@@ -104,12 +96,11 @@ public static void InjecterInput(String nominput,String Style,String ligne,Strin
 	
 }
 public static void	InjecterListView(String Stylelistview,String table,String ligne,String colonne){
-	System.out.println(ligne+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+colonne);
+
 	for(j=0;j<Controleur.complist.size();j++){
 		//on inject la ListView dans la vue
 		 if((Controleur.complist.get(j).equalsIgnoreCase(ligne))&&(Controleur.complist.get(j+1).equalsIgnoreCase(colonne))){
-				System.out.println("Condition ---------------------------------------------------");
-
+			
 			 CodeAajouter="<ListView dataSource={this.state."+table+"Source} renderRow={this.renderRow"+table+".bind(this)} enableEmptySections={true} />";			 
 			//on injecte le code
 			 Controleur.complist.add(j+3, CodeAajouter);
@@ -147,74 +138,155 @@ public static void	InjecterListView(String Stylelistview,String table,String lig
 	}
 
 }
+public static void InjecterStyleText(String nomInputStyle,String color,String fontFamily,String fontSize,String fontStyle,String fontWeight,String lineHeight,String TextAlign,String TextDecorationLine,String TextShadowColor,String TextShadowRadius,String backfaceVisibility,String backgroundColor,String borderBottomColor,String borderBottomLeftRadius,String borderBottomRightRadius,String borderBottomWidth,String borderColor,String borderLeftColor,String borderLeftWidth,String borderRadius,String borderRightColor,String borderRightWidth,String borderStyle,String borderTopColor,String borderTopLeftRadius,String borderTopRightRadius,String borderTopWidth,String borderWidth,String opacity){
+	for(j=0;j<Controleur.complist.size();j++){
+		 //on recupére la position du //Stylesheet
+	    if(Controleur.complist.get(j).equalsIgnoreCase("//StyleSheet")){
+	    	//on prépare le code a injecter
+	    	CodeAajouter=nomInputStyle+": {";  
+	    
+	    	 if (!color.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" color: '"+color+"' ,";}
+ 	    	 if (!fontFamily.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" fontFamily: '"+fontFamily+"',";}
+ 	 	     if (!fontSize.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" fontSize: "+fontSize+",";}
+ 	 	     if (!fontStyle.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" fontStyle: '"+fontStyle+"',";}
+ 		     if (!fontWeight.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" fontWeight: '"+fontWeight+"',";}
+ 		     if (!lineHeight.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" lineHeight: "+lineHeight+",";}
+ 		     if (!TextAlign.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" textAlign: '"+TextAlign+"',";}
+ 		     if (!TextDecorationLine.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" TextDecorationLine: '"+TextDecorationLine+"',";}
+ 		     if (!TextShadowColor.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" TextShadowColor: '"+TextShadowColor+"',";}
+ 		     if (!TextShadowRadius.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" TextShadowRadius: "+TextShadowRadius+" ,";}
+ 		     if (!backfaceVisibility.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" backfaceVisibility: '"+backfaceVisibility+"',";}
+ 		     if (!backgroundColor.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" backgroundColor: '"+backgroundColor+"' ,";}
+ 		     if (!borderBottomColor.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderBottomColor: '"+borderBottomColor+"',";}
+ 		     if (!borderBottomLeftRadius.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderBottomLeftRadius: "+borderBottomLeftRadius+",";}
+ 		     if (!borderBottomRightRadius.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderBottomRightRadius: "+borderBottomRightRadius+",";}
+ 		     if (!borderBottomWidth.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderBottomWidth: "+borderBottomWidth+",";}
+ 		     if (!borderColor.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderColor: '"+borderColor+"',";}
+ 		     if (!borderLeftColor.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderLeftColor: '"+borderLeftColor+"',";}
+ 		     if (!borderLeftWidth.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderLeftWidth: "+borderLeftWidth+",";}
+ 		     if (!borderRadius.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderRadius: "+borderRadius+",";}
+ 		     if (!borderRightColor.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderRightColor: '"+borderRightColor+"',";}
+ 		     if (!borderRightWidth.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderRightWidth: "+borderRightWidth+" ,";}
+ 		     if (!borderStyle.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" marginHorizontal: '"+borderStyle+"' ,";}
+ 		     if (!borderTopColor.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderTopColor: '"+borderTopColor+"' ,";}
+ 		     if (!borderTopLeftRadius.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderTopLeftRadius: "+borderTopLeftRadius+" ,";}
+ 		     if (!borderTopRightRadius.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderTopRightRadius: "+borderTopRightRadius+" ,";}
+ 		     if (!borderTopWidth.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderTopWidth: "+borderTopWidth+" ,";}
+ 		     if (!borderWidth.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderWidth: "+borderWidth+" ,";}
+ 		     if (!opacity.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" opacity: "+opacity+" ,";}
+ 			
+	    	
+	    	//On fermme notre StyleSheet
+ 	    	CodeAajouter=CodeAajouter+" },";
+ 	    	//on injecte le code
+ 	    	Controleur.complist.add(j+1, CodeAajouter);
+	    }
+	    }
+}
+public static void InjecterStyleImage(String nomInputStyle,String backfaceVisibility,String backgroundColor,String borderBottomLeftRadius,String borderBottomRightRadius,String borderColor,String borderRadius,String borderTopLeftRadius,String borderTopRightRadius,String borderWidth,String opacity,String overflow,String alignItems,String alignSelf,String bottom,String flex,String justifyContent,String left,String margin,String marginBottom,String marginHorizontal,String marginLeft,String marginRight,String marginTop,String marginVertical,String padding,String paddingBottom,String paddingHorizontal,String paddingRight,String paddingTop,String paddingVertical,String right,String width,String flexDirection,String flexWrap,String height){
+	for(j=0;j<Controleur.complist.size();j++){
+		 //on recupére la position du //Stylesheet
+	    if(Controleur.complist.get(j).equalsIgnoreCase("//StyleSheet")){
+	    	//on prépare le code a injecter
+	    	CodeAajouter=nomInputStyle+": {";  
+	    	
+	    	 if (!backfaceVisibility.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" backfaceVisibility: '"+backfaceVisibility+"' ,";}
+ 	    	 if (!backgroundColor.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" backgroundColor: '"+backgroundColor+"',";}
+ 	 	     if (!borderBottomLeftRadius.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderBottomLeftRadius: "+borderBottomLeftRadius+",";}
+ 	 	     if (!borderBottomRightRadius.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderBottomRightRadius: "+borderBottomRightRadius+",";}
+ 		     if (!borderColor.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderColor: '"+borderColor+"',";}
+ 		     if (!borderRadius.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderRadius: "+borderRadius+",";}
+ 		     if (!borderTopLeftRadius.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderTopLeftRadius: "+borderTopLeftRadius+",";}
+ 		     if (!borderTopRightRadius.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderTopRightRadius: "+borderTopRightRadius+",";}
+ 		     if (!borderWidth.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderWidth: "+borderWidth+",";}
+ 		     if (!opacity.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" opacity: "+opacity+" ,";}
+ 		     if (!overflow.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" overflow: '"+overflow+"',";}
+ 		     if (!alignItems.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" alignItems: '"+alignItems+"' ,";}
+ 		     if (!alignSelf.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" alignSelf: '"+alignSelf+"',";}
+ 		     if (!bottom.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" bottom: "+bottom+",";}
+ 		     if (!flex.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" flex: "+flex+",";}
+ 		     if (!flexDirection.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" flexDirection: '"+flexDirection+"',";}
+ 		     if (!flexWrap.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" flexWrap: '"+flexWrap+"',";}
+ 		     if (!height.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" height: "+height+",";}
+ 		     if (!justifyContent.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" justifyContent: '"+justifyContent+"',";}
+ 		     if (!left.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" left: "+left+",";}
+ 		     if (!margin.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" margin: "+margin+",";}
+ 		     if (!marginBottom.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" marginBottom: "+marginBottom+" ,";}
+ 		     if (!marginHorizontal.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" marginHorizontal: "+marginHorizontal+" ,";}
+ 		     if (!marginLeft.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" marginLeft: "+marginLeft+" ,";}
+ 		     if (!marginRight.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" marginRight: "+marginRight+",";}
+ 		     if (!marginTop.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" marginTop: "+marginTop+",";}
+ 		     if (!marginVertical.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" marginVertical: "+marginVertical+",";}
+ 		     if (!padding.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" padding: "+padding+",";}
+ 		     if (!paddingBottom.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" paddingBottom: "+paddingBottom+" ,";}
+ 		     if (!paddingHorizontal.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" paddingHorizontal: "+paddingHorizontal+" ,";}
+ 		     if (!paddingRight.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" paddingRight: "+paddingRight+" ,";}
+ 		     if (!paddingTop.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" paddingTop: "+paddingTop+",";}
+ 		     if (!paddingVertical.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" paddingVertical: "+paddingVertical+" ,";}
+ 		     if (!right.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" right: "+right+" ,";}
+ 		     if (!width.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" width: "+width+" ,";}
+ 		     
+	    	
+	    	//On fermme notre StyleSheet
+ 	    	CodeAajouter=CodeAajouter+" },";
+ 	    	//on injecte le code
+ 	    	Controleur.complist.add(j+1, CodeAajouter);
+
+ 	    }
+	    }
+}
 //coté StyleSheet
-public static void InjecterStyleSheet(String nomInputStyle,String right,String width,String maxheigh,String maxWidth,String minHeight,String minWidth,String left,String Flex,String flexWrap,String JustifyContent,String BorderRadium,String position,String padding,String paddingBottom,String paddingHorizontal,String paddingLeft,String paddingRight,String paddingTop,String paddingVertical,String opacity,String bottom,String margin,String marginBottom,String marginHorizontal,String marginLeft,String marginTop,String marginVertical,String marginRight,String fontSize,String fontStyle,String fontWeight,String borderStyle,String borderBottomLeftRadius,String borderBottomRightRadius,String borderBottomWidth,String borderWidth,String borderColor,String borderLeftColor,String borderLeftWidth,String borderRadius,String borderRightColor,String borderRightWidth,String borderTopColor,String borderTopLeftRadius,String borderTopRightRadius,String borderTopWidth,String backfaceVisibility,String BackGroundColor,String lineHeight,String textAlign,String textDecorationLine,String textShadowColor,String textAlignVertical,String textShadowRadius,String fontVariant,String letterSpacing,String textDecorationColor, String textDecorationStyle,String writingDirection){
+//debut 
+public static void InjecterStyleView(String nomInputStyle,String backfaceVisibility,String backgroundColor,String borderBottomColor,String borderBottomLeftRadius,String borderBottomRightRadius,String borderBottomWidth,String borderColor,String borderLeftColor,String borderLeftWidth,String borderRadius,String borderRightColor,String borderRightWidth,String borderStyle,String borderTopColor,String borderTopLeftRadius,String borderTopRightRadius,String borderTopWidth,String borderWidth,String opacity,String alignItems,String alignSelf,String bottom,String flex,String flexDirection,String flexWrap,String height,String justifyContent,String left,String margin,String marginBottom,String marginHorizontal,String marginLeft,String marginRight,String marginTop,String marginVertical,String padding,String paddingBottom,String paddingHorizontal,String paddingRight,String paddingTop,String paddingVertical,String right,String width){
 	for(j=0;j<Controleur.complist.size();j++){
 		 //on recupére la position du //Stylesheet
  	    if(Controleur.complist.get(j).equalsIgnoreCase("//StyleSheet")){
  	    	//on prépare le code a injecter
  	    	CodeAajouter=nomInputStyle+": {";  
- 	       
- 	    	 if (!right.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" right: "+right+" ,";}
- 	    	 if (!width.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" width: "+width+",";}
- 	 	     if (!maxheigh.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" maxheigh: "+maxheigh+",";}
- 	 	     if (!maxWidth.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" maxWidth: "+maxWidth+",";}
- 		     if (!minHeight.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" minHeight: "+minHeight+",";}
- 		     if (!minWidth.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" minWidth: "+minWidth+",";}
- 		     if (!left.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" left: "+left+",";}
- 		     if (!Flex.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" Flex: "+Flex+",";}
- 		     if (!flexWrap.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" flexWrap: '"+flexWrap+"',";}
- 		     if (!JustifyContent.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" JustifyContent: '"+JustifyContent+"' ,";}
- 		     if (!BorderRadium.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" BorderRadium: "+BorderRadium+",";}
- 		     if (!position.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" position: '"+position+"' ,";}
- 		     if (!padding.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" padding: "+padding+",";}
- 		     if (!paddingBottom.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" paddingBottom: "+paddingBottom+",";}
- 		     if (!paddingHorizontal.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" paddingHorizontal: "+paddingHorizontal+",";}
- 		     if (!paddingLeft.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" paddingLeft: "+paddingLeft+",";}
- 		     if (!paddingRight.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" paddingRight: "+paddingRight+",";}
- 		     if (!paddingTop.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" paddingTop: "+paddingTop+",";}
- 		     if (!paddingVertical.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" paddingVertical: "+paddingVertical+",";}
- 		     if (!opacity.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" opacity: "+opacity+",";}
- 		     if (!bottom.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" bottom: "+bottom+",";}
- 		     if (!margin.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" margin: "+margin+",";}
- 		     if (!marginBottom.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" marginBottom: "+marginBottom+",";}
- 		     if (!marginHorizontal.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" marginHorizontal: "+marginHorizontal+",";}
- 		     if (!marginLeft.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" marginLeft: "+marginLeft+",";}
- 		     if (!marginTop.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" marginTop: "+marginTop+",";}
- 		     if (!marginVertical.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" marginVertical: "+marginVertical+",";}
- 		     if (!marginRight.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" marginRight: "+marginRight+",";}
- 		     if (!fontSize.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" fontSize: "+fontSize+",";}
- 		     if (!fontStyle.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" fontStyle: '"+fontStyle+"' ,";}
- 		     if (!fontWeight.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" fontWeight: '"+fontWeight+"' ,";}
- 		     if (!borderStyle.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderStyle: '"+borderStyle+"' ,";}
- 		     if (!borderBottomLeftRadius.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderBottomLeftRadius: "+borderBottomLeftRadius+",";}
+ 	        if (!backfaceVisibility.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" backfaceVisibility: '"+backfaceVisibility+"' ,";}
+ 	    	 if (!backgroundColor.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" backgroundColor: '"+backgroundColor+"',";}
+ 	 	     if (!borderBottomColor.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderBottomColor: '"+borderBottomColor+"',";}
+ 	 	     if (!borderBottomLeftRadius.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderBottomLeftRadius: "+borderBottomLeftRadius+",";}
  		     if (!borderBottomRightRadius.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderBottomRightRadius: "+borderBottomRightRadius+",";}
  		     if (!borderBottomWidth.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderBottomWidth: "+borderBottomWidth+",";}
- 		     if (!borderWidth.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderWidth: "+borderWidth+",";}
- 		     if (!borderColor.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderColor: '"+borderColor+"' ,";}
- 		     if (!borderLeftColor.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderLeftColor: '"+borderLeftColor+"' ,";}
- 		     if (!borderLeftWidth.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderLeftWidth: '"+borderLeftWidth+"' ,";}
- 		     if (!borderRadius.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderRadius: "+borderRadius+",";}
- 		     if (!borderRightColor.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderRightColor: '"+borderRightColor+"' ,";}
- 		     if (!borderRightWidth.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderRightWidth: "+borderRightWidth+",";}
- 		     if (!borderTopColor.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderTopColor: '"+borderTopColor+"' ,";}
+ 		     if (!borderColor.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderColor: '"+borderColor+"',";}
+ 		     if (!borderLeftColor.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderLeftColor: '"+borderLeftColor+"',";}
+ 		     if (!borderLeftWidth.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderLeftWidth: "+borderLeftWidth+",";}
+ 		     if (!borderRadius.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderRadius: "+borderRadius+" ,";}
+ 		     if (!borderRightColor.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderRightColor: '"+borderRightColor+"',";}
+ 		     if (!borderRightWidth.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderRightWidth: "+borderRightWidth+" ,";}
+ 		     if (!borderStyle.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderStyle: '"+borderStyle+"',";}
+ 		     if (!borderTopColor.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderTopColor: '"+borderTopColor+"',";}
  		     if (!borderTopLeftRadius.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderTopLeftRadius: "+borderTopLeftRadius+",";}
  		     if (!borderTopRightRadius.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderTopRightRadius: "+borderTopRightRadius+",";}
  		     if (!borderTopWidth.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderTopWidth: "+borderTopWidth+",";}
- 		     if (!backfaceVisibility.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" backfaceVisibility: '"+backfaceVisibility+"' ,";}
- 		     if (!BackGroundColor.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" BackGroundColor: '"+BackGroundColor+"' ,";}
- 		     if (!lineHeight.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" lineHeight: "+lineHeight+",";}
- 		     if (!textAlign.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" textAlign: '"+textAlign+"' ,";}
- 		     if (!textDecorationLine.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" textDecorationLine: '"+textDecorationLine+"' ,";}
- 		     if (!textShadowColor.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" textShadowColor: '"+textShadowColor+"' ,";}
- 		     if (!textAlignVertical.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" textAlignVertical: '"+textAlignVertical+"' ,";}
- 		     if (!textShadowRadius.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" textShadowRadius: "+textShadowRadius+",";}
- 		     if (!fontVariant.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" fontVariant: '"+fontVariant+"' ,";}
- 		     if (!letterSpacing.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" letterSpacing: "+letterSpacing+",";}
- 	       	 if (!textDecorationColor.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" textDecorationColor: '"+textDecorationColor+"' ,";}
- 	    	 if (!textDecorationStyle.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" textDecorationStyle: '"+textDecorationStyle+"' ,";}
- 	    	 if (!writingDirection.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" writingDirection: '"+writingDirection+"',";}
-
+ 		     if (!borderWidth.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderWidth: "+borderWidth+",";}
+ 		     if (!opacity.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" opacity: "+opacity+",";}
+ 		     if (!alignItems.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" alignItems: '"+alignItems+"',";}
+ 		     if (!alignSelf.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" alignSelf: '"+alignSelf+"',";}
+ 		     if (!bottom.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" bottom: "+bottom+",";}
+ 		     if (!flex.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" flex: "+flex+",";}
+ 		     if (!flexDirection.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" flexDirection: '"+flexDirection+"',";}
+ 		     if (!flexWrap.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" flexWrap: '"+flexWrap+"',";}
+ 		     if (!height.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" height: "+height+",";}
+ 		     if (!justifyContent.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" justifyContent: '"+justifyContent+"',";}
+ 		     if (!left.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" left: "+left+",";}
+ 		     if (!margin.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" margin: "+margin+",";}
+ 		     if (!marginBottom.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" marginBottom: "+marginBottom+" ,";}
+ 		     if (!marginHorizontal.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" marginHorizontal: "+marginHorizontal+" ,";}
+ 		     if (!marginLeft.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" marginLeft: "+marginLeft+" ,";}
+ 		     if (!marginRight.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" marginRight: "+marginRight+",";}
+ 		     if (!marginTop.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" marginTop: "+marginTop+",";}
+ 		     if (!marginVertical.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" marginVertical: "+marginVertical+",";}
+ 		     if (!padding.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" padding: "+padding+",";}
+ 		     if (!paddingBottom.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" paddingBottom: "+paddingBottom+" ,";}
+ 		     if (!paddingHorizontal.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" paddingHorizontal: "+paddingHorizontal+" ,";}
+ 		     if (!paddingRight.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" paddingRight: "+paddingRight+" ,";}
+ 		     if (!paddingTop.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" paddingTop: "+paddingTop+",";}
+ 		     if (!paddingVertical.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" paddingVertical: "+paddingVertical+" ,";}
+ 		     if (!right.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderRightWidth: "+right+",";}
+ 		     if (!width.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderTopColor: "+width+" ,";}
+ 		     
  	    	//On fermme notre StyleSheet
  	    	CodeAajouter=CodeAajouter+" },";
  	    	//on injecte le code
@@ -223,6 +295,7 @@ public static void InjecterStyleSheet(String nomInputStyle,String right,String w
  	    }
 	}
 }
+
 //function
 public static void InjecterFunRemplirTab(String nomfunction,String Table){
 	 for(j=0;j<Controleur.complist.size();j++){
@@ -239,7 +312,7 @@ public static void InjecterFunRemplirTab(String nomfunction,String Table){
 		 			 }
 		 	}
 		 	    //on prépare le code a injecter 	
-	 	    	CodeAajouter=nomfunction+"() { if(";
+	 	    	CodeAajouter=nomfunction+"= () => { if(";
 	 	    	//on ajoute autant de condion que de variable
 	 for(int f=0;f<TableinputList.size();f++){
 		 CodeAajouter=CodeAajouter+" (this.state."+TableinputList.get(f)+" !== '')";
@@ -279,6 +352,21 @@ public static void InjecterAlertFunction(String nomfunction,String MessageAlert)
 	                                           }  
 
 }	
+
+
+public static void InjecterNavigation(String nomfunction,String nomlayout){
+	 for(j=0;j<Controleur.complist.size();j++){
+	        //on recupére la position de la //function
+	 	    if(Controleur.complist.get(j).equalsIgnoreCase("//function")){
+	 	    	
+		 	    //on prépare le code a injecter 	
+	 	    	CodeAajouter=nomfunction+" = () => Actions."+nomlayout+"();";
+	 	    	//on injecte le code
+	 	    	Controleur.complist.add(j+1, CodeAajouter);
+	                                                             }
+	                                           }  
+
+}
 
 }
 

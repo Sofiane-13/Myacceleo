@@ -32,7 +32,7 @@ from
 export
 default
 class
-Layout1
+Layout3
 extends
 Component
 {
@@ -104,7 +104,6 @@ resource-id='
 1
 '>
 <Button title='RetourLayout4' onPress={() => this.l4()} onLongPress={() => this.Retour()} buttonStyle={ styles.View } icon={{name: 'squirrel', type: 'octicon', buttonStyle: styles.View }}  />
-<Button title='TODOlist' onPress={() => this.TODO()} onLongPress={() => this.TodoList()} buttonStyle={ styles.View } icon={{name: 'squirrel', type: 'octicon', buttonStyle: styles.View }}  />
 </Col>
 
 </Row>
@@ -119,7 +118,6 @@ resource-id='
 3
 1
 '>
-<Button title='Accesoire' onPress={() => this.Accessoires()} onLongPress={() => this.Accessoires()} buttonStyle={ styles.View } icon={{name: 'squirrel', type: 'octicon', buttonStyle: styles.View }}  />
 </Col>
 
 </Row>
@@ -134,17 +132,7 @@ resource-id='
 4
 1
 '>
-<Button title='RetourLayout2' onPress={() => this.l2()} onLongPress={() => this.Retour()} buttonStyle={ styles.View } icon={{name: 'squirrel', type: 'octicon', buttonStyle: styles.View }}  />
 <Button title='RetourLayout5' onPress={() => this.l5()} onLongPress={() => this.Retour()} buttonStyle={ styles.View } icon={{name: 'squirrel', type: 'octicon', buttonStyle: styles.View }}  />
-</Col>
-
-
-<Col
-resource-id='
-4
-2
-'>
-<Button title='RetourLayout3' onPress={() => this.l3()} onLongPress={() => this.Retour()} buttonStyle={ styles.View } icon={{name: 'squirrel', type: 'octicon', buttonStyle: styles.View }}  />
 </Col>
 
 </Row>
@@ -166,7 +154,7 @@ Imge: { borderColor: 'green', flexWrap: 'wrap', },
 View: { backgroundColor: 'red', borderBottomColor: 'red', flexWrap: 'wrap', },
 });
 AppRegistry.registerComponent(
-'Layout1'
+'Layout3'
 ,()=>
-Layout1
+Layout3
 );

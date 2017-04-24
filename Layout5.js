@@ -32,7 +32,7 @@ from
 export
 default
 class
-Layout1
+Layout5
 extends
 Component
 {
@@ -46,6 +46,8 @@ this.state
 {
 //Debutdustate
 lestachesSource: new ListView.DataSource({rowHasChanged: (row1, row2)=>row1 !== row2}),
+MotDePass: '',
+Login: '',
 }
 }
 componentDidMount()
@@ -104,7 +106,15 @@ resource-id='
 1
 '>
 <Button title='RetourLayout4' onPress={() => this.l4()} onLongPress={() => this.Retour()} buttonStyle={ styles.View } icon={{name: 'squirrel', type: 'octicon', buttonStyle: styles.View }}  />
-<Button title='TODOlist' onPress={() => this.TODO()} onLongPress={() => this.TodoList()} buttonStyle={ styles.View } icon={{name: 'squirrel', type: 'octicon', buttonStyle: styles.View }}  />
+</Col>
+
+
+<Col
+resource-id='
+2
+2
+'>
+<TextInput style={styles.Dtext} placeholder="Login" onChangeText={(text) => this.setState({Login: text})} value={this.state.Login}/>
 </Col>
 
 </Row>
@@ -119,7 +129,15 @@ resource-id='
 3
 1
 '>
-<Button title='Accesoire' onPress={() => this.Accessoires()} onLongPress={() => this.Accessoires()} buttonStyle={ styles.View } icon={{name: 'squirrel', type: 'octicon', buttonStyle: styles.View }}  />
+</Col>
+
+
+<Col
+resource-id='
+3
+2
+'>
+<TextInput style={styles.Dtext} placeholder="MotDePass" onChangeText={(text) => this.setState({MotDePass: text})} value={this.state.MotDePass}/>
 </Col>
 
 </Row>
@@ -135,7 +153,6 @@ resource-id='
 1
 '>
 <Button title='RetourLayout2' onPress={() => this.l2()} onLongPress={() => this.Retour()} buttonStyle={ styles.View } icon={{name: 'squirrel', type: 'octicon', buttonStyle: styles.View }}  />
-<Button title='RetourLayout5' onPress={() => this.l5()} onLongPress={() => this.Retour()} buttonStyle={ styles.View } icon={{name: 'squirrel', type: 'octicon', buttonStyle: styles.View }}  />
 </Col>
 
 
@@ -144,6 +161,7 @@ resource-id='
 4
 2
 '>
+<Button title='Seconnecter' onPress={() => this.AlerteFace()} onLongPress={() => this.Sauthentifier()} buttonStyle={ styles.View } icon={{name: 'squirrel', type: 'octicon', buttonStyle: styles.View }}  />
 <Button title='RetourLayout3' onPress={() => this.l3()} onLongPress={() => this.Retour()} buttonStyle={ styles.View } icon={{name: 'squirrel', type: 'octicon', buttonStyle: styles.View }}  />
 </Col>
 
@@ -166,7 +184,7 @@ Imge: { borderColor: 'green', flexWrap: 'wrap', },
 View: { backgroundColor: 'red', borderBottomColor: 'red', flexWrap: 'wrap', },
 });
 AppRegistry.registerComponent(
-'Layout1'
+'Layout5'
 ,()=>
-Layout1
+Layout5
 );

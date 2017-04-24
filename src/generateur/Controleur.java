@@ -5,7 +5,8 @@ import java.util.List;
 
 public class Controleur {
 	static int i,j,f;
-	static String Codeainjecter,compocode;
+	static String backgroundColor,alignItems,overflow,TextShadowRadius,TextShadowColor,TextDecorationLine,color,TextAlign,fontFamily,borderBottomColor,alignSelf,borderLeftColo,flexDirection,height ,justifyContent;
+	static String Codeainjecter,compocode,nomlayoutnav;
 	static String nomlayout,titrelayout;
 	static String nombouton,iconright,raisedlarge,Style,onclique,nomfunction,onlongclique,icon,iconbouton,utilise,nomlabel,MessageAlert;
     static String nomInputStyle,heigh,padding,marginRight,nominput,flex,fontSize,borderWidth,borderColor,borderRadius,FlexDirection,JustifyContent,borderRadium;
@@ -29,7 +30,7 @@ public class Controleur {
 		tabindex=indexandroid.split(" ");
 		 for(j=0;j<tabindex.length;j++){
 			 indexlist.add(tabindex[j]);
-			// System.out.println(tabindex[j]);
+			
 		    }
 		
 	
@@ -41,7 +42,7 @@ public class Controleur {
     		 tabcom=squellettecomp.split(" "); 
     		 for(j=0;j<tabcom.length;j++){
     			 complist.add(tabcom[j]);
-    		//	 System.out.println("Num "+j+" "+tabcom[j]);
+    		
     		    }
     		 
     		 //on récupére le nom et le titre du layout
@@ -59,11 +60,7 @@ public class Controleur {
     			indexlist.add(j+1,Codeainjecter); 
     			}
     		    }
-    		 //affichage index
-    		// System.out.println("affichage index-------------------------------------------");
-    		 for(j=0;j<indexlist.size();j++){
-    		//	 System.out.println(indexlist.get(j));
-    		    }
+    	
     		 
     		 
     		
@@ -94,7 +91,6 @@ public class Controleur {
     				 //si c'est un boutton
     				 if(TraiteurFichier.ListdeslignesModel.get(j-1).equalsIgnoreCase("Bouton")){
     					 //on ajoute dans cellule la ligne et la col
-    					// System.out.println("------------------------------------------");
     					 ligne=TraiteurFichier.ListdeslignesModel.get(j+14);
     					 colonne=TraiteurFichier.ListdeslignesModel.get(j+16);
     					 SqueletteVue.RemplirCellue(ligne, colonne);
@@ -108,8 +104,9 @@ public class Controleur {
     					 SqueletteVue.RemplirCellue(ligne, colonne);
     				 }
     				 if(TraiteurFichier.ListdeslignesModel.get(j-1).equalsIgnoreCase("Input")){
-    					 ligne=TraiteurFichier.ListdeslignesModel.get(j+5);
-    					 colonne=TraiteurFichier.ListdeslignesModel.get(j+7);
+    					 ligne=TraiteurFichier.ListdeslignesModel.get(j+4);
+    					 colonne=TraiteurFichier.ListdeslignesModel.get(j+6);
+    					
     					 SqueletteVue.RemplirCellue(ligne, colonne);
     				 }
     				 
@@ -123,10 +120,7 @@ public class Controleur {
    			
    			 //avec les donnée de la cellule on construit notre vue
    			SqueletteVue.PreparerSquelette();
-   			for(j=0;j<complist.size();j++){
-   			 
-   			// System.out.println("fin num "+j+" "+complist.get(j));
-   		    }
+   		
    			
    			//on split la liste
    			String [] tabcom = null;
@@ -138,7 +132,6 @@ public class Controleur {
    			complist.clear();
    			for(j=1;j<tabcom.length;j++){
    			 complist.add(tabcom[j]);
-   		//	 System.out.println("Num "+j+" "+tabcom[j]);
    		    }
    		    //on recupére les composant du layout une deuxiéme fois afin d'injecter le code
    		//on recupére les composent de ce layout un par un pour une deuxiéme fois afin d'injecter le code
@@ -151,7 +144,6 @@ public class Controleur {
  	    				 
  	    				 //si c'est une Boutton
  	    				 if(TraiteurFichier.ListdeslignesModel.get(j-1).equalsIgnoreCase("Bouton")){
- 	    				//	 System.out.println(TraiteurFichier.ListdeslignesModel.get(j-1)+"///////////////////////////////////////////////////////////////");
  	    					 //on recupére les information du boutton
  	    					nombouton=TraiteurFichier.ListdeslignesModel.get(j);
  	    			    	onclique=TraiteurFichier.ListdeslignesModel.get(j+4);
@@ -162,18 +154,18 @@ public class Controleur {
  	    			    	iconright=TraiteurFichier.ListdeslignesModel.get(j+12);
  	    			    	ligne=TraiteurFichier.ListdeslignesModel.get(j+14);
  	    		 	    	colonne=TraiteurFichier.ListdeslignesModel.get(j+16);
- 	    		 	    //	 System.out.println(ligne+"     "+colonne);
- 	    			    	//appeller injecteur	
+ 	    		 	
+ 	    		 	    	//appeller injecteur	
  	    		 		   
  	    					Injecteur.InjecterBouton(nombouton, onclique, onlongclique, icon, Style, raisedlarge, iconright, ligne, colonne);
  	    				 }
  	    				if(TraiteurFichier.ListdeslignesModel.get(j-1).equalsIgnoreCase("Input")){
  	    					nominput=TraiteurFichier.ListdeslignesModel.get(j);
- 	    		 	    	Style=TraiteurFichier.ListdeslignesModel.get(j+3);
- 	    		 	    	ligne=TraiteurFichier.ListdeslignesModel.get(j+5);
- 	    		 	    	colonne=TraiteurFichier.ListdeslignesModel.get(j+7);
- 	    		 	    	//on appelle l'injecteur 
- 	    		 	    	System.out.println(TraiteurFichier.ListdeslignesModel.get(j-1)+" "+TraiteurFichier.ListdeslignesModel.get(j)+" "+TraiteurFichier.ListdeslignesModel.get(j+1)+" "+TraiteurFichier.ListdeslignesModel.get(j+2)+" "+TraiteurFichier.ListdeslignesModel.get(j+3)+" "+TraiteurFichier.ListdeslignesModel.get(j+4)+" "+TraiteurFichier.ListdeslignesModel.get(j+5)+" "+TraiteurFichier.ListdeslignesModel.get(j+6)+" "+TraiteurFichier.ListdeslignesModel.get(j+7));
+ 	    					
+ 	    		 	    	Style=TraiteurFichier.ListdeslignesModel.get(j+2);
+ 	    		 	    	ligne=TraiteurFichier.ListdeslignesModel.get(j+4);
+ 	    		 	    	colonne=TraiteurFichier.ListdeslignesModel.get(j+6);
+ 	    		 	    	
  	    		 	    	Injecteur.InjecterInput(nominput,Style,ligne,colonne);
  	    				}
  	    				if(TraiteurFichier.ListdeslignesModel.get(j-1).equalsIgnoreCase("listView")){
@@ -213,6 +205,137 @@ public class Controleur {
  		 	    	MessageAlert=TraiteurFichier.ListdeslignesModel.get(f+3);
  		 	    	Injecteur.InjecterAlertFunction(nomfunction,MessageAlert);
  		    	 }
+ 		    	if(TraiteurFichier.ListdeslignesModel.get(f).equalsIgnoreCase("Navigate")){
+ 		    		//on recupére les informations de la function
+ 		 	    	nomfunction=TraiteurFichier.ListdeslignesModel.get(f+1);
+ 		 	    	nomlayoutnav=TraiteurFichier.ListdeslignesModel.get(f+3);
+ 		 	    	Injecteur.InjecterNavigation(nomfunction,nomlayoutnav);
+ 		    	 }
+ 		    	if(TraiteurFichier.ListdeslignesModel.get(f).equalsIgnoreCase("StyleText")){
+ 		    		
+ 		    		nomInputStyle=TraiteurFichier.ListdeslignesModel.get(f+1);
+ 		    		color=TraiteurFichier.ListdeslignesModel.get(f+3);
+ 		    		fontFamily=TraiteurFichier.ListdeslignesModel.get(f+5);
+ 		    		fontSize=TraiteurFichier.ListdeslignesModel.get(f+7);
+ 		    		fontStyle=TraiteurFichier.ListdeslignesModel.get(f+9);
+ 		    		fontWeight=TraiteurFichier.ListdeslignesModel.get(f+11);
+ 		    		lineHeight=TraiteurFichier.ListdeslignesModel.get(f+13);
+ 		    		TextAlign=TraiteurFichier.ListdeslignesModel.get(f+15);
+ 		    		TextDecorationLine=TraiteurFichier.ListdeslignesModel.get(f+17);
+ 		    		TextShadowColor=TraiteurFichier.ListdeslignesModel.get(f+19);
+ 		    		TextShadowRadius=TraiteurFichier.ListdeslignesModel.get(f+21);
+ 		    		backfaceVisibility=TraiteurFichier.ListdeslignesModel.get(f+23);
+ 		    		backgroundColor=TraiteurFichier.ListdeslignesModel.get(f+25);
+ 		    		borderBottomColor=TraiteurFichier.ListdeslignesModel.get(f+27);
+ 		    		borderBottomLeftRadius=TraiteurFichier.ListdeslignesModel.get(f+29);
+ 		    		borderBottomRightRadius=TraiteurFichier.ListdeslignesModel.get(f+31);
+ 		    		borderBottomWidth=TraiteurFichier.ListdeslignesModel.get(f+33);
+ 		    		borderColor=TraiteurFichier.ListdeslignesModel.get(f+35);
+ 		    		borderLeftColor=TraiteurFichier.ListdeslignesModel.get(f+37);
+ 		    		borderLeftWidth=TraiteurFichier.ListdeslignesModel.get(f+39);
+ 		    		borderRadius=TraiteurFichier.ListdeslignesModel.get(f+41);
+ 		    		borderRightColor=TraiteurFichier.ListdeslignesModel.get(f+43);
+ 		    		borderRightWidth=TraiteurFichier.ListdeslignesModel.get(f+45);
+ 		    		borderStyle=TraiteurFichier.ListdeslignesModel.get(f+47);
+ 		    		borderTopColor=TraiteurFichier.ListdeslignesModel.get(f+49);
+ 		    		borderTopLeftRadius=TraiteurFichier.ListdeslignesModel.get(f+51);
+ 		    		borderTopRightRadius=TraiteurFichier.ListdeslignesModel.get(f+53);
+ 		    		borderTopWidth=TraiteurFichier.ListdeslignesModel.get(f+55);
+ 		    		borderWidth=TraiteurFichier.ListdeslignesModel.get(f+57);
+ 		    		opacity=TraiteurFichier.ListdeslignesModel.get(f+59);
+ 		    		Injecteur.InjecterStyleText(nomInputStyle,color,fontFamily,fontSize,fontStyle,fontWeight,lineHeight,TextAlign,TextDecorationLine,TextShadowColor,TextShadowRadius,backfaceVisibility,backgroundColor,borderBottomColor,borderBottomLeftRadius,borderBottomRightRadius,borderBottomWidth,borderColor,borderLeftColor,borderLeftWidth,borderRadius,borderRightColor,borderRightWidth,borderStyle,borderTopColor,borderTopLeftRadius,borderTopRightRadius,borderTopWidth,borderWidth,opacity);
+ 		    	}
+ 		    	if(TraiteurFichier.ListdeslignesModel.get(f).equalsIgnoreCase("StyleView")){
+ 		    		//on recupére les informations du stylView
+ 		    	nomInputStyle=TraiteurFichier.ListdeslignesModel.get(f+1);
+ 		    	backfaceVisibility=TraiteurFichier.ListdeslignesModel.get(f+3);
+ 		    	backgroundColor = TraiteurFichier.ListdeslignesModel.get(f+5);
+ 		    	borderBottomColor=TraiteurFichier.ListdeslignesModel.get(f+7);
+ 		    	borderBottomLeftRadius=TraiteurFichier.ListdeslignesModel.get(f+9);
+ 		    	borderBottomRightRadius=TraiteurFichier.ListdeslignesModel.get(f+11);
+ 		    	borderBottomWidth=TraiteurFichier.ListdeslignesModel.get(f+13);
+ 		    	borderColor=TraiteurFichier.ListdeslignesModel.get(f+15);
+ 		    	borderLeftColor=TraiteurFichier.ListdeslignesModel.get(f+17);
+ 		    	borderLeftWidth=TraiteurFichier.ListdeslignesModel.get(f+19);
+ 		    	borderRadius=TraiteurFichier.ListdeslignesModel.get(f+21);
+ 		    	borderRightColor=TraiteurFichier.ListdeslignesModel.get(f+23);
+ 		    	borderRightWidth=TraiteurFichier.ListdeslignesModel.get(f+25);
+ 		    	borderStyle=TraiteurFichier.ListdeslignesModel.get(f+27);
+ 		    	borderTopColor=TraiteurFichier.ListdeslignesModel.get(f+29);
+ 		    	borderTopLeftRadius=TraiteurFichier.ListdeslignesModel.get(f+31);
+ 		    	borderTopRightRadius=TraiteurFichier.ListdeslignesModel.get(f+33);
+ 		    	borderTopWidth=TraiteurFichier.ListdeslignesModel.get(f+35);
+ 		    	borderWidth=TraiteurFichier.ListdeslignesModel.get(f+37);
+ 		    	opacity=TraiteurFichier.ListdeslignesModel.get(f+39);
+ 		    	alignItems=TraiteurFichier.ListdeslignesModel.get(f+41);
+ 		    	alignSelf=TraiteurFichier.ListdeslignesModel.get(f+43);
+ 		      	bottom=TraiteurFichier.ListdeslignesModel.get(f+45);
+ 		    	flex=TraiteurFichier.ListdeslignesModel.get(f+47);
+ 		    	flexDirection=TraiteurFichier.ListdeslignesModel.get(f+49);
+ 		    	flexWrap=TraiteurFichier.ListdeslignesModel.get(f+51);
+ 		    	height=TraiteurFichier.ListdeslignesModel.get(f+53);
+ 		    	justifyContent=TraiteurFichier.ListdeslignesModel.get(f+55);
+ 		    	left=TraiteurFichier.ListdeslignesModel.get(f+57);
+ 		    	margin=TraiteurFichier.ListdeslignesModel.get(f+59);
+ 		    	marginBottom=TraiteurFichier.ListdeslignesModel.get(f+61);
+ 		    	marginHorizontal=TraiteurFichier.ListdeslignesModel.get(f+63);
+ 		    	marginLeft=TraiteurFichier.ListdeslignesModel.get(f+65);
+ 		    	marginRight=TraiteurFichier.ListdeslignesModel.get(f+67);
+ 		    	marginTop=TraiteurFichier.ListdeslignesModel.get(f+69);
+ 		    	marginVertical=TraiteurFichier.ListdeslignesModel.get(f+71);
+ 		    	padding=TraiteurFichier.ListdeslignesModel.get(f+73);
+ 		    	paddingBottom=TraiteurFichier.ListdeslignesModel.get(f+75);
+ 		    	paddingHorizontal=TraiteurFichier.ListdeslignesModel.get(f+77);
+ 		    	paddingRight=TraiteurFichier.ListdeslignesModel.get(f+79);
+ 		    	paddingTop=TraiteurFichier.ListdeslignesModel.get(f+81);
+ 		    	paddingVertical=TraiteurFichier.ListdeslignesModel.get(f+83);
+ 		    	right=TraiteurFichier.ListdeslignesModel.get(f+85);
+ 		    	width=TraiteurFichier.ListdeslignesModel.get(f+87);
+ 		    
+ 		    	
+ 		    	Injecteur.InjecterStyleView(nomInputStyle,backfaceVisibility,backgroundColor,borderBottomColor,borderBottomLeftRadius,borderBottomRightRadius,borderBottomWidth,borderColor,borderLeftColor,borderLeftWidth,borderRadius,borderRightColor,borderRightWidth,borderStyle,borderTopColor,borderTopLeftRadius,borderTopRightRadius,borderTopWidth,borderWidth,opacity,alignItems,alignSelf,bottom,flex,flexDirection,flexWrap,height,justifyContent,left,margin,marginBottom,marginHorizontal,marginLeft,marginRight,marginTop,marginVertical,padding,paddingBottom,paddingHorizontal,paddingRight,paddingTop,paddingVertical,right,width);
+ 		    	 }
+ 		    	if(TraiteurFichier.ListdeslignesModel.get(f).equalsIgnoreCase("StyleImage")){
+ 		    		
+ 		    		nomInputStyle=TraiteurFichier.ListdeslignesModel.get(f+1);
+ 		    		backfaceVisibility=TraiteurFichier.ListdeslignesModel.get(f+3);
+ 		    		backgroundColor=TraiteurFichier.ListdeslignesModel.get(f+5);
+ 		    		borderBottomLeftRadius=TraiteurFichier.ListdeslignesModel.get(f+7);
+ 		    		borderBottomRightRadius=TraiteurFichier.ListdeslignesModel.get(f+9);
+ 		    		borderColor=TraiteurFichier.ListdeslignesModel.get(f+11);
+ 		    		borderRadius=TraiteurFichier.ListdeslignesModel.get(f+13);
+ 		    		borderTopLeftRadius=TraiteurFichier.ListdeslignesModel.get(f+15);
+ 		    		borderTopRightRadius=TraiteurFichier.ListdeslignesModel.get(f+17);
+ 		    		borderWidth=TraiteurFichier.ListdeslignesModel.get(f+19);
+ 		    		opacity=TraiteurFichier.ListdeslignesModel.get(f+21);
+ 		    		overflow=TraiteurFichier.ListdeslignesModel.get(f+23);
+ 		    		alignItems=TraiteurFichier.ListdeslignesModel.get(f+25);
+ 		    		alignSelf=TraiteurFichier.ListdeslignesModel.get(f+27);
+ 		    		bottom=TraiteurFichier.ListdeslignesModel.get(f+29);
+ 		    		flex=TraiteurFichier.ListdeslignesModel.get(f+31);
+ 		    		justifyContent=TraiteurFichier.ListdeslignesModel.get(f+33);
+ 		    		left=TraiteurFichier.ListdeslignesModel.get(f+35);
+ 		    		margin=TraiteurFichier.ListdeslignesModel.get(f+37);
+ 		    		marginBottom=TraiteurFichier.ListdeslignesModel.get(f+39);
+ 		    		marginHorizontal=TraiteurFichier.ListdeslignesModel.get(f+41);
+ 		    		marginLeft=TraiteurFichier.ListdeslignesModel.get(f+43);
+ 		    		marginRight=TraiteurFichier.ListdeslignesModel.get(f+45);
+ 		    		marginTop=TraiteurFichier.ListdeslignesModel.get(f+47);
+ 		    		marginVertical=TraiteurFichier.ListdeslignesModel.get(f+49);
+ 		    		padding=TraiteurFichier.ListdeslignesModel.get(f+51);
+ 		    		paddingBottom=TraiteurFichier.ListdeslignesModel.get(f+53);
+ 		    		paddingHorizontal=TraiteurFichier.ListdeslignesModel.get(f+55);
+ 		    		paddingRight=TraiteurFichier.ListdeslignesModel.get(f+57);
+ 		    		paddingTop=TraiteurFichier.ListdeslignesModel.get(f+59);
+ 		    		paddingVertical=TraiteurFichier.ListdeslignesModel.get(f+61);
+ 		    		right=TraiteurFichier.ListdeslignesModel.get(f+63);
+ 		    		width=TraiteurFichier.ListdeslignesModel.get(f+65);
+ 		    		flexDirection=TraiteurFichier.ListdeslignesModel.get(f+67);
+ 		    		flexWrap=TraiteurFichier.ListdeslignesModel.get(f+69);
+ 		    		height=TraiteurFichier.ListdeslignesModel.get(f+71);
+ 		    		Injecteur.InjecterStyleImage(nomInputStyle,backfaceVisibility,backgroundColor,borderBottomLeftRadius,borderBottomRightRadius,borderColor,borderRadius,borderTopLeftRadius,borderTopRightRadius,borderWidth,opacity,overflow,alignItems,alignSelf,bottom,flex,justifyContent,left,margin,marginBottom,marginHorizontal,marginLeft,marginRight,marginTop,marginVertical,padding,paddingBottom,paddingHorizontal,paddingRight,paddingTop,paddingVertical,right,width,flexDirection,flexWrap,height);
+ 		    	}
+ 		    	
  		    	 }
    			//La on devra ecrire le composant avant d'entamer un  autre
    			TraiteurFichier.EcritureComposant(nomlayout);
@@ -221,7 +344,7 @@ public class Controleur {
    		  tabcom = null;
    		  complist.clear();
    		for(j=0;j<complist.size();j++){
-			//System.out.println("--"+complist.get(j));
+			
 		 }
     	 }
 
@@ -235,72 +358,7 @@ public class Controleur {
 //    		    			Injecteur.InjecterLabel(NomLabel,stylelabel,contenu);
 //    		    	 }
 
-//	  //on test si il y'a un Stylesheet
-//	         else if (TraiteurFichier.ListdeslignesModel.get(i).equalsIgnoreCase("StyleSheet")) {
-//	        	 nomInputStyle=TraiteurFichier.ListdeslignesModel.get(i+1);
-//	        	 right=TraiteurFichier.ListdeslignesModel.get(i+3);
-//	        	 width=TraiteurFichier.ListdeslignesModel.get(i+5);
-//	        	 heigh=TraiteurFichier.ListdeslignesModel.get(i+7);
-//	        	 maxheigh=TraiteurFichier.ListdeslignesModel.get(i+9);
-//	        	 maxWidth=TraiteurFichier.ListdeslignesModel.get(i+11);
-//	        	 minHeight=TraiteurFichier.ListdeslignesModel.get(i+13);
-//	        	 minWidth=TraiteurFichier.ListdeslignesModel.get(i+15);
-//	        	 left=TraiteurFichier.ListdeslignesModel.get(i+17);
-//	        	 Flex=TraiteurFichier.ListdeslignesModel.get(i+19);
-//	        	 flexWrap=TraiteurFichier.ListdeslignesModel.get(i+21);
-//	        	 JustifyContent=TraiteurFichier.ListdeslignesModel.get(i+23);
-//	        	 BorderRadium=TraiteurFichier.ListdeslignesModel.get(i+25);
-//	        	 position=TraiteurFichier.ListdeslignesModel.get(i+27);
-//	        	 padding=TraiteurFichier.ListdeslignesModel.get(i+29);
-//	        	 paddingBottom=TraiteurFichier.ListdeslignesModel.get(i+31);
-//	        	 paddingHorizontal=TraiteurFichier.ListdeslignesModel.get(i+33);
-//	        	 paddingLeft=TraiteurFichier.ListdeslignesModel.get(i+35);
-//	        	 paddingRight=TraiteurFichier.ListdeslignesModel.get(i+37);
-//	        	 paddingTop=TraiteurFichier.ListdeslignesModel.get(i+39);
-//	        	 paddingVertical=TraiteurFichier.ListdeslignesModel.get(i+41);
-//	        	 opacity=TraiteurFichier.ListdeslignesModel.get(i+43);
-//	        	 bottom=TraiteurFichier.ListdeslignesModel.get(i+45);
-//	        	 margin=TraiteurFichier.ListdeslignesModel.get(i+47);
-//	        	 marginBottom=TraiteurFichier.ListdeslignesModel.get(i+49);
-//	        	 marginHorizontal=TraiteurFichier.ListdeslignesModel.get(i+51);
-//	        	 marginLeft=TraiteurFichier.ListdeslignesModel.get(i+53);
-//	        	 marginTop=TraiteurFichier.ListdeslignesModel.get(i+55);
-//	        	 marginVertical=TraiteurFichier.ListdeslignesModel.get(i+57);
-//	        	 marginRight=TraiteurFichier.ListdeslignesModel.get(i+59);
-//	        	 fontSize=TraiteurFichier.ListdeslignesModel.get(i+61);
-//	        	 fontStyle=TraiteurFichier.ListdeslignesModel.get(i+63);
-//	        	 fontWeight=TraiteurFichier.ListdeslignesModel.get(i+65);
-//	        	 borderStyle=TraiteurFichier.ListdeslignesModel.get(i+67);
-//	        	 borderBottomLeftRadius=TraiteurFichier.ListdeslignesModel.get(i+69);
-//	        	 borderBottomRightRadius=TraiteurFichier.ListdeslignesModel.get(i+71);
-//	        	 borderBottomWidth=TraiteurFichier.ListdeslignesModel.get(i+73);
-//	        	 borderWidth=TraiteurFichier.ListdeslignesModel.get(i+75);
-//	        	 borderColor=TraiteurFichier.ListdeslignesModel.get(i+78);
-//	        	 borderLeftColor=TraiteurFichier.ListdeslignesModel.get(i+81);
-//	        	 borderLeftWidth=TraiteurFichier.ListdeslignesModel.get(i+83);
-//	        	 borderRadius=TraiteurFichier.ListdeslignesModel.get(i+85);
-//	        	 borderRightColor = TraiteurFichier.ListdeslignesModel.get(i+88);
-//	        	 borderRightWidth = TraiteurFichier.ListdeslignesModel.get(i+90);
-//	        	 borderTopColor=TraiteurFichier.ListdeslignesModel.get(i+93);
-//	        	 borderTopLeftRadius=TraiteurFichier.ListdeslignesModel.get(i+95);
-//	        	 borderTopRightRadius=TraiteurFichier.ListdeslignesModel.get(i+96);
-//	        	 borderTopWidth=TraiteurFichier.ListdeslignesModel.get(i+99);
-//	        	 backfaceVisibility=TraiteurFichier.ListdeslignesModel.get(i+101);
-//	        	 BackGroundColor=TraiteurFichier.ListdeslignesModel.get(i+104);
-//	        	 lineHeight=TraiteurFichier.ListdeslignesModel.get(i+106);
-//	        	 textAlign=TraiteurFichier.ListdeslignesModel.get(i+108);
-//	        	 textDecorationLine=TraiteurFichier.ListdeslignesModel.get(i+110);
-//	        	 textShadowColor=TraiteurFichier.ListdeslignesModel.get(i+113);
-//	        	 textAlignVertical=TraiteurFichier.ListdeslignesModel.get(i+115);
-//	        	 textShadowRadius=TraiteurFichier.ListdeslignesModel.get(i+117);
-//	        	 fontVariant=TraiteurFichier.ListdeslignesModel.get(i+119);
-//	        	 letterSpacing=TraiteurFichier.ListdeslignesModel.get(i+121);
-//	        	 textDecorationColor=TraiteurFichier.ListdeslignesModel.get(i+124);
-//	        	 textDecorationStyle=TraiteurFichier.ListdeslignesModel.get(i+126);
-//	        	 writingDirection=TraiteurFichier.ListdeslignesModel.get(i+128);
-//	        	 
-//	        	 Injecteur.InjecterStyleSheet(nomInputStyle,right,width,maxheigh,maxWidth,minHeight,minWidth,left,Flex,flexWrap,JustifyContent,BorderRadium,position,padding,paddingBottom,paddingHorizontal,paddingLeft,paddingRight,paddingTop,paddingVertical,opacity,bottom,margin,marginBottom,marginHorizontal,marginLeft,marginTop,marginVertical,marginRight,fontSize,fontStyle,fontWeight,borderStyle,borderBottomLeftRadius,borderBottomRightRadius,borderBottomWidth,borderWidth,borderColor,borderLeftColor,borderLeftWidth,borderRadius,borderRightColor,borderRightWidth,borderTopColor,borderTopLeftRadius,borderTopRightRadius,borderTopWidth,backfaceVisibility,BackGroundColor,lineHeight,textAlign,textDecorationLine,textShadowColor,textAlignVertical,textShadowRadius,fontVariant,letterSpacing,textDecorationColor,textDecorationStyle,writingDirection);
-//	         }
+
 
     	
                                              }

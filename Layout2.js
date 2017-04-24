@@ -32,7 +32,7 @@ from
 export
 default
 class
-Layout1
+Layout2
 extends
 Component
 {
@@ -46,6 +46,8 @@ this.state
 {
 //Debutdustate
 lestachesSource: new ListView.DataSource({rowHasChanged: (row1, row2)=>row1 !== row2}),
+Input2: '',
+Input1: '',
 }
 }
 componentDidMount()
@@ -69,6 +71,8 @@ retour = () => Actions.Layout2();
  AlerteTable = () => { Alert.alert('AttendezSVP'); };
 VERSER= () => { if( (this.state.Input2 !== '') && (this.state.Input1 !== '')) { this.lestachesitemsRef.push({  Input2: this.state.Input2 , Input1: this.state.Input1 , });  this.setState({ Input2 : '' }) , this.setState({ Input1 : '' })   } } 
 TODO = () => Actions.Layout2();
+renderRowlestaches(rowData) { return ( <TouchableHighlight onPress={() => this.removelestaches(rowData)}><View ><Text >Input2 : {rowData.text.Input2}</Text><Text >Input1 : {rowData.text.Input1}</Text></View></TouchableHighlight>  ); }
+removelestaches(rowData) {  Alert.alert( ' Bravo ligne supprimée !');   this.lestachesitemsRef.child(rowData.id).remove();   }
 render()
 {
 //Vue
@@ -91,6 +95,15 @@ resource-id='
 '>
 </Col>
 
+
+<Col
+resource-id='
+1
+2
+'>
+<TextInput style={styles.Dtext} placeholder="Input1" onChangeText={(text) => this.setState({Input1: text})} value={this.state.Input1}/>
+</Col>
+
 </Row>
 
 
@@ -103,8 +116,15 @@ resource-id='
 2
 1
 '>
-<Button title='RetourLayout4' onPress={() => this.l4()} onLongPress={() => this.Retour()} buttonStyle={ styles.View } icon={{name: 'squirrel', type: 'octicon', buttonStyle: styles.View }}  />
-<Button title='TODOlist' onPress={() => this.TODO()} onLongPress={() => this.TodoList()} buttonStyle={ styles.View } icon={{name: 'squirrel', type: 'octicon', buttonStyle: styles.View }}  />
+</Col>
+
+
+<Col
+resource-id='
+2
+2
+'>
+<TextInput style={styles.Dtext} placeholder="Input2" onChangeText={(text) => this.setState({Input2: text})} value={this.state.Input2}/>
 </Col>
 
 </Row>
@@ -119,7 +139,6 @@ resource-id='
 3
 1
 '>
-<Button title='Accesoire' onPress={() => this.Accessoires()} onLongPress={() => this.Accessoires()} buttonStyle={ styles.View } icon={{name: 'squirrel', type: 'octicon', buttonStyle: styles.View }}  />
 </Col>
 
 </Row>
@@ -135,7 +154,6 @@ resource-id='
 1
 '>
 <Button title='RetourLayout2' onPress={() => this.l2()} onLongPress={() => this.Retour()} buttonStyle={ styles.View } icon={{name: 'squirrel', type: 'octicon', buttonStyle: styles.View }}  />
-<Button title='RetourLayout5' onPress={() => this.l5()} onLongPress={() => this.Retour()} buttonStyle={ styles.View } icon={{name: 'squirrel', type: 'octicon', buttonStyle: styles.View }}  />
 </Col>
 
 
@@ -144,7 +162,22 @@ resource-id='
 4
 2
 '>
-<Button title='RetourLayout3' onPress={() => this.l3()} onLongPress={() => this.Retour()} buttonStyle={ styles.View } icon={{name: 'squirrel', type: 'octicon', buttonStyle: styles.View }}  />
+<Button raised title='AddTache' onPress={() => this.VERSER()} onLongPress={() => this.AlerteTable()} buttonStyle={ styles.View } icon={{name: 'squirrel', type: 'octicon', buttonStyle: styles.View }}  />
+</Col>
+
+</Row>
+
+
+<Row
+resource-id='
+5
+'>
+<Col
+resource-id='
+5
+1
+'>
+<ListView dataSource={this.state.lestachesSource} renderRow={this.renderRowlestaches.bind(this)} enableEmptySections={true} />
 </Col>
 
 </Row>
@@ -164,9 +197,10 @@ StyleSheet.create({
 Dtext: { color: 'green' , fontFamily: 'h1', fontStyle: 'normal', fontWeight: 'normal', textAlign: 'auto', },
 Imge: { borderColor: 'green', flexWrap: 'wrap', },
 View: { backgroundColor: 'red', borderBottomColor: 'red', flexWrap: 'wrap', },
+ row: { flexDirection: 'row', padding: 12, height: 44 }, separator: { height: 1, backgroundColor: '#CCCCCC', },
 });
 AppRegistry.registerComponent(
-'Layout1'
+'Layout2'
 ,()=>
-Layout1
+Layout2
 );
