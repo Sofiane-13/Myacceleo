@@ -7,7 +7,7 @@ public class Injecteur {
 	static String CodeAajouter="",typeicon,Styleicon;
 	static int i,j,f;
 	public static  List<String>	TableinputList=new ArrayList<String>();
-//Coté Model
+//Coté Model------------------------------------------------------------------------------------------------
 
 public static void InjecterTable(String Table){
 	for(j=0;j<Controleur.complist.size();j++){
@@ -28,7 +28,7 @@ public static void InjecterTable(String Table){
 	}
 }
 	
-//Coté vue
+//Coté vue-----------------------------------------------------------------------------
 public static void InjecterLabel( String NomLabel, String stylelabel, String contenu,String ligne,String colonne){
 	 for(j=0;j<Controleur.complist.size();j++){
 		  //on recupére la position du <View>
@@ -64,7 +64,6 @@ public static void InjecterBouton(String nombouton,String onclique,String onlong
 	        	CodeAajouter=CodeAajouter+ " title='"+nombouton+"' onPress={() => this."+onclique+"()} onLongPress={() => this."+onlongclique+"()} buttonStyle={ styles."+Style+" } icon={{name: 'squirrel', type: '"+typeicon+"', buttonStyle: styles."+Styleicon+" }}  />";
 	        	 
 	        	//on injecte le code
-	        	 System.out.println("\n ***********************************************************"+CodeAajouter);
 
 	        	Controleur.complist.add(j+3,CodeAajouter); 
 	                                                             }
@@ -309,8 +308,8 @@ public static void InjecterStyleImage(String nomInputStyle,String backfaceVisibi
  	    }
 	    }
 }
-//coté StyleSheet
-//debut 
+//coté StyleSheet--------------------------------------------------------------------
+ 
 public static void InjecterStyleView(String nomInputStyle,String backfaceVisibility,String backgroundColor,String borderBottomColor,String borderBottomLeftRadius,String borderBottomRightRadius,String borderBottomWidth,String borderColor,String borderLeftColor,String borderLeftWidth,String borderRadius,String borderRightColor,String borderRightWidth,String borderStyle,String borderTopColor,String borderTopLeftRadius,String borderTopRightRadius,String borderTopWidth,String borderWidth,String opacity,String alignItems,String alignSelf,String bottom,String flex,String flexDirection,String flexWrap,String height,String justifyContent,String left,String margin,String marginBottom,String marginHorizontal,String marginLeft,String marginRight,String marginTop,String marginVertical,String padding,String paddingBottom,String paddingHorizontal,String paddingRight,String paddingTop,String paddingVertical,String right,String width){
 	for(j=0;j<Controleur.complist.size();j++){
 		 //on recupére la position du //Stylesheet
@@ -361,7 +360,7 @@ public static void InjecterStyleView(String nomInputStyle,String backfaceVisibil
  		     if (!right.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderRightWidth: "+right+",";}
  		     if (!width.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderTopColor: "+width+" ,";}
  		     
- 	    	//On fermme notre StyleSheet
+ 	    	//On ferme notre StyleSheet
  	    	CodeAajouter=CodeAajouter+" },";
  	    	//on injecte le code
  	    	Controleur.complist.add(j+1, CodeAajouter);
@@ -370,7 +369,7 @@ public static void InjecterStyleView(String nomInputStyle,String backfaceVisibil
 	}
 }
 
-//function
+//function-------------------------------------------------------------------------
 public static void InjecterFunRemplirTab(String nomfunction,String Table){
 	 for(j=0;j<Controleur.complist.size();j++){
 	        //on recupére la position de la //function

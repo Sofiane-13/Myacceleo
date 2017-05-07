@@ -24,7 +24,7 @@ La vue : { listView listed use  : Infor ; ligne : 2 ;
 colonne : 1 ; Style  : stylev ; End. }
 
  La vue : { Audio Audio1 UrlTel  : urll
-; Textbouton : chanson ; ligne : 1 ; colone : 1 ; StyleA  : stylev ; End. }
+; Textbouton : chanson ; ligne : 1 ; colone : 1 ; StyleA  :  ; End. }
 
 La vue : { Accelerometer Accelerom1 ligne : 2 ; colone : 1 ; Style  : stylet ;
 End. } La vue : { ActivityIndicator activityIndi1 size  : small ; ligne : 3 ;
@@ -38,14 +38,7 @@ UneImag UrlImage  : uuui ; ligne : 2 ; colone : 2 ; Style  : ; End. }
 La vue : { MapView mapp latitude  : 125.6 ; longitude : 12.5 ; latitudeDelta :
 12.3 ; longitudeDelta : 125.9 ; ligne : 2 ; colone : 3 ; End. }
 
- La vue : { Svg
-dssq height  : none ; width : none ; ligne : 3
-; colone : 1 ; Circle : ciiie ; Rect : rect ;  End. }
 
- La vue : { circle ciiie Cx  : 5 ; Cy : 4 ; R : 6 ;
-StrokeWidth : 8 ; Stroke : #ffe4b5 ; Fill : #ff0000 ; End. } La vue : {
-rectangle rect X  : 5 ; Y : 4 ; Width : 7 ; Height : 5 ; StrokeWidth : 4 ;
-Stroke : #d3d3d3 ; Fill : #008000 ; End. }
 
 Le controleur : { AlertFunction uneAl : Message : succes ; End. }
 

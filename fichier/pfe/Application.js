@@ -41,7 +41,7 @@ constructor(props)
 super(props);
 console.disableYellowBox=true;
 //Constructeur
-this.InforitemsRef = getDatabase().ref('3n62l96iqpo752udpt8fihhf0t/Infor'); this.Inforitems=[];
+this.InforitemsRef = getDatabase().ref('mau6ovtqgq5aeuif92r7nuffk4/Infor'); this.Inforitems=[];
 this.state
 =
 {
@@ -55,6 +55,7 @@ componentDidMount()
 //DidMount
  this.InforitemsRef.on('child_added',	(dataSnapshot)=>{ this.Inforitems.push({id: dataSnapshot.key,   text: dataSnapshot.val()}); this.setState({InforSource:	this.state.InforSource.cloneWithRows(this.Inforitems)}); }); this.InforitemsRef.on('child_removed', (dataSnapshot)=>{ this.Inforitems = this.Inforitems.filter((x)=>x.id !== dataSnapshot.key); this.setState({ InforSource: this.state.InforSource.cloneWithRows(this.Inforitems)});});
 }
+
 //function
 navvi = () => Actions.Map();
  uneAl = () => { Alert.alert('succes'); };

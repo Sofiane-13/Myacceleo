@@ -41,12 +41,13 @@ constructor(props)
 super(props);
 console.disableYellowBox=true;
 //Constructeur
-this.InforitemsRef = getDatabase().ref('3n62l96iqpo752udpt8fihhf0t/Infor'); this.Inforitems=[];
+this.InforitemsRef = getDatabase().ref('mau6ovtqgq5aeuif92r7nuffk4/Infor'); this.Inforitems=[];
 this.state
 =
 {
 //Debutdustate
 InforSource: new ListView.DataSource({rowHasChanged: (row1, row2)=>row1 !== row2}),
+mapRegion: { latitude: 125.6, longitude: 12.5, latitudeDelta: 12.3, longitudeDelta: 125.9 }
 }
 }
 componentDidMount()
@@ -54,9 +55,11 @@ componentDidMount()
 //DidMount
  this.InforitemsRef.on('child_added',	(dataSnapshot)=>{ this.Inforitems.push({id: dataSnapshot.key,   text: dataSnapshot.val()}); this.setState({InforSource:	this.state.InforSource.cloneWithRows(this.Inforitems)}); }); this.InforitemsRef.on('child_removed', (dataSnapshot)=>{ this.Inforitems = this.Inforitems.filter((x)=>x.id !== dataSnapshot.key); this.setState({ InforSource: this.state.InforSource.cloneWithRows(this.Inforitems)});});
 }
+
 //function
 navvi = () => Actions.Map();
  uneAl = () => { Alert.alert('succes'); };
+_handleMapRegionChange=mapRegion=>{this.setState({ mapRegion });};
 _handlePlaySoundAsync=async=()=>{ await Audio.setIsEnabladeAsync(true); let sound=new Audio.Sound({source: 'urll', }); await sound.loadAsync(); await sound.playAsync();};
 render()
 {
@@ -93,6 +96,7 @@ resource-id='
 2
 1
 '>
+<Video source={{ uri: 'h'}} rate={1.0} volume={1.0} muted={false} resizeMode="cover" repeat style={{width: 4, height: none}} />
 </Col>
 
 
@@ -101,20 +105,16 @@ resource-id='
 2
 2
 '>
+<Image source={{ uri: 'uuui' }}  />
 </Col>
 
-</Row>
 
-
-<Row
-resource-id='
-3
-'>
 <Col
 resource-id='
+2
 3
-1
 '>
+<MapView style={{ alignSelf: 'stretch', height: 200 }} region={this.state.mapRegion} onRegionChange={this._handleMapRegionChange} />
 </Col>
 
 </Row>

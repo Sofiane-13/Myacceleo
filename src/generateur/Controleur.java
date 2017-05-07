@@ -16,7 +16,7 @@ public class Controleur {
     static String Stylelistview,table;
     static String nomList,Table;
     static String ligne,colonne;
-    static List<String> ListViewinputList = new ArrayList<String>();
+    
     static List<String> TableinputList = new ArrayList<String>();
     static String squellettecomp=" import React, { Component } from 'react' import {AppRegistry,ScrollView,StyleSheet,Text,Alert,View,TouchableHighlight,TextInput,ListView} from 'react-native'; import { Button,Grid,Col,Row } from 'react-native-elements'  import { Actions } from 'react-native-router-flux'; import { getDatabase } from './index.android.js'; export default class extends Component { constructor(props) { super(props); console.disableYellowBox=true; //Constructeur this.state = { //Debutdustate } } componentDidMount() { //DidMount }  //function render() { //Vue return(  <View style={{marginTop: 50, }}> <ScrollView>  </ScrollView> </View> ); } } var styles = StyleSheet.create({ //StyleSheet }); AppRegistry.registerComponent( ,()=> );";
     static String indexandroid= "import React, { Component } from 'react'; import { Scene, Router, TabBar, Modal, Schema, Actions, Reducer, ActionConst} from 'react-native-router-flux'; import {AppRegistry,ScrollView,StyleSheet,Text,Alert,View,TouchableHighlight,TextInput,ListView} from 'react-native'; var Firebase=require('firebase'); var config={ apiKey: \"AIzaSyDysc3BPHCAGkHJ4K61zwXhZb07M5rnCQE\", authDomain: \"pfedsl-68809.firebaseapp.com\", databaseURL: \"https://pfedsl-68809.firebaseio.com/\", }; const myFirebaseRefapp=firebase.initializeApp(config); import * as firebase from \"firebase\"; export const getDatabase=()=>{ return(  myFirebaseRefapp.database() );} //import export default class pfe extends Component {render() { return( <Router > <Scene key=\"root\"> </Scene> </Router> ); } } AppRegistry.registerComponent('pfe', ()=>pfe);";
@@ -189,7 +189,7 @@ public class Controleur {
  	    			    	iconright=TraiteurFichier.ListdeslignesModel.get(j+10);
  	    			    	ligne=TraiteurFichier.ListdeslignesModel.get(j+12);
  	    					 colonne=TraiteurFichier.ListdeslignesModel.get(j+14);
- 	    					System.out.println("\n ----------------------------"+iconright);
+ 	    					
  	    		 	    	//appeller injecteur	
  	    		 		   
  	    					Injecteur.InjecterBouton(nombouton, onclique, onlongclique, icon, Style, raisedlarge, iconright, ligne, colonne);
@@ -334,7 +334,6 @@ public class Controleur {
  		    		borderTopWidth=TraiteurFichier.ListdeslignesModel.get(f+55);
  		    		borderWidth=TraiteurFichier.ListdeslignesModel.get(f+57);
  		    		opacity=TraiteurFichier.ListdeslignesModel.get(f+59);
- 		    		System.out.println("je suis style text------------------------");
  		    		Injecteur.InjecterStyleText(nomInputStyle,color,fontFamily,fontSize,fontStyle,fontWeight,lineHeight,TextAlign,TextDecorationLine,TextShadowColor,TextShadowRadius,backfaceVisibility,backgroundColor,borderBottomColor,borderBottomLeftRadius,borderBottomRightRadius,borderBottomWidth,borderColor,borderLeftColor,borderLeftWidth,borderRadius,borderRightColor,borderRightWidth,borderStyle,borderTopColor,borderTopLeftRadius,borderTopRightRadius,borderTopWidth,borderWidth,opacity);
  		    	}
  		    	if(TraiteurFichier.ListdeslignesModel.get(f).equals("StyleView")){
@@ -384,7 +383,6 @@ public class Controleur {
  		    	right=TraiteurFichier.ListdeslignesModel.get(f+85);
  		    	width=TraiteurFichier.ListdeslignesModel.get(f+87);
  		    
- 		    	System.out.println("je suis style view------------------------");
  		    	Injecteur.InjecterStyleView(nomInputStyle,backfaceVisibility,backgroundColor,borderBottomColor,borderBottomLeftRadius,borderBottomRightRadius,borderBottomWidth,borderColor,borderLeftColor,borderLeftWidth,borderRadius,borderRightColor,borderRightWidth,borderStyle,borderTopColor,borderTopLeftRadius,borderTopRightRadius,borderTopWidth,borderWidth,opacity,alignItems,alignSelf,bottom,flex,flexDirection,flexWrap,height,justifyContent,left,margin,marginBottom,marginHorizontal,marginLeft,marginRight,marginTop,marginVertical,padding,paddingBottom,paddingHorizontal,paddingRight,paddingTop,paddingVertical,right,width);
  		    	 }
  		    	if(TraiteurFichier.ListdeslignesModel.get(f).equals("StyleImage")){
@@ -425,7 +423,6 @@ public class Controleur {
  		    		flexDirection=TraiteurFichier.ListdeslignesModel.get(f+67);
  		    		flexWrap=TraiteurFichier.ListdeslignesModel.get(f+69);
  		    		height=TraiteurFichier.ListdeslignesModel.get(f+71);
- 		    		System.out.println("je suis style image------------------------");
  		    		Injecteur.InjecterStyleImage(nomInputStyle,backfaceVisibility,backgroundColor,borderBottomLeftRadius,borderBottomRightRadius,borderColor,borderRadius,borderTopLeftRadius,borderTopRightRadius,borderWidth,opacity,overflow,alignItems,alignSelf,bottom,flex,justifyContent,left,margin,marginBottom,marginHorizontal,marginLeft,marginRight,marginTop,marginVertical,padding,paddingBottom,paddingHorizontal,paddingRight,paddingTop,paddingVertical,right,width,flexDirection,flexWrap,height);
  		    	}
  		    	
@@ -435,9 +432,7 @@ public class Controleur {
    			//on remet le tableau a 0
    		  celluleVue = new int [100][100];
    		  tabcom = null;
-   		for(j=0;j<complist.size();j++){
-			System.out.println(complist.get(j));
-		 }
+   		
    		  complist.clear();
    		
     	 }
