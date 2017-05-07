@@ -40,12 +40,14 @@ constructor(props)
 {
 super(props);
 //Constructeur
-this.lestachesitemsRef = getDatabase().ref('vbn151eo6orr4897feb85k4pvt/lestaches'); this.lestachesitems=[];
+this.lestachesitemsRef = getDatabase().ref('lrcimtbhsdtmasajr2vbohj3mk/lestaches'); this.lestachesitems=[];
 this.state
 =
 {
 //Debutdustate
 lestachesSource: new ListView.DataSource({rowHasChanged: (row1, row2)=>row1 !== row2}),
+Prenom: '',
+Nom: '',
 }
 }
 componentDidMount()
@@ -54,9 +56,6 @@ componentDidMount()
  this.lestachesitemsRef.on('child_added',	(dataSnapshot)=>{ this.lestachesitems.push({id: dataSnapshot.key,   text: dataSnapshot.val()}); this.setState({lestachesSource:	this.state.lestachesSource.cloneWithRows(this.lestachesitems)}); }); this.lestachesitemsRef.on('child_removed', (dataSnapshot)=>{ this.lestachesitems = this.lestachesitems.filter((x)=>x.id !== dataSnapshot.key); this.setState({ lestachesSource: this.state.lestachesSource.cloneWithRows(this.lestachesitems)});});
 }
 //function
-l5 = () => Actions.Layout5();
-l4 = () => Actions.Layout4();
-l3 = () => Actions.Layout3();
 l2 = () => Actions.Layout2();
 l1 = () => Actions.Layout1();
  Sauthentifier = () => { Alert.alert('authentification'); };
@@ -65,10 +64,12 @@ l1 = () => Actions.Layout1();
  Accessoires = () => { Alert.alert('Accessoire'); };
  Retour = () => { Alert.alert('Retour'); };
 retour = () => Actions.Layout2();
- TodoList = () => { Alert.alert('Alerte22'); };
- AlerteTable = () => { Alert.alert('AttendezSVP'); };
-VERSER= () => { if( (this.state.Input2 !== '') && (this.state.Input1 !== '')) { this.lestachesitemsRef.push({  Input2: this.state.Input2 , Input1: this.state.Input1 , });  this.setState({ Input2 : '' }) , this.setState({ Input1 : '' })   } } 
-TODO = () => Actions.Layout2();
+ infol2 = () => { Alert.alert('pour_aller_au_layout2'); };
+ infoajout = () => { Alert.alert('Pour_ajouter_un_client'); };
+ajouter= () => { if( (this.state.Nom !== '') && (this.state.Prenom !== '')) { this.lestachesitemsRef.push({  Nom: this.state.Nom , Prenom: this.state.Prenom , });  this.setState({ Nom : '' }) , this.setState({ Prenom : '' })   } } 
+verl2 = () => Actions.Layout2();
+renderRowlestaches(rowData) { return ( <TouchableHighlight onPress={() => this.removelestaches(rowData)}><View ><Text >Nom : {rowData.text.Nom}</Text><Text >Prenom : {rowData.text.Prenom}</Text></View></TouchableHighlight>  ); }
+removelestaches(rowData) {  Alert.alert( ' Bravo ligne supprimée !');   this.lestachesitemsRef.child(rowData.id).remove();   }
 render()
 {
 //Vue
@@ -89,6 +90,16 @@ resource-id='
 1
 1
 '>
+<TextInput style={styles.Dtext} placeholder="Nom" onChangeText={(text) => this.setState({Nom: text})} value={this.state.Nom}/>
+</Col>
+
+
+<Col
+resource-id='
+1
+2
+'>
+<TextInput style={styles.Dtext} placeholder="Prenom" onChangeText={(text) => this.setState({Prenom: text})} value={this.state.Prenom}/>
 </Col>
 
 </Row>
@@ -103,8 +114,8 @@ resource-id='
 2
 1
 '>
-<Button title='RetourLayout4' onPress={() => this.l4()} onLongPress={() => this.Retour()} buttonStyle={ styles.View } icon={{name: 'squirrel', type: 'octicon', buttonStyle: styles.View }}  />
-<Button title='TODOlist' onPress={() => this.TODO()} onLongPress={() => this.TodoList()} buttonStyle={ styles.View } icon={{name: 'squirrel', type: 'octicon', buttonStyle: styles.View }}  />
+<Button title='Allerlayout2' onPress={() => this.verl2()} onLongPress={() => this.infol2()} buttonStyle={ styles.View } icon={{name: 'squirrel', type: 'octicon', buttonStyle: styles.View }}  />
+<Button title='ajouter' onPress={() => this.ajouter()} onLongPress={() => this.infoajout()} buttonStyle={ styles.View } icon={{name: 'squirrel', type: 'octicon', buttonStyle: styles.View }}  />
 </Col>
 
 </Row>
@@ -119,32 +130,7 @@ resource-id='
 3
 1
 '>
-<Button title='Accesoire' onPress={() => this.Accessoires()} onLongPress={() => this.Accessoires()} buttonStyle={ styles.View } icon={{name: 'squirrel', type: 'octicon', buttonStyle: styles.View }}  />
-</Col>
-
-</Row>
-
-
-<Row
-resource-id='
-4
-'>
-<Col
-resource-id='
-4
-1
-'>
-<Button title='RetourLayout2' onPress={() => this.l2()} onLongPress={() => this.Retour()} buttonStyle={ styles.View } icon={{name: 'squirrel', type: 'octicon', buttonStyle: styles.View }}  />
-<Button title='RetourLayout5' onPress={() => this.l5()} onLongPress={() => this.Retour()} buttonStyle={ styles.View } icon={{name: 'squirrel', type: 'octicon', buttonStyle: styles.View }}  />
-</Col>
-
-
-<Col
-resource-id='
-4
-2
-'>
-<Button title='RetourLayout3' onPress={() => this.l3()} onLongPress={() => this.Retour()} buttonStyle={ styles.View } icon={{name: 'squirrel', type: 'octicon', buttonStyle: styles.View }}  />
+<ListView style={styles.View} dataSource={this.state.lestachesSource} renderRow={this.renderRowlestaches.bind(this)} enableEmptySections={true} />
 </Col>
 
 </Row>
@@ -164,6 +150,7 @@ StyleSheet.create({
 Dtext: { color: 'green' , fontFamily: 'h1', fontStyle: 'normal', fontWeight: 'normal', textAlign: 'auto', },
 Imge: { borderColor: 'green', flexWrap: 'wrap', },
 View: { backgroundColor: 'red', borderBottomColor: 'red', flexWrap: 'wrap', },
+ row: { flexDirection: 'row', padding: 12, height: 44 }, separator: { height: 1, backgroundColor: '#CCCCCC', },
 });
 AppRegistry.registerComponent(
 'Layout1'

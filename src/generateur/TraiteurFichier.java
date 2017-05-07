@@ -21,7 +21,7 @@ public class TraiteurFichier {
 public static  List<String> ListdeslignesModel = new ArrayList<String>();
 public static  List<String> ListdeslignesJs = new ArrayList<String>();
 public static  List<String> ListdeslignesJsVue = new ArrayList<String>();
-
+// ../runtime-New_configuration(4)/org.xtext.UnivTlmcen.pfe/instances.pfe
 static File fileModel = new File("./Model.txt");
 static File fileJs = new File("./android.js");
 static File Newfilejs=new File("./androidvue.js");
@@ -64,88 +64,48 @@ static File fileJsVue=new File("./index.android.js");
 	    
 	    
 }
-			public static void LectureFichierJs(){
-				Scanner scannerJs = null;
-				try {
-					
-					scannerJs = new Scanner(fileJs);
-				} catch (FileNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				while (scannerJs.hasNextLine()) {
-					  String line2 = scannerJs.nextLine();
-					  Jsfile=Jsfile+" "+line2;
-					   
-					}
-				resJs = Jsfile.split(" ");
-				
-				for(i=0;i<resJs.length;i++){
-			    	ListdeslignesJs.add(resJs[i]);
-			    }
-			}
-			public static void LectureFichierJsVue(){
-				Scanner scannerJs = null;
-				try {
-					
-					scannerJs = new Scanner(Newfilejs);
-				} catch (FileNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				while (scannerJs.hasNextLine()) {
-					  String line2 = scannerJs.nextLine();
-					  JsfileVue=JsfileVue+" "+line2;
-					   
-					}
-				resJsVue = JsfileVue.split(" ");
-				
-				for(i=0;i<resJsVue.length;i++){
-			    	ListdeslignesJsVue.add(resJsVue[i]);
-			    }
-			}
+//			public static void LectureFichierJs(){
+//				Scanner scannerJs = null;
+//				try {
+//					
+//					scannerJs = new Scanner(fileJs);
+//				} catch (FileNotFoundException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+//				while (scannerJs.hasNextLine()) {
+//					  String line2 = scannerJs.nextLine();
+//					  Jsfile=Jsfile+" "+line2;
+//					   
+//					}
+//				resJs = Jsfile.split(" ");
+//				
+//				for(i=0;i<resJs.length;i++){
+//			    	ListdeslignesJs.add(resJs[i]);
+//			    }
+//			}
+//			public static void LectureFichierJsVue(){
+//				Scanner scannerJs = null;
+//				try {
+//					
+//					scannerJs = new Scanner(Newfilejs);
+//				} catch (FileNotFoundException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+//				while (scannerJs.hasNextLine()) {
+//					  String line2 = scannerJs.nextLine();
+//					  JsfileVue=JsfileVue+" "+line2;
+//					   
+//					}
+//				resJsVue = JsfileVue.split(" ");
+//				
+//				for(i=0;i<resJsVue.length;i++){
+//			    	ListdeslignesJsVue.add(resJsVue[i]);
+//			    }
+//			}
 	
-//			public static void EcritureFicherandroidvue(){
-//				//on vide le tableau
-//				resJs=null;
-//				for(i=0;i<ListdeslignesJs.size();i++){
-//					Codefinale=Codefinale+ListdeslignesJs.get(i)+"\n";
-//			    }
-//				try {
-//					//on crée un nouveau js file
-//					Newfilejs.createNewFile();
-//					//on crée un file writer
-//					FileWriter FileWriter=new FileWriter(Newfilejs);
-//					FileWriter.write(Codefinale);
-//					FileWriter.close();
-//					
-//				} catch (IOException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
-//				
-//}
-//			public static void EcritureFicherindexandroid(){
-//				//on vide le tableau
-//				resJs=null;
-//				Codefinale="";
-//				for(i=0;i<ListdeslignesJsVue.size();i++){
-//					Codefinale=Codefinale+ListdeslignesJsVue.get(i)+"\n";
-//			    }
-//				try {
-//					//on crée un nouveau js file
-//					Newfilejs.createNewFile();
-//					//on crée un file writer
-//					FileWriter FileWriter=new FileWriter(fileJsVue);
-//					FileWriter.write(Codefinale);
-//					FileWriter.close();
-//					
-//				} catch (IOException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
-//				
-//}
+
 			public static void EcritureComposant(String nom){
 				Codefinale="";
 				for(i=0;i<Controleur.complist.size();i++){
@@ -153,7 +113,7 @@ static File fileJsVue=new File("./index.android.js");
 			    }
 				try {
 					//on crée un nouveau js file
-					File Compfile=new File("./"+nom+".js");
+					File Compfile=new File("./fichier/pfe/"+nom+".js");
 					Compfile.createNewFile();
 					//on crée un file writer
 					FileWriter FileWriter=new FileWriter(Compfile);
@@ -172,7 +132,7 @@ static File fileJsVue=new File("./index.android.js");
 			    }
 				try {
 					//on crée un nouveau js file
-					File Compfile=new File("./index.android.js");
+					File Compfile=new File("./fichier/pfe/index.android.js");
 					Compfile.createNewFile();
 					//on crée un file writer
 					FileWriter FileWriter=new FileWriter(Compfile);
@@ -187,22 +147,22 @@ static File fileJsVue=new File("./index.android.js");
 			
 			
 			
-			public static void AfficherListJs(){
-				for(i=0;i<ListdeslignesJs.size();i++){
-					System.out.println("i= "+i+" Mot= "+ListdeslignesJs.get(i));
-				}
-}
-			public static void AfficherListModel(){
-				for(i=0;i<ListdeslignesModel.size();i++){
-					System.out.println("i= "+i+" Mot= "+ListdeslignesModel.get(i));
-				}
-				
-}
-			public static void AfficherListJsVue(){
-				for(i=0;i<ListdeslignesJsVue.size();i++){
-					System.out.println("i= "+i+" Mot= "+ListdeslignesJsVue.get(i));
-				}
-			}
+//			public static void AfficherListJs(){
+//				for(i=0;i<ListdeslignesJs.size();i++){
+//					System.out.println("i= "+i+" Mot= "+ListdeslignesJs.get(i));
+//				}
+//}
+//			public static void AfficherListModel(){
+//				for(i=0;i<ListdeslignesModel.size();i++){
+//					System.out.println("i= "+i+" Mot= "+ListdeslignesModel.get(i));
+//				}
+//				
+//}
+//			public static void AfficherListJsVue(){
+//				for(i=0;i<ListdeslignesJsVue.size();i++){
+//					System.out.println("i= "+i+" Mot= "+ListdeslignesJsVue.get(i));
+//				}
+//			}
 }
 
 

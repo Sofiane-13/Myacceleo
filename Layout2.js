@@ -40,14 +40,12 @@ constructor(props)
 {
 super(props);
 //Constructeur
-this.lestachesitemsRef = getDatabase().ref('vbn151eo6orr4897feb85k4pvt/lestaches'); this.lestachesitems=[];
+this.lestachesitemsRef = getDatabase().ref('lrcimtbhsdtmasajr2vbohj3mk/lestaches'); this.lestachesitems=[];
 this.state
 =
 {
 //Debutdustate
 lestachesSource: new ListView.DataSource({rowHasChanged: (row1, row2)=>row1 !== row2}),
-Input2: '',
-Input1: '',
 }
 }
 componentDidMount()
@@ -56,9 +54,6 @@ componentDidMount()
  this.lestachesitemsRef.on('child_added',	(dataSnapshot)=>{ this.lestachesitems.push({id: dataSnapshot.key,   text: dataSnapshot.val()}); this.setState({lestachesSource:	this.state.lestachesSource.cloneWithRows(this.lestachesitems)}); }); this.lestachesitemsRef.on('child_removed', (dataSnapshot)=>{ this.lestachesitems = this.lestachesitems.filter((x)=>x.id !== dataSnapshot.key); this.setState({ lestachesSource: this.state.lestachesSource.cloneWithRows(this.lestachesitems)});});
 }
 //function
-l5 = () => Actions.Layout5();
-l4 = () => Actions.Layout4();
-l3 = () => Actions.Layout3();
 l2 = () => Actions.Layout2();
 l1 = () => Actions.Layout1();
  Sauthentifier = () => { Alert.alert('authentification'); };
@@ -67,11 +62,11 @@ l1 = () => Actions.Layout1();
  Accessoires = () => { Alert.alert('Accessoire'); };
  Retour = () => { Alert.alert('Retour'); };
 retour = () => Actions.Layout2();
- TodoList = () => { Alert.alert('Alerte22'); };
- AlerteTable = () => { Alert.alert('AttendezSVP'); };
-VERSER= () => { if( (this.state.Input2 !== '') && (this.state.Input1 !== '')) { this.lestachesitemsRef.push({  Input2: this.state.Input2 , Input1: this.state.Input1 , });  this.setState({ Input2 : '' }) , this.setState({ Input1 : '' })   } } 
-TODO = () => Actions.Layout2();
-renderRowlestaches(rowData) { return ( <TouchableHighlight onPress={() => this.removelestaches(rowData)}><View ><Text >Input2 : {rowData.text.Input2}</Text><Text >Input1 : {rowData.text.Input1}</Text></View></TouchableHighlight>  ); }
+ infol2 = () => { Alert.alert('pour_aller_au_layout2'); };
+ infoajout = () => { Alert.alert('Pour_ajouter_un_client'); };
+ajouter= () => { if( (this.state.Nom !== '') && (this.state.Prenom !== '')) { this.lestachesitemsRef.push({  Nom: this.state.Nom , Prenom: this.state.Prenom , });  this.setState({ Nom : '' }) , this.setState({ Prenom : '' })   } } 
+verl2 = () => Actions.Layout2();
+renderRowlestaches(rowData) { return ( <TouchableHighlight onPress={() => this.removelestaches(rowData)}><View ><Text >Nom : {rowData.text.Nom}</Text><Text >Prenom : {rowData.text.Prenom}</Text></View></TouchableHighlight>  ); }
 removelestaches(rowData) {  Alert.alert( ' Bravo ligne supprimée !');   this.lestachesitemsRef.child(rowData.id).remove();   }
 render()
 {
@@ -95,15 +90,6 @@ resource-id='
 '>
 </Col>
 
-
-<Col
-resource-id='
-1
-2
-'>
-<TextInput style={styles.Dtext} placeholder="Input1" onChangeText={(text) => this.setState({Input1: text})} value={this.state.Input1}/>
-</Col>
-
 </Row>
 
 
@@ -116,15 +102,6 @@ resource-id='
 2
 1
 '>
-</Col>
-
-
-<Col
-resource-id='
-2
-2
-'>
-<TextInput style={styles.Dtext} placeholder="Input2" onChangeText={(text) => this.setState({Input2: text})} value={this.state.Input2}/>
 </Col>
 
 </Row>
@@ -139,45 +116,7 @@ resource-id='
 3
 1
 '>
-</Col>
-
-</Row>
-
-
-<Row
-resource-id='
-4
-'>
-<Col
-resource-id='
-4
-1
-'>
-<Button title='RetourLayout2' onPress={() => this.l2()} onLongPress={() => this.Retour()} buttonStyle={ styles.View } icon={{name: 'squirrel', type: 'octicon', buttonStyle: styles.View }}  />
-</Col>
-
-
-<Col
-resource-id='
-4
-2
-'>
-<Button raised title='AddTache' onPress={() => this.VERSER()} onLongPress={() => this.AlerteTable()} buttonStyle={ styles.View } icon={{name: 'squirrel', type: 'octicon', buttonStyle: styles.View }}  />
-</Col>
-
-</Row>
-
-
-<Row
-resource-id='
-5
-'>
-<Col
-resource-id='
-5
-1
-'>
-<ListView dataSource={this.state.lestachesSource} renderRow={this.renderRowlestaches.bind(this)} enableEmptySections={true} />
+<ListView style={styles.View} dataSource={this.state.lestachesSource} renderRow={this.renderRowlestaches.bind(this)} enableEmptySections={true} />
 </Col>
 
 </Row>

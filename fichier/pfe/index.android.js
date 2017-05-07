@@ -48,8 +48,8 @@ return(
 myFirebaseRefapp.database()
 );}
 //import
-import Layout1 from './Layout1';
-import Layout2 from './Layout2';
+import Application from './Application';
+import Map from './Map';
 export
 default
 class
@@ -63,8 +63,8 @@ return(
 >
 <Scene
 key="root">
-<Scene key="Layout1" component={Layout1} title="Layout1" />
-<Scene key="Layout2" component={Layout2} title="Layout2" />
+<Scene key="Application" component={Application} title="appl" />
+<Scene key="Map" component={Map} title="mapp" />
 </Scene>
 </Router>
 );

@@ -29,14 +29,18 @@ public static void InjecterTable(String Table){
 }
 	
 //Coté vue
-public static void InjecterLabel( String NomLabel, String stylelabel, String contenu){
+public static void InjecterLabel( String NomLabel, String stylelabel, String contenu,String ligne,String colonne){
 	 for(j=0;j<Controleur.complist.size();j++){
 		  //on recupére la position du <View>
-	        if(Controleur.complist.get(j).equalsIgnoreCase("//Vue")){
+		 if((Controleur.complist.get(j).equalsIgnoreCase(ligne))&&(Controleur.complist.get(j+1).equalsIgnoreCase(colonne))){
+		       
+	        
 	        	CodeAajouter="<Text";
 	        	if(!stylelabel.equalsIgnoreCase("none"))CodeAajouter=CodeAajouter+" style={ styles."+stylelabel+" } ";
 	        	CodeAajouter=CodeAajouter+" > "+contenu+"</Text>";
 	        	
+	        	//on injecte le code
+	        	Controleur.complist.add(j+3, CodeAajouter); 
 	        }
 	 }
 }
@@ -45,23 +49,24 @@ public static void InjecterBouton(String nombouton,String onclique,String onlong
 	
 	 for(j=0;j<Controleur.complist.size();j++){
        //on recupére la position du <View>
-		// System.out.println("**"+Controleur.complist.get(j));
+		
 	        if((Controleur.complist.get(j).equalsIgnoreCase(ligne))&&(Controleur.complist.get(j+1).equalsIgnoreCase(colonne))){
-	        	// System.out.println("\n ***********************************************************");
-
+	        	
 	        	//on prépare le code a injecter 	
 	        	CodeAajouter="<Button";
 	        	if(raisedlarge.equalsIgnoreCase("raised"))CodeAajouter=CodeAajouter+" raised";
 	        	else if(raisedlarge.equalsIgnoreCase("large"))CodeAajouter=CodeAajouter+" large";
 	        	//on parcours le model pour recuperer les propriété du icon
 	        	 for(i=0;i<TraiteurFichier.ListdeslignesModel.size();i++){
-	        		 if(TraiteurFichier.ListdeslignesModel.get(i).equalsIgnoreCase(icon) && TraiteurFichier.ListdeslignesModel.get(i-1).equalsIgnoreCase("Icone")){typeicon=TraiteurFichier.ListdeslignesModel.get(i+2);Styleicon=TraiteurFichier.ListdeslignesModel.get(i+4);}
+	        		 if(TraiteurFichier.ListdeslignesModel.get(i).equalsIgnoreCase(icon) && TraiteurFichier.ListdeslignesModel.get(i-1).equalsIgnoreCase("Icone")){typeicon=TraiteurFichier.ListdeslignesModel.get(i+2);Styleicon=TraiteurFichier.ListdeslignesModel.get(i+8);}
 	        	 }
 
 	        	CodeAajouter=CodeAajouter+ " title='"+nombouton+"' onPress={() => this."+onclique+"()} onLongPress={() => this."+onlongclique+"()} buttonStyle={ styles."+Style+" } icon={{name: 'squirrel', type: '"+typeicon+"', buttonStyle: styles."+Styleicon+" }}  />";
 	        	 
 	        	//on injecte le code
-	        	Controleur.complist.add(j+3, CodeAajouter); 
+	        	 System.out.println("\n ***********************************************************"+CodeAajouter);
+
+	        	Controleur.complist.add(j+3,CodeAajouter); 
 	                                                             }
 	                                           }
 	}
@@ -101,7 +106,9 @@ public static void	InjecterListView(String Stylelistview,String table,String lig
 		//on inject la ListView dans la vue
 		 if((Controleur.complist.get(j).equalsIgnoreCase(ligne))&&(Controleur.complist.get(j+1).equalsIgnoreCase(colonne))){
 			
-			 CodeAajouter="<ListView dataSource={this.state."+table+"Source} renderRow={this.renderRow"+table+".bind(this)} enableEmptySections={true} />";			 
+			 CodeAajouter="<ListView ";
+			 if(!Stylelistview.equalsIgnoreCase("End."))CodeAajouter=CodeAajouter+"style={styles."+Stylelistview+"}";
+			 CodeAajouter=CodeAajouter+" dataSource={this.state."+table+"Source} renderRow={this.renderRow"+table+".bind(this)} enableEmptySections={true} />";			 
 			//on injecte le code
 			 Controleur.complist.add(j+3, CodeAajouter);
 		    }
@@ -137,6 +144,22 @@ public static void	InjecterListView(String Stylelistview,String table,String lig
 		 }
 	}
 
+}
+public static void	InjecterAudio(String nom,String Url,String Textbouton,String ligne,String colonne,String StyleA){
+	
+	for(j=0;j<Controleur.complist.size();j++){
+		//on inject la ListView dans la vue
+		 if((Controleur.complist.get(j).equalsIgnoreCase(ligne))&&(Controleur.complist.get(j+1).equalsIgnoreCase(colonne))){
+			 CodeAajouter="<Button title=\""+Textbouton+"\" onPress={this._handlePlaySoundAsync} />";
+			 Controleur.complist.add(j+3, CodeAajouter);
+		 }
+		 
+		 if(Controleur.complist.get(j).equalsIgnoreCase("//function")){
+			 CodeAajouter="_handlePlaySoundAsync=async=()=>{ await Audio.setIsEnabladeAsync(true); let sound=new Audio.Sound({source: '"+Url+"', }); await sound.loadAsync(); await sound.playAsync();};";
+			 Controleur.complist.add(j+1, CodeAajouter);
+		 }
+		 }
+	
 }
 public static void InjecterStyleText(String nomInputStyle,String color,String fontFamily,String fontSize,String fontStyle,String fontWeight,String lineHeight,String TextAlign,String TextDecorationLine,String TextShadowColor,String TextShadowRadius,String backfaceVisibility,String backgroundColor,String borderBottomColor,String borderBottomLeftRadius,String borderBottomRightRadius,String borderBottomWidth,String borderColor,String borderLeftColor,String borderLeftWidth,String borderRadius,String borderRightColor,String borderRightWidth,String borderStyle,String borderTopColor,String borderTopLeftRadius,String borderTopRightRadius,String borderTopWidth,String borderWidth,String opacity){
 	for(j=0;j<Controleur.complist.size();j++){

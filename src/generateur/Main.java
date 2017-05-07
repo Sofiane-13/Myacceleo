@@ -28,23 +28,13 @@ public class Main {
 		SecureRandom random = new SecureRandom();
 	     mabase = new BigInteger(130, random).toString(32);
 		System.out.println(mabase);
-//	    JFrame fenetre = new JFrame();
-//	    //Définit un titre pour notre fenêtre
-//	    fenetre.setTitle("Créer votre application");
-//	    //Définit sa taille : 400 pixels de large et 100 pixels de haut
-//	    fenetre.setSize(400, 100);
-//	    //Nous demandons maintenant à notre objet de se positionner au centre
-//	    fenetre.setLocationRelativeTo(null);
-//	    //Termine le processus lorsqu'on clique sur la croix rouge
-//	    fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//	    //Et enfin, la rendre visible        
-//	    fenetre.setVisible(true);
-//		
-//		
-//		//on lit les fichiers
+	    JFrame  Mafenetre= new Interface();
+	  
+	 
+		//on lit les fichiers
 		 
 		//TraiteurFichier.LectureFichierJs();//lecture du squelette
-		TraiteurFichier.LectureFichierModel();
+	TraiteurFichier.LectureFichierModel();
 		
 //		TraiteurFichier.AfficherListJs();
 //		System.out.println("************************************************************");
@@ -67,5 +57,22 @@ public class Main {
 //
 //		//on lance l'ecriture du fichier
 //		TraiteurFichier.EcritureFicherindexandroid();
+//		  try {
+//			  String[] cmd = {"/bin/sh", "-c", "/bin/ls > resultat"};
+//			  Runtime.getRuntime().exec(cmd);
+//   	    	    Runtime.getRuntime().exec("/bin/bash cd ./fichier/pfe" );
+//		        Runtime.getRuntime().exec("/bin/bash export JAVA_HOME=/home/sofiane/install/jdk1.8.0_121/" );
+//	 			Runtime.getRuntime().exec("/bin/bash export ANDROID_HOME=/home/sofiane/Android/Sdk/" );
+//	 			Runtime.getRuntime().exec("/bin/bash npm run android" );
+	 			
+	 				
+//	    } catch (IOException e) {
+//	 			// TODO Auto-generated catch block
+//	 			e.printStackTrace();
+//	 		}
+//
+
+
+
 }
 }
