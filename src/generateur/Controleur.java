@@ -6,7 +6,7 @@ import java.util.List;
 public class Controleur {
 	static int i,j,f;
 	static String backgroundColor,alignItems,overflow,TextShadowRadius,TextShadowColor,TextDecorationLine,color,TextAlign,fontFamily,borderBottomColor,alignSelf,borderLeftColo,flexDirection,height ,justifyContent;
-	static String Codeainjecter,compocode,nomlayoutnav,StyleA,Textbouton,Url,nom;
+	static String Codeainjecter,compocode,nomlayoutnav,StyleA,Textbouton,Url,nom,mute,latitude,longitude,latitudeDelta,longitudeDelta;
 	static String nomlayout,titrelayout;
 	static String nombouton,iconright,raisedlarge,Style,onclique,nomfunction,onlongclique,icon,iconbouton,utilise,nomlabel,MessageAlert;
     static String nomInputStyle,heigh,padding,marginRight,nominput,flex,fontSize,borderWidth,borderColor,borderRadius,FlexDirection,JustifyContent,borderRadium;
@@ -18,7 +18,7 @@ public class Controleur {
     static String ligne,colonne;
     static List<String> ListViewinputList = new ArrayList<String>();
     static List<String> TableinputList = new ArrayList<String>();
-    static String squellettecomp=" import React, { Component } from 'react' import {AppRegistry,ScrollView,StyleSheet,Text,Alert,View,TouchableHighlight,TextInput,ListView} from 'react-native'; import { Button,Grid,Col,Row } from 'react-native-elements'  import { Actions } from 'react-native-router-flux'; import { getDatabase } from './index.android.js'; export default class extends Component { constructor(props) { super(props); console.disableYellowBox=true; //Constructeur this.state = { //Debutdustate } } componentDidMount() { //DidMount } componentDidMount() { //DidMount } componentWillUnmount() { //WillUnmount  } //function render() { //Vue return(  <View style={{marginTop: 50, }}> <ScrollView>  </ScrollView> </View> ); } } var styles = StyleSheet.create({ //StyleSheet }); AppRegistry.registerComponent( ,()=> );";
+    static String squellettecomp=" import React, { Component } from 'react' import {AppRegistry,ScrollView,StyleSheet,Text,Alert,View,TouchableHighlight,TextInput,ListView} from 'react-native'; import { Button,Grid,Col,Row } from 'react-native-elements'  import { Actions } from 'react-native-router-flux'; import { getDatabase } from './index.android.js'; export default class extends Component { constructor(props) { super(props); console.disableYellowBox=true; //Constructeur this.state = { //Debutdustate } } componentDidMount() { //DidMount }  //function render() { //Vue return(  <View style={{marginTop: 50, }}> <ScrollView>  </ScrollView> </View> ); } } var styles = StyleSheet.create({ //StyleSheet }); AppRegistry.registerComponent( ,()=> );";
     static String indexandroid= "import React, { Component } from 'react'; import { Scene, Router, TabBar, Modal, Schema, Actions, Reducer, ActionConst} from 'react-native-router-flux'; import {AppRegistry,ScrollView,StyleSheet,Text,Alert,View,TouchableHighlight,TextInput,ListView} from 'react-native'; var Firebase=require('firebase'); var config={ apiKey: \"AIzaSyDysc3BPHCAGkHJ4K61zwXhZb07M5rnCQE\", authDomain: \"pfedsl-68809.firebaseapp.com\", databaseURL: \"https://pfedsl-68809.firebaseio.com/\", }; const myFirebaseRefapp=firebase.initializeApp(config); import * as firebase from \"firebase\"; export const getDatabase=()=>{ return(  myFirebaseRefapp.database() );} //import export default class pfe extends Component {render() { return( <Router > <Scene key=\"root\"> </Scene> </Router> ); } } AppRegistry.registerComponent('pfe', ()=>pfe);";
     public static List<String> complist= new ArrayList<String>();
     public static int [][] celluleVue = new int [100][100];
@@ -138,9 +138,9 @@ public class Controleur {
     					
     					 SqueletteVue.RemplirCellue(ligne, colonne);
     				 }
-    				 if(TraiteurFichier.ListdeslignesModel.get(j-1).equalsIgnoreCase("Svg")){
-    					 ligne=TraiteurFichier.ListdeslignesModel.get(j+6);
-    					 colonne=TraiteurFichier.ListdeslignesModel.get(j+8);
+    				 if(TraiteurFichier.ListdeslignesModel.get(j-1).equalsIgnoreCase("MapView")){
+    					 ligne=TraiteurFichier.ListdeslignesModel.get(j+10);
+    					 colonne=TraiteurFichier.ListdeslignesModel.get(j+12);
     					
     					 SqueletteVue.RemplirCellue(ligne, colonne);
     				 }
@@ -235,6 +235,41 @@ public class Controleur {
  	    		    	
  	    		 	    	//on appelle l'injecteur 
  	    		 	    	Injecteur.InjecterAudio(nom,Url,Textbouton,ligne,colonne,StyleA);
+ 	    		 	    }
+ 	    				if(TraiteurFichier.ListdeslignesModel.get(j-1).equalsIgnoreCase("Video")){
+ 	    					//on recupére les informations de la List
+ 	    					mute=TraiteurFichier.ListdeslignesModel.get(j+4);
+ 	    					Url=TraiteurFichier.ListdeslignesModel.get(j+2);
+ 	    					height=TraiteurFichier.ListdeslignesModel.get(j+8);
+ 	    					width=TraiteurFichier.ListdeslignesModel.get(j+6);
+ 	    		 	    	ligne=TraiteurFichier.ListdeslignesModel.get(j+10);
+ 	    					 colonne=TraiteurFichier.ListdeslignesModel.get(j+12);
+ 	    		    	
+ 	    		 	    	//on appelle l'injecteur 
+ 	    		 	    	Injecteur.InjecterVideo(mute,Url,height,width,ligne,colonne);
+ 	    		 	    }
+ 	    				if(TraiteurFichier.ListdeslignesModel.get(j-1).equalsIgnoreCase("Image")){
+ 	    					//on recupére les informations de la List
+ 	    					
+ 	    					Url=TraiteurFichier.ListdeslignesModel.get(j+2);
+ 	    					ligne=TraiteurFichier.ListdeslignesModel.get(j+4);
+ 	    					 colonne=TraiteurFichier.ListdeslignesModel.get(j+6);
+ 	    		    	    Style=TraiteurFichier.ListdeslignesModel.get(j+8);
+ 	    		 	    	//on appelle l'injecteur 
+ 	    		 	    	Injecteur.InjecterImage(Url,ligne,colonne,Style);
+ 	    		 	    }
+ 	    				if(TraiteurFichier.ListdeslignesModel.get(j-1).equalsIgnoreCase("MapView")){
+ 	    					//on recupére les informations de la List
+ 	    					
+ 	    					latitude=TraiteurFichier.ListdeslignesModel.get(j+2);
+ 	    					longitude=TraiteurFichier.ListdeslignesModel.get(j+4);
+ 	    					latitudeDelta=TraiteurFichier.ListdeslignesModel.get(j+6);
+ 	    					longitudeDelta=TraiteurFichier.ListdeslignesModel.get(j+8);
+ 	    					ligne=TraiteurFichier.ListdeslignesModel.get(j+10);
+	    					 colonne=TraiteurFichier.ListdeslignesModel.get(j+12);
+ 	    					
+ 	    		 	    	//on appelle l'injecteur 
+ 	    		 	    	Injecteur.InjecterMap(latitude,longitude,latitudeDelta,longitudeDelta,ligne,colonne);
  	    		 	    }
  	    				 }
  	    			 }

@@ -150,7 +150,9 @@ public static void	InjecterAudio(String nom,String Url,String Textbouton,String 
 	for(j=0;j<Controleur.complist.size();j++){
 		//on inject la ListView dans la vue
 		 if((Controleur.complist.get(j).equalsIgnoreCase(ligne))&&(Controleur.complist.get(j+1).equalsIgnoreCase(colonne))){
-			 CodeAajouter="<Button title=\""+Textbouton+"\" onPress={this._handlePlaySoundAsync} />";
+			 CodeAajouter="<Button ";
+			 if(!StyleA.equals("End."))CodeAajouter=CodeAajouter+"buttonStyle={ styles."+StyleA+" } ";
+			 CodeAajouter=CodeAajouter+"title=\""+Textbouton+"\" onPress={this._handlePlaySoundAsync} />";
 			 Controleur.complist.add(j+3, CodeAajouter);
 		 }
 		 
@@ -161,6 +163,55 @@ public static void	InjecterAudio(String nom,String Url,String Textbouton,String 
 		 }
 	
 }
+
+public static void	InjecterVideo(String mute,String  Url,String height,String width,String ligne,String colonne){
+	
+	for(j=0;j<Controleur.complist.size();j++){
+		//on inject la ListView dans la vue
+		 if((Controleur.complist.get(j).equalsIgnoreCase(ligne))&&(Controleur.complist.get(j+1).equalsIgnoreCase(colonne))){
+			 CodeAajouter="<Video source={{ uri: '"+Url+"'}} rate={1.0} volume={1.0}";
+			 if(mute.equals("true"))CodeAajouter=CodeAajouter+" muted={true}";
+			 else CodeAajouter=CodeAajouter+" muted={false}";
+			 CodeAajouter=CodeAajouter+" resizeMode=\"cover\" repeat style={{width: "+width+", height: "+height+"}} />";
+			 Controleur.complist.add(j+3, CodeAajouter);	 
+		 }
+		 }
+	}
+
+public static void	InjecterImage(String Url,String ligne,String colonne,String Style){
+	
+	for(j=0;j<Controleur.complist.size();j++){
+		//on inject la ListView dans la vue
+		 if((Controleur.complist.get(j).equalsIgnoreCase(ligne))&&(Controleur.complist.get(j+1).equalsIgnoreCase(colonne))){
+			 CodeAajouter="<Image source={{ uri: '"+Url+"' }} ";
+			 if(!Style.equals("End."))CodeAajouter=CodeAajouter+"style={ styles."+Style+" } ";
+			 CodeAajouter=CodeAajouter+" />";
+			 Controleur.complist.add(j+3, CodeAajouter);
+		 }
+		 }
+	}
+public static void	InjecterMap(String latitude,String longitude,String latitudeDelta,String longitudeDelta,String ligne,String colonne){
+	
+	for(j=0;j<Controleur.complist.size();j++){
+		//on inject la ListView dans la vue
+		 if((Controleur.complist.get(j).equalsIgnoreCase(ligne))&&(Controleur.complist.get(j+1).equalsIgnoreCase(colonne))){
+			 CodeAajouter="<MapView style={{ alignSelf: 'stretch', height: 200 }} region={this.state.mapRegion} onRegionChange={this._handleMapRegionChange} />";
+			
+			 Controleur.complist.add(j+3, CodeAajouter);
+		 }
+		 if(Controleur.complist.get(j).equalsIgnoreCase("//function")){
+			 CodeAajouter="_handleMapRegionChange=mapRegion=>{this.setState({ mapRegion });};";
+			 Controleur.complist.add(j+1, CodeAajouter);
+		 }
+		 if(Controleur.complist.get(j).equalsIgnoreCase("//Debutdustate")){
+			 CodeAajouter="mapRegion: { latitude: "+latitude+", longitude: "+longitude+", latitudeDelta: "+latitudeDelta+", longitudeDelta: "+longitudeDelta+" }";
+			 Controleur.complist.add(j+1, CodeAajouter);
+		 }
+		 
+		
+		 }
+	}
+
 public static void InjecterStyleText(String nomInputStyle,String color,String fontFamily,String fontSize,String fontStyle,String fontWeight,String lineHeight,String TextAlign,String TextDecorationLine,String TextShadowColor,String TextShadowRadius,String backfaceVisibility,String backgroundColor,String borderBottomColor,String borderBottomLeftRadius,String borderBottomRightRadius,String borderBottomWidth,String borderColor,String borderLeftColor,String borderLeftWidth,String borderRadius,String borderRightColor,String borderRightWidth,String borderStyle,String borderTopColor,String borderTopLeftRadius,String borderTopRightRadius,String borderTopWidth,String borderWidth,String opacity){
 	for(j=0;j<Controleur.complist.size();j++){
 		 //on recupére la position du //Stylesheet
