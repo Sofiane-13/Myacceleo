@@ -144,8 +144,6 @@ public class Controleur {
     					
     					 SqueletteVue.RemplirCellue(ligne, colonne);
     				 }
-    				 
-    				 
     			 }
     		 }
     		 
