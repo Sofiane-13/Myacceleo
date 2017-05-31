@@ -16,7 +16,7 @@ public class TraiteurFichier {
                static int i;
 public static  List<String> ListdeslignesModel = new ArrayList<String>();
 // ../runtime-New_configuration(4)/org.xtext.UnivTlmcen.pfe/instances.pfe
-static File fileModel = new File("./Model.txt");
+static File fileModel = new File("/home/sofiane/runtime-EclipseXtext/org.xtext.UnivTlmcen.pfe/instances.pfe");
 
 			public static void LectureFichierModel(){
 	

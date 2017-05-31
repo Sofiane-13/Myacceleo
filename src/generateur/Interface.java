@@ -1,32 +1,84 @@
 package generateur;
-import java.awt.Color;
+import  javax.swing.*;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import  java.awt.*;
+import  java.awt.event.*;
+import java.io.IOException;
+  
+//le listener est la classe test      
+public class Interface extends JFrame implements ActionListener
+{
+    
+    /** Constructeur de test 
+     * @return */
+    public Interface()
+    {
+    	super();
+    	this.setSize(565, 509);
+        //panel
+        JPanel  pan=new JPanel();
+       
+        
+        pan.setLayout(new BorderLayout());
+        pan.setSize(888,888);
+        
+        //bouton ici
+        JButton but=new JButton("Lancer la création !");
+        
+        //ajoute un listener : ici le listener est cette classe
+        but.addActionListener(this);
+        
+        //ajoute le boutton dans le panel
+        pan.add(but,BorderLayout.CENTER);
+        
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setContentPane(pan);
+        //pack(); //permet de mettre une bonne dimension a la fenetre
+        setVisible(true);
+    }
+    
+    /**
+     * obligatoire car test implémente l'interface ActionListener
+     */
+    public  void    actionPerformed(ActionEvent e)
+    {
+    	
+    	try {
+        	executeCommands("./avant.sh");
+        } catch (IOException e1) {
+        	// TODO Auto-generated catch block
+        	e1.printStackTrace();
+        }
+    	
+        
+    		//on lance l'execution
+    		Controleur.Execution();
 
-   
- 
-public class Interface extends javax.swing.JFrame {
-	Interface(){
-	JFrame fenetre = new JFrame();
-	  //Définit un titre pour notre fenêtre
-    fenetre.setTitle("Créer votre application");
-    //Définit sa taille : 400 pixels de large et 100 pixels de haut
-    fenetre.setSize(400, 100);
-    //Nous demandons maintenant à notre objet de se positionner au centre
-    fenetre.setLocationRelativeTo(null);
-    //Termine le processus lorsqu'on clique sur la croix rouge
-    fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    		
+   try {
+    	executeCommands("./apres.sh");
+    } catch (IOException e1) {
+    	// TODO Auto-generated catch block
+    	e1.printStackTrace();
+    }
+
+    }
+    public static void executeCommands(String etat) throws IOException {
+
+	    
+        ProcessBuilder pb = new ProcessBuilder("bash", etat);
+        pb.inheritIO();
+        Process process = pb.start();
+       
+      
+			try {
+				process.waitFor();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
     
-    //Instanciation d'un objet JPanel
-    JPanel pan = new JPanel();
-    //Définition de sa couleur de fond
-    pan.setBackground(Color.ORANGE);  
-    //On prévient notre JFrame que notre JPanel sera son content pane
-    this.setContentPane(pan);
+} 
     
-    //Et enfin, la rendre visible        
-    fenetre.setVisible(true);
-	
+  
 }
-	}

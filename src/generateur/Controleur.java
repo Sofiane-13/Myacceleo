@@ -5,12 +5,12 @@ import java.util.List;
 
 public class Controleur {
 	static int i,j,f;
-	static String backgroundColor,alignItems,overflow,TextShadowRadius,TextShadowColor,TextDecorationLine,color,TextAlign,fontFamily,borderBottomColor,alignSelf,borderLeftColo,flexDirection,height ,justifyContent;
+	static String backgroundColor,alignItems,overflow,color,TextAlign,fontFamily,borderBottomColor,alignSelf,borderLeftColo,flexDirection,height ,justifyContent;
 	static String Codeainjecter,compocode,nomlayoutnav,StyleA,Textbouton,Url,nom,mute,latitude,longitude,latitudeDelta,longitudeDelta;
-	static String nomlayout,titrelayout;
+	static String nomlayout,stylebouton,titrelayout,initial;
 	static String nombouton,iconright,raisedlarge,Style,onclique,nomfunction,onlongclique,icon,iconbouton,utilise,nomlabel,MessageAlert;
     static String nomInputStyle,heigh,padding,marginRight,nominput,flex,fontSize,borderWidth,borderColor,borderRadius,FlexDirection,JustifyContent,borderRadium;
-    static String lineHeight,textAlign,textDecorationLine,right,width,maxheigh,maxWidth,BorderRadium,position,minHeight,minWidth,left,Flex,flexWrap,fontStyle,paddingBottom,paddingHorizontal,paddingLeft,paddingRight,paddingTop,paddingVertical,opacity,bottom,margin,marginBottom,marginHorizontal,marginLeft,marginTop,marginVertical,fontWeight,borderStyle,borderBottomLeftRadius,borderBottomRightRadius,textShadowColor,borderRightColor,borderLeftColor,borderBottomWidth,borderLeftWidth,textAlignVertical,borderRightWidth,tborderRightColor,textShadowRadius,extShadowRadius,fontVariant,letterSpacing,textDecorationColor,textDecorationStyle,writingDirection,borderRightColorborderRightWidth,borderTopColor,borderTopLeftRadius,borderTopRightRadius,borderTopWidth,backfaceVisibility,BackGroundColor;
+    static String lineHeight,textAlign,right,width,maxheigh,maxWidth,BorderRadium,position,minHeight,minWidth,left,Flex,flexWrap,fontStyle,paddingBottom,paddingHorizontal,paddingLeft,paddingRight,paddingTop,paddingVertical,opacity,bottom,margin,marginBottom,marginHorizontal,marginLeft,marginTop,marginVertical,fontWeight,borderStyle,borderBottomLeftRadius,borderBottomRightRadius,borderRightColor,borderLeftColor,borderBottomWidth,borderLeftWidth,textAlignVertical,borderRightWidth,tborderRightColor,extShadowRadius,fontVariant,letterSpacing,writingDirection,borderRightColorborderRightWidth,borderTopColor,borderTopLeftRadius,borderTopRightRadius,borderTopWidth,backfaceVisibility,BackGroundColor;
 
     static String NomLabel,stylelabel,contenu;
     static String Stylelistview,table;
@@ -26,6 +26,10 @@ public class Controleur {
     static List<String> indexlist= new ArrayList<String>();	
     static String [] tabindex = null;	
 	public static void Execution(){
+		//on lit le model
+    	TraiteurFichier.LectureFichierModel();
+		
+		
 	//on parcourt le model 
 		tabindex=indexandroid.split(" ");
 		 for(j=0;j<tabindex.length;j++){
@@ -35,6 +39,10 @@ public class Controleur {
 		
 	
     for(i=0;i<TraiteurFichier.ListdeslignesModel.size();i++){
+    	//on recupére le layout initial
+    	if(TraiteurFichier.ListdeslignesModel.get(i).equalsIgnoreCase("FirstLayout")){
+    	initial=TraiteurFichier.ListdeslignesModel.get(i+1);
+    	}
     	//a chaque fois qu'on trouve un Layout
     	 if(TraiteurFichier.ListdeslignesModel.get(i).equalsIgnoreCase("Layout")){
     		 
@@ -48,7 +56,7 @@ public class Controleur {
     		 //on récupére le nom et le titre du layout
     		 nomlayout=TraiteurFichier.ListdeslignesModel.get(i+1);
     		 titrelayout=TraiteurFichier.ListdeslignesModel.get(i+3);
-    		 
+    		
     		 //on injecte le Layout dans l'index
     		 for(j=0;j<indexlist.size();j++){
     			 if(indexlist.get(j).equalsIgnoreCase("//import")){
@@ -56,7 +64,7 @@ public class Controleur {
      			indexlist.add(j+1,Codeainjecter); 
      			}
     			if(indexlist.get(j).equalsIgnoreCase("key=\"root\">")){
-    				Codeainjecter="<Scene key=\""+nomlayout+"\" component={"+nomlayout+"} title=\""+titrelayout+"\" />";
+    				Codeainjecter="<Scene key=\""+nomlayout+"\" component={ "+nomlayout+" } navigationBarStyle={{backgroundColor:'#000000', borderRadius: 10,borderColor: '#808080',borderWidth: 5,}} titleStyle={{color:'white',fontFamily: 'Cochin'}} title=\""+titrelayout+"\" />";
     			indexlist.add(j+1,Codeainjecter); 
     			}
     		    }
@@ -183,9 +191,10 @@ public class Controleur {
  	    			    	onlongclique=TraiteurFichier.ListdeslignesModel.get(j+6);
  	    			    	icon=TraiteurFichier.ListdeslignesModel.get(j+2);
  	    			    	Style=TraiteurFichier.ListdeslignesModel.get(j+16);
+ 	    			    	System.out.print(ligne);
  	    			    	raisedlarge=TraiteurFichier.ListdeslignesModel.get(j+8);
  	    			    	iconright=TraiteurFichier.ListdeslignesModel.get(j+10);
- 	    			    	ligne=TraiteurFichier.ListdeslignesModel.get(j+12);
+ 	    			    	 ligne=TraiteurFichier.ListdeslignesModel.get(j+12);
  	    					 colonne=TraiteurFichier.ListdeslignesModel.get(j+14);
  	    					
  	    		 	    	//appeller injecteur	
@@ -206,7 +215,7 @@ public class Controleur {
  	    					nominput=TraiteurFichier.ListdeslignesModel.get(j);
  	    					
  	    		 	    	Style=TraiteurFichier.ListdeslignesModel.get(j+6);
- 	    		 	    	ligne=TraiteurFichier.ListdeslignesModel.get(j+2);
+ 	    		 	    	 ligne=TraiteurFichier.ListdeslignesModel.get(j+2);
  	    					 colonne=TraiteurFichier.ListdeslignesModel.get(j+4);
  	    		 	    	
  	    		 	    	Injecteur.InjecterInput(nominput,Style,ligne,colonne);
@@ -238,6 +247,8 @@ public class Controleur {
  	    					//on recupére les informations de la List
  	    					mute=TraiteurFichier.ListdeslignesModel.get(j+4);
  	    					Url=TraiteurFichier.ListdeslignesModel.get(j+2);
+ 	    					Url.substring(1, Url.length()-1);
+ 	    					System.out.print("************************************"+Url);
  	    					height=TraiteurFichier.ListdeslignesModel.get(j+8);
  	    					width=TraiteurFichier.ListdeslignesModel.get(j+6);
  	    		 	    	ligne=TraiteurFichier.ListdeslignesModel.get(j+10);
@@ -310,29 +321,26 @@ public class Controleur {
  		    		fontWeight=TraiteurFichier.ListdeslignesModel.get(f+11);
  		    		lineHeight=TraiteurFichier.ListdeslignesModel.get(f+13);
  		    		TextAlign=TraiteurFichier.ListdeslignesModel.get(f+15);
- 		    		TextDecorationLine=TraiteurFichier.ListdeslignesModel.get(f+17);
- 		    		TextShadowColor=TraiteurFichier.ListdeslignesModel.get(f+19);
- 		    		TextShadowRadius=TraiteurFichier.ListdeslignesModel.get(f+21);
- 		    		backfaceVisibility=TraiteurFichier.ListdeslignesModel.get(f+23);
- 		    		backgroundColor=TraiteurFichier.ListdeslignesModel.get(f+25);
- 		    		borderBottomColor=TraiteurFichier.ListdeslignesModel.get(f+27);
- 		    		borderBottomLeftRadius=TraiteurFichier.ListdeslignesModel.get(f+29);
- 		    		borderBottomRightRadius=TraiteurFichier.ListdeslignesModel.get(f+31);
- 		    		borderBottomWidth=TraiteurFichier.ListdeslignesModel.get(f+33);
- 		    		borderColor=TraiteurFichier.ListdeslignesModel.get(f+35);
- 		    		borderLeftColor=TraiteurFichier.ListdeslignesModel.get(f+37);
- 		    		borderLeftWidth=TraiteurFichier.ListdeslignesModel.get(f+39);
- 		    		borderRadius=TraiteurFichier.ListdeslignesModel.get(f+41);
- 		    		borderRightColor=TraiteurFichier.ListdeslignesModel.get(f+43);
- 		    		borderRightWidth=TraiteurFichier.ListdeslignesModel.get(f+45);
- 		    		borderStyle=TraiteurFichier.ListdeslignesModel.get(f+47);
- 		    		borderTopColor=TraiteurFichier.ListdeslignesModel.get(f+49);
- 		    		borderTopLeftRadius=TraiteurFichier.ListdeslignesModel.get(f+51);
- 		    		borderTopRightRadius=TraiteurFichier.ListdeslignesModel.get(f+53);
- 		    		borderTopWidth=TraiteurFichier.ListdeslignesModel.get(f+55);
- 		    		borderWidth=TraiteurFichier.ListdeslignesModel.get(f+57);
- 		    		opacity=TraiteurFichier.ListdeslignesModel.get(f+59);
- 		    		Injecteur.InjecterStyleText(nomInputStyle,color,fontFamily,fontSize,fontStyle,fontWeight,lineHeight,TextAlign,TextDecorationLine,TextShadowColor,TextShadowRadius,backfaceVisibility,backgroundColor,borderBottomColor,borderBottomLeftRadius,borderBottomRightRadius,borderBottomWidth,borderColor,borderLeftColor,borderLeftWidth,borderRadius,borderRightColor,borderRightWidth,borderStyle,borderTopColor,borderTopLeftRadius,borderTopRightRadius,borderTopWidth,borderWidth,opacity);
+ 		    		backfaceVisibility=TraiteurFichier.ListdeslignesModel.get(f+17);
+ 		    		backgroundColor=TraiteurFichier.ListdeslignesModel.get(f+19);
+ 		    		borderBottomColor=TraiteurFichier.ListdeslignesModel.get(f+21);
+ 		    		borderBottomLeftRadius=TraiteurFichier.ListdeslignesModel.get(f+23);
+ 		    		borderBottomRightRadius=TraiteurFichier.ListdeslignesModel.get(f+25);
+ 		    		borderBottomWidth=TraiteurFichier.ListdeslignesModel.get(f+27);
+ 		    		borderColor=TraiteurFichier.ListdeslignesModel.get(f+29);
+ 		    		borderLeftColor=TraiteurFichier.ListdeslignesModel.get(f+31);
+ 		    		borderLeftWidth=TraiteurFichier.ListdeslignesModel.get(f+33);
+ 		    		borderRadius=TraiteurFichier.ListdeslignesModel.get(f+35);
+ 		    		borderRightColor=TraiteurFichier.ListdeslignesModel.get(f+37);
+ 		    		borderRightWidth=TraiteurFichier.ListdeslignesModel.get(f+39);
+ 		    		borderStyle=TraiteurFichier.ListdeslignesModel.get(f+41);
+ 		    		borderTopColor=TraiteurFichier.ListdeslignesModel.get(f+43);
+ 		    		borderTopLeftRadius=TraiteurFichier.ListdeslignesModel.get(f+45);
+ 		    		borderTopRightRadius=TraiteurFichier.ListdeslignesModel.get(f+47);
+ 		    		borderTopWidth=TraiteurFichier.ListdeslignesModel.get(f+49);
+ 		    		borderWidth=TraiteurFichier.ListdeslignesModel.get(f+51);
+ 		    		opacity=TraiteurFichier.ListdeslignesModel.get(f+53);
+ 		    		Injecteur.InjecterStyleText(nomInputStyle,color,fontFamily,fontSize,fontStyle,fontWeight,lineHeight,TextAlign,backfaceVisibility,backgroundColor,borderBottomColor,borderBottomLeftRadius,borderBottomRightRadius,borderBottomWidth,borderColor,borderLeftColor,borderLeftWidth,borderRadius,borderRightColor,borderRightWidth,borderStyle,borderTopColor,borderTopLeftRadius,borderTopRightRadius,borderTopWidth,borderWidth,opacity);
  		    	}
  		    	if(TraiteurFichier.ListdeslignesModel.get(f).equals("StyleView")){
  		    		//on recupére les informations du stylView
@@ -367,21 +375,21 @@ public class Controleur {
  		    	left=TraiteurFichier.ListdeslignesModel.get(f+57);
  		    	margin=TraiteurFichier.ListdeslignesModel.get(f+59);
  		    	marginBottom=TraiteurFichier.ListdeslignesModel.get(f+61);
- 		    	marginHorizontal=TraiteurFichier.ListdeslignesModel.get(f+63);
- 		    	marginLeft=TraiteurFichier.ListdeslignesModel.get(f+65);
- 		    	marginRight=TraiteurFichier.ListdeslignesModel.get(f+67);
- 		    	marginTop=TraiteurFichier.ListdeslignesModel.get(f+69);
- 		    	marginVertical=TraiteurFichier.ListdeslignesModel.get(f+71);
- 		    	padding=TraiteurFichier.ListdeslignesModel.get(f+73);
- 		    	paddingBottom=TraiteurFichier.ListdeslignesModel.get(f+75);
- 		    	paddingHorizontal=TraiteurFichier.ListdeslignesModel.get(f+77);
- 		    	paddingRight=TraiteurFichier.ListdeslignesModel.get(f+79);
- 		    	paddingTop=TraiteurFichier.ListdeslignesModel.get(f+81);
- 		    	paddingVertical=TraiteurFichier.ListdeslignesModel.get(f+83);
- 		    	right=TraiteurFichier.ListdeslignesModel.get(f+85);
- 		    	width=TraiteurFichier.ListdeslignesModel.get(f+87);
+ 		    	//marginHorizontal=TraiteurFichier.ListdeslignesModel.get(f+63);
+ 		    	marginLeft=TraiteurFichier.ListdeslignesModel.get(f+63);
+ 		    	marginRight=TraiteurFichier.ListdeslignesModel.get(f+65);
+ 		    	marginTop=TraiteurFichier.ListdeslignesModel.get(f+67);
+ 		    	marginVertical=TraiteurFichier.ListdeslignesModel.get(f+69);
+ 		    	padding=TraiteurFichier.ListdeslignesModel.get(f+71);
+ 		    	paddingBottom=TraiteurFichier.ListdeslignesModel.get(f+73);
+ 		    	paddingHorizontal=TraiteurFichier.ListdeslignesModel.get(f+75);
+ 		    	paddingRight=TraiteurFichier.ListdeslignesModel.get(f+77);
+ 		    	paddingTop=TraiteurFichier.ListdeslignesModel.get(f+79);
+ 		    	paddingVertical=TraiteurFichier.ListdeslignesModel.get(f+81);
+ 		    	right=TraiteurFichier.ListdeslignesModel.get(f+83);
+ 		    	width=TraiteurFichier.ListdeslignesModel.get(f+85);
  		    
- 		    	Injecteur.InjecterStyleView(nomInputStyle,backfaceVisibility,backgroundColor,borderBottomColor,borderBottomLeftRadius,borderBottomRightRadius,borderBottomWidth,borderColor,borderLeftColor,borderLeftWidth,borderRadius,borderRightColor,borderRightWidth,borderStyle,borderTopColor,borderTopLeftRadius,borderTopRightRadius,borderTopWidth,borderWidth,opacity,alignItems,alignSelf,bottom,flex,flexDirection,flexWrap,height,justifyContent,left,margin,marginBottom,marginHorizontal,marginLeft,marginRight,marginTop,marginVertical,padding,paddingBottom,paddingHorizontal,paddingRight,paddingTop,paddingVertical,right,width);
+ 		    	Injecteur.InjecterStyleView(nomInputStyle,backfaceVisibility,backgroundColor,borderBottomColor,borderBottomLeftRadius,borderBottomRightRadius,borderBottomWidth,borderColor,borderLeftColor,borderLeftWidth,borderRadius,borderRightColor,borderRightWidth,borderStyle,borderTopColor,borderTopLeftRadius,borderTopRightRadius,borderTopWidth,borderWidth,opacity,alignItems,alignSelf,bottom,flex,flexDirection,flexWrap,height,justifyContent,left,margin,marginBottom,marginLeft,marginRight,marginTop,marginVertical,padding,paddingBottom,paddingHorizontal,paddingRight,paddingTop,paddingVertical,right,width);
  		    	 }
  		    	if(TraiteurFichier.ListdeslignesModel.get(f).equals("StyleImage")){
  		    		
@@ -406,22 +414,22 @@ public class Controleur {
  		    		margin=TraiteurFichier.ListdeslignesModel.get(f+37);
  		    		marginBottom=TraiteurFichier.ListdeslignesModel.get(f+39);
  		    		marginHorizontal=TraiteurFichier.ListdeslignesModel.get(f+41);
- 		    		marginLeft=TraiteurFichier.ListdeslignesModel.get(f+43);
- 		    		marginRight=TraiteurFichier.ListdeslignesModel.get(f+45);
- 		    		marginTop=TraiteurFichier.ListdeslignesModel.get(f+47);
- 		    		marginVertical=TraiteurFichier.ListdeslignesModel.get(f+49);
- 		    		padding=TraiteurFichier.ListdeslignesModel.get(f+51);
- 		    		paddingBottom=TraiteurFichier.ListdeslignesModel.get(f+53);
- 		    		paddingHorizontal=TraiteurFichier.ListdeslignesModel.get(f+55);
- 		    		paddingRight=TraiteurFichier.ListdeslignesModel.get(f+57);
- 		    		paddingTop=TraiteurFichier.ListdeslignesModel.get(f+59);
- 		    		paddingVertical=TraiteurFichier.ListdeslignesModel.get(f+61);
- 		    		right=TraiteurFichier.ListdeslignesModel.get(f+63);
- 		    		width=TraiteurFichier.ListdeslignesModel.get(f+65);
- 		    		flexDirection=TraiteurFichier.ListdeslignesModel.get(f+67);
- 		    		flexWrap=TraiteurFichier.ListdeslignesModel.get(f+69);
- 		    		height=TraiteurFichier.ListdeslignesModel.get(f+71);
- 		    		Injecteur.InjecterStyleImage(nomInputStyle,backfaceVisibility,backgroundColor,borderBottomLeftRadius,borderBottomRightRadius,borderColor,borderRadius,borderTopLeftRadius,borderTopRightRadius,borderWidth,opacity,overflow,alignItems,alignSelf,bottom,flex,justifyContent,left,margin,marginBottom,marginHorizontal,marginLeft,marginRight,marginTop,marginVertical,padding,paddingBottom,paddingHorizontal,paddingRight,paddingTop,paddingVertical,right,width,flexDirection,flexWrap,height);
+ 		    		marginLeft=TraiteurFichier.ListdeslignesModel.get(f+41);
+ 		    		marginRight=TraiteurFichier.ListdeslignesModel.get(f+43);
+ 		    		marginTop=TraiteurFichier.ListdeslignesModel.get(f+45);
+ 		    		marginVertical=TraiteurFichier.ListdeslignesModel.get(f+47);
+ 		    		padding=TraiteurFichier.ListdeslignesModel.get(f+49);
+ 		    		paddingBottom=TraiteurFichier.ListdeslignesModel.get(f+51);
+ 		    		paddingHorizontal=TraiteurFichier.ListdeslignesModel.get(f+53);
+ 		    		paddingRight=TraiteurFichier.ListdeslignesModel.get(f+55);
+ 		    		paddingTop=TraiteurFichier.ListdeslignesModel.get(f+57);
+ 		    		paddingVertical=TraiteurFichier.ListdeslignesModel.get(f+59);
+ 		    		right=TraiteurFichier.ListdeslignesModel.get(f+61);
+ 		    		width=TraiteurFichier.ListdeslignesModel.get(f+63);
+ 		    		flexDirection=TraiteurFichier.ListdeslignesModel.get(f+65);
+ 		    		flexWrap=TraiteurFichier.ListdeslignesModel.get(f+67);
+ 		    		height=TraiteurFichier.ListdeslignesModel.get(f+69);
+ 		    		Injecteur.InjecterStyleImage(nomInputStyle,backfaceVisibility,backgroundColor,borderBottomLeftRadius,borderBottomRightRadius,borderColor,borderRadius,borderTopLeftRadius,borderTopRightRadius,borderWidth,opacity,overflow,alignItems,alignSelf,bottom,flex,justifyContent,left,margin,marginBottom,marginLeft,marginRight,marginTop,marginVertical,padding,paddingBottom,paddingHorizontal,paddingRight,paddingTop,paddingVertical,right,width,flexDirection,flexWrap,height);
  		    	}
  		    	
  		    	 }
@@ -436,6 +444,26 @@ public class Controleur {
     	 }
 
                                              }
+    //on inject le initial pour determiner le layout de lancement
+    
+    //on split index
+		String [] tabindex = null;
+		indexandroid="";
+		for(j=0;j<indexlist.size();j++){
+			indexandroid=indexandroid+" "+indexlist.get(j);
+		    }
+		tabindex = indexandroid.split(" ");
+		indexlist.clear();
+		for(j=1;j<tabindex.length;j++){
+			indexlist.add(tabindex[j]);
+	    }
+    System.out.println(initial);
+    for(j=0;j<indexlist.size();j++){
+    	System.out.println(indexlist.get(j));
+		 if(indexlist.get(j).equalsIgnoreCase(initial)&&indexlist.get(j-1).equalsIgnoreCase("component={")){
+			Codeainjecter="initial={true}";
+			indexlist.add(j+2,Codeainjecter); 
+		 }}
     //on ecrit l'index
     TraiteurFichier.Ecritureindex();
 }

@@ -58,7 +58,7 @@ public static void InjecterBouton(String nombouton,String onclique,String onlong
 	        	else if(raisedlarge.equalsIgnoreCase("large"))CodeAajouter=CodeAajouter+" large";
 	        	//on parcours le model pour recuperer les propriété du icon
 	        	 for(i=0;i<TraiteurFichier.ListdeslignesModel.size();i++){
-	        		 if(TraiteurFichier.ListdeslignesModel.get(i).equalsIgnoreCase(icon) && TraiteurFichier.ListdeslignesModel.get(i-1).equalsIgnoreCase("Icone")){typeicon=TraiteurFichier.ListdeslignesModel.get(i+2);Styleicon=TraiteurFichier.ListdeslignesModel.get(i+8);}
+	        		 if(TraiteurFichier.ListdeslignesModel.get(i).equalsIgnoreCase(icon) && TraiteurFichier.ListdeslignesModel.get(i-1).equalsIgnoreCase("Icone")){typeicon=TraiteurFichier.ListdeslignesModel.get(i+3);Styleicon=TraiteurFichier.ListdeslignesModel.get(i+5);}
 	        	 }
 
 	        	CodeAajouter=CodeAajouter+ " title='"+nombouton+"' onPress={() => this."+onclique+"()} onLongPress={() => this."+onlongclique+"()} buttonStyle={ styles."+Style+" } icon={{name: 'squirrel', type: '"+typeicon+"', buttonStyle: styles."+Styleicon+" }}  />";
@@ -211,7 +211,7 @@ public static void	InjecterMap(String latitude,String longitude,String latitudeD
 		 }
 	}
 
-public static void InjecterStyleText(String nomInputStyle,String color,String fontFamily,String fontSize,String fontStyle,String fontWeight,String lineHeight,String TextAlign,String TextDecorationLine,String TextShadowColor,String TextShadowRadius,String backfaceVisibility,String backgroundColor,String borderBottomColor,String borderBottomLeftRadius,String borderBottomRightRadius,String borderBottomWidth,String borderColor,String borderLeftColor,String borderLeftWidth,String borderRadius,String borderRightColor,String borderRightWidth,String borderStyle,String borderTopColor,String borderTopLeftRadius,String borderTopRightRadius,String borderTopWidth,String borderWidth,String opacity){
+public static void InjecterStyleText(String nomInputStyle,String color,String fontFamily,String fontSize,String fontStyle,String fontWeight,String lineHeight,String TextAlign,String backfaceVisibility,String backgroundColor,String borderBottomColor,String borderBottomLeftRadius,String borderBottomRightRadius,String borderBottomWidth,String borderColor,String borderLeftColor,String borderLeftWidth,String borderRadius,String borderRightColor,String borderRightWidth,String borderStyle,String borderTopColor,String borderTopLeftRadius,String borderTopRightRadius,String borderTopWidth,String borderWidth,String opacity){
 	for(j=0;j<Controleur.complist.size();j++){
 		 //on recupére la position du //Stylesheet
 	    if(Controleur.complist.get(j).equalsIgnoreCase("//StyleSheet")){
@@ -225,10 +225,7 @@ public static void InjecterStyleText(String nomInputStyle,String color,String fo
  		     if (!fontWeight.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" fontWeight: '"+fontWeight+"',";}
  		     if (!lineHeight.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" lineHeight: "+lineHeight+",";}
  		     if (!TextAlign.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" textAlign: '"+TextAlign+"',";}
- 		     if (!TextDecorationLine.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" TextDecorationLine: '"+TextDecorationLine+"',";}
- 		     if (!TextShadowColor.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" TextShadowColor: '"+TextShadowColor+"',";}
- 		     if (!TextShadowRadius.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" TextShadowRadius: "+TextShadowRadius+" ,";}
- 		     if (!backfaceVisibility.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" backfaceVisibility: '"+backfaceVisibility+"',";}
+ 		    if (!backfaceVisibility.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" backfaceVisibility: '"+backfaceVisibility+"',";}
  		     if (!backgroundColor.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" backgroundColor: '"+backgroundColor+"' ,";}
  		     if (!borderBottomColor.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderBottomColor: '"+borderBottomColor+"',";}
  		     if (!borderBottomLeftRadius.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderBottomLeftRadius: "+borderBottomLeftRadius+",";}
@@ -240,7 +237,6 @@ public static void InjecterStyleText(String nomInputStyle,String color,String fo
  		     if (!borderRadius.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderRadius: "+borderRadius+",";}
  		     if (!borderRightColor.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderRightColor: '"+borderRightColor+"',";}
  		     if (!borderRightWidth.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderRightWidth: "+borderRightWidth+" ,";}
- 		     if (!borderStyle.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" marginHorizontal: '"+borderStyle+"' ,";}
  		     if (!borderTopColor.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderTopColor: '"+borderTopColor+"' ,";}
  		     if (!borderTopLeftRadius.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderTopLeftRadius: "+borderTopLeftRadius+" ,";}
  		     if (!borderTopRightRadius.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" borderTopRightRadius: "+borderTopRightRadius+" ,";}
@@ -256,7 +252,7 @@ public static void InjecterStyleText(String nomInputStyle,String color,String fo
 	    }
 	    }
 }
-public static void InjecterStyleImage(String nomInputStyle,String backfaceVisibility,String backgroundColor,String borderBottomLeftRadius,String borderBottomRightRadius,String borderColor,String borderRadius,String borderTopLeftRadius,String borderTopRightRadius,String borderWidth,String opacity,String overflow,String alignItems,String alignSelf,String bottom,String flex,String justifyContent,String left,String margin,String marginBottom,String marginHorizontal,String marginLeft,String marginRight,String marginTop,String marginVertical,String padding,String paddingBottom,String paddingHorizontal,String paddingRight,String paddingTop,String paddingVertical,String right,String width,String flexDirection,String flexWrap,String height){
+public static void InjecterStyleImage(String nomInputStyle,String backfaceVisibility,String backgroundColor,String borderBottomLeftRadius,String borderBottomRightRadius,String borderColor,String borderRadius,String borderTopLeftRadius,String borderTopRightRadius,String borderWidth,String opacity,String overflow,String alignItems,String alignSelf,String bottom,String flex,String justifyContent,String left,String margin,String marginBottom,String marginLeft,String marginRight,String marginTop,String marginVertical,String padding,String paddingBottom,String paddingHorizontal,String paddingRight,String paddingTop,String paddingVertical,String right,String width,String flexDirection,String flexWrap,String height){
 	for(j=0;j<Controleur.complist.size();j++){
 		 //on recupére la position du //Stylesheet
 	    if(Controleur.complist.get(j).equalsIgnoreCase("//StyleSheet")){
@@ -285,7 +281,6 @@ public static void InjecterStyleImage(String nomInputStyle,String backfaceVisibi
  		     if (!left.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" left: "+left+",";}
  		     if (!margin.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" margin: "+margin+",";}
  		     if (!marginBottom.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" marginBottom: "+marginBottom+" ,";}
- 		     if (!marginHorizontal.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" marginHorizontal: "+marginHorizontal+" ,";}
  		     if (!marginLeft.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" marginLeft: "+marginLeft+" ,";}
  		     if (!marginRight.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" marginRight: "+marginRight+",";}
  		     if (!marginTop.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" marginTop: "+marginTop+",";}
@@ -310,7 +305,7 @@ public static void InjecterStyleImage(String nomInputStyle,String backfaceVisibi
 }
 //coté StyleSheet--------------------------------------------------------------------
  
-public static void InjecterStyleView(String nomInputStyle,String backfaceVisibility,String backgroundColor,String borderBottomColor,String borderBottomLeftRadius,String borderBottomRightRadius,String borderBottomWidth,String borderColor,String borderLeftColor,String borderLeftWidth,String borderRadius,String borderRightColor,String borderRightWidth,String borderStyle,String borderTopColor,String borderTopLeftRadius,String borderTopRightRadius,String borderTopWidth,String borderWidth,String opacity,String alignItems,String alignSelf,String bottom,String flex,String flexDirection,String flexWrap,String height,String justifyContent,String left,String margin,String marginBottom,String marginHorizontal,String marginLeft,String marginRight,String marginTop,String marginVertical,String padding,String paddingBottom,String paddingHorizontal,String paddingRight,String paddingTop,String paddingVertical,String right,String width){
+public static void InjecterStyleView(String nomInputStyle,String backfaceVisibility,String backgroundColor,String borderBottomColor,String borderBottomLeftRadius,String borderBottomRightRadius,String borderBottomWidth,String borderColor,String borderLeftColor,String borderLeftWidth,String borderRadius,String borderRightColor,String borderRightWidth,String borderStyle,String borderTopColor,String borderTopLeftRadius,String borderTopRightRadius,String borderTopWidth,String borderWidth,String opacity,String alignItems,String alignSelf,String bottom,String flex,String flexDirection,String flexWrap,String height,String justifyContent,String left,String margin,String marginBottom,String marginLeft,String marginRight,String marginTop,String marginVertical,String padding,String paddingBottom,String paddingHorizontal,String paddingRight,String paddingTop,String paddingVertical,String right,String width){
 	for(j=0;j<Controleur.complist.size();j++){
 		 //on recupére la position du //Stylesheet
  	    if(Controleur.complist.get(j).equalsIgnoreCase("//StyleSheet")){
@@ -346,7 +341,6 @@ public static void InjecterStyleView(String nomInputStyle,String backfaceVisibil
  		     if (!left.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" left: "+left+",";}
  		     if (!margin.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" margin: "+margin+",";}
  		     if (!marginBottom.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" marginBottom: "+marginBottom+" ,";}
- 		     if (!marginHorizontal.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" marginHorizontal: "+marginHorizontal+" ,";}
  		     if (!marginLeft.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" marginLeft: "+marginLeft+" ,";}
  		     if (!marginRight.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" marginRight: "+marginRight+",";}
  		     if (!marginTop.equalsIgnoreCase("none")){CodeAajouter=CodeAajouter+" marginTop: "+marginTop+",";}
@@ -364,9 +358,11 @@ public static void InjecterStyleView(String nomInputStyle,String backfaceVisibil
  	    	CodeAajouter=CodeAajouter+" },";
  	    	//on injecte le code
  	    	Controleur.complist.add(j+1, CodeAajouter);
+ 	    	
 
  	    }
 	}
+	
 }
 
 //function-------------------------------------------------------------------------

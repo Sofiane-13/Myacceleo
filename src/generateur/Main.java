@@ -10,6 +10,8 @@ import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.Writer;
 import java.math.BigInteger;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
@@ -27,52 +29,25 @@ public class Main {
 		int randomNumber = r.ints(1, 0, 11).findFirst().getAsInt();
 		SecureRandom random = new SecureRandom();
 	     mabase = new BigInteger(130, random).toString(32);
-		System.out.println(mabase);
-	    JFrame  Mafenetre= new Interface();
-	  
-	 
-		//on lit les fichiers
-		 
-		//TraiteurFichier.LectureFichierJs();//lecture du squelette
-	TraiteurFichier.LectureFichierModel();
 		
-//		TraiteurFichier.AfficherListJs();
-//		System.out.println("************************************************************");
-		//TraiteurFichier.AfficherListModel();
-//		
-//		SqueletteVue.PreparerSquelette();//on integre la vu au squelette
-//		System.out.println("************************************************************");
-//		TraiteurFichier.EcritureFicherandroidvue();//on ecrit le fichier squellette avec la vue
-//		
-//		TraiteurFichier.LectureFichierJsVue();//on lit le fichier squellette avec la vue
-//		System.out.println("************************************************************");
-//
-//		TraiteurFichier.AfficherListJsVue();
-//		//on lance l'execution
-		Controleur.Execution();
-//		System.out.println("************************************************************");
-//
-//		TraiteurFichier.AfficherListJsVue();
-//		
-//
-//		//on lance l'ecriture du fichier
-//		TraiteurFichier.EcritureFicherindexandroid();
-//		  try {
-//			  String[] cmd = {"/bin/sh", "-c", "/bin/ls > resultat"};
-//			  Runtime.getRuntime().exec(cmd);
-//   	    	    Runtime.getRuntime().exec("/bin/bash cd ./fichier/pfe" );
-//		        Runtime.getRuntime().exec("/bin/bash export JAVA_HOME=/home/sofiane/install/jdk1.8.0_121/" );
-//	 			Runtime.getRuntime().exec("/bin/bash export ANDROID_HOME=/home/sofiane/Android/Sdk/" );
-//	 			Runtime.getRuntime().exec("/bin/bash npm run android" );
-	 			
-	 				
-//	    } catch (IOException e) {
-//	 			// TODO Auto-generated catch block
-//	 			e.printStackTrace();
-//	 		}
-//
-
-
+	     //on supp le fichier si il éxiste
+	     File file = new File("/home/sofiane/work/MyAcceleo/fichier/pfe");
+	     boolean isDirectoryCreated = file.mkdir();
+	        if (isDirectoryCreated) {
+	            System.out.println("successfully made");
+	             } else {
+	               file.delete();
+	               file.mkdir();
+	               System.out.println("deleted and made");
+	               }
+		
+	     new Interface();
+//	TraiteurFichier.LectureFichierModel();
+//	Controleur.Execution();
 
 }
+
+	
+
+	
 }

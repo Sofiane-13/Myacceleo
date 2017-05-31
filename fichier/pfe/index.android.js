@@ -48,8 +48,14 @@ return(
 myFirebaseRefapp.database()
 );}
 //import
-import Application from './Application';
-import Map from './Map';
+import
+layout2
+from
+'./layout2';
+import
+Accueil
+from
+'./Accueil';
 export
 default
 class
@@ -63,8 +69,35 @@ return(
 >
 <Scene
 key="root">
-<Scene key="Application" component={Application} title="appl" />
-<Scene key="Map" component={Map} title="mapp" />
+<Scene
+key="layout2"
+component={
+layout2
+}
+navigationBarStyle={{backgroundColor:'#000000',
+borderRadius:
+10,borderColor:
+'#808080',borderWidth:
+5,}}
+titleStyle={{color:'white',fontFamily:
+'Cochin'}}
+title="monlayouuut"
+/>
+<Scene
+key="Accueil"
+component={
+Accueil
+}
+initial={true}
+navigationBarStyle={{backgroundColor:'#000000',
+borderRadius:
+10,borderColor:
+'#808080',borderWidth:
+5,}}
+titleStyle={{color:'white',fontFamily:
+'Cochin'}}
+title="bonjouuur"
+/>
 </Scene>
 </Router>
 );
